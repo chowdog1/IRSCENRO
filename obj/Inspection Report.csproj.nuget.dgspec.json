@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "e:\\C# Prog\\Inspection\\Inspection Report\\Inspection Report.csproj": {}
+    "E:\\C# Prog\\Inspection\\Inspection Report\\Inspection Report.csproj": {}
   },
   "projects": {
-    "e:\\C# Prog\\Inspection\\Inspection Report\\Inspection Report.csproj": {
+    "E:\\C# Prog\\Inspection\\Inspection Report\\Inspection Report.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\C# Prog\\Inspection\\Inspection Report\\Inspection Report.csproj",
+        "projectUniqueName": "E:\\C# Prog\\Inspection\\Inspection Report\\Inspection Report.csproj",
         "projectName": "Inspection Report",
-        "projectPath": "e:\\C# Prog\\Inspection\\Inspection Report\\Inspection Report.csproj",
+        "projectPath": "E:\\C# Prog\\Inspection\\Inspection Report\\Inspection Report.csproj",
         "packagesPath": "C:\\Users\\Edzel\\.nuget\\packages\\",
-        "outputPath": "e:\\C# Prog\\Inspection\\Inspection Report\\obj\\",
+        "outputPath": "E:\\C# Prog\\Inspection\\Inspection Report\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
