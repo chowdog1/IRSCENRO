@@ -648,7 +648,6 @@ namespace Inspection_Report
             }
             return string.Empty;
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
@@ -911,7 +910,6 @@ namespace Inspection_Report
                 }
             }
         }
-
         private void button5_Click(object sender, EventArgs e)
         {
             string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
@@ -941,7 +939,6 @@ namespace Inspection_Report
                 }
             }
         }
-
         private void resetBtn_Click(object sender, EventArgs e)
         {
             ClearForm();
@@ -956,14 +953,12 @@ namespace Inspection_Report
                 MessageBox.Show($"Switched to user: {loginForm.Username}");
             }
         }
-
         private void registerNewUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
             loginForm loginform = new loginForm();
             loginform.Show();
         }
-
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -976,7 +971,6 @@ namespace Inspection_Report
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-
 
                 string sqlQuery = "SELECT * FROM InspectionReport";
 
@@ -1089,9 +1083,7 @@ namespace Inspection_Report
                         pdfDocument.AddPage(page);
                     }
                 }
-
                 pdfDocument.Save(filePath);
-
                 MessageBox.Show("Data exported to PDF successfully!");
             }
         }
