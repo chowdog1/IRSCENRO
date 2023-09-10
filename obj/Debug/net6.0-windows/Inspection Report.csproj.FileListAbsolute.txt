@@ -1,0 +1,53 @@
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\Inspection Report.exe
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\Inspection Report.deps.json
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\Inspection Report.runtimeconfig.json
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\Inspection Report.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\Inspection Report.pdb
+E:\C# Prog\Inspection\Inspection Report\obj\Debug\net6.0-windows\Inspection Report.csproj.GenerateResource.cache
+E:\C# Prog\Inspection\Inspection Report\obj\Debug\net6.0-windows\Inspection Report.GeneratedMSBuildEditorConfig.editorconfig
+E:\C# Prog\Inspection\Inspection Report\obj\Debug\net6.0-windows\Inspection Report.AssemblyInfoInputs.cache
+E:\C# Prog\Inspection\Inspection Report\obj\Debug\net6.0-windows\Inspection Report.AssemblyInfo.cs
+E:\C# Prog\Inspection\Inspection Report\obj\Debug\net6.0-windows\Inspection Report.csproj.CoreCompileInputs.cache
+E:\C# Prog\Inspection\Inspection Report\obj\Debug\net6.0-windows\Inspection Report.dll
+E:\C# Prog\Inspection\Inspection Report\obj\Debug\net6.0-windows\refint\Inspection Report.dll
+E:\C# Prog\Inspection\Inspection Report\obj\Debug\net6.0-windows\Inspection Report.pdb
+E:\C# Prog\Inspection\Inspection Report\obj\Debug\net6.0-windows\Inspection Report.genruntimeconfig.cache
+E:\C# Prog\Inspection\Inspection Report\obj\Debug\net6.0-windows\ref\Inspection Report.dll
+E:\C# Prog\Inspection\Inspection Report\obj\Debug\net6.0-windows\Inspection Report.csproj.AssemblyReference.cache
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\C# Prog\Inspection\Inspection Report\obj\Debug\net6.0-windows\Inspection Report.csproj.CopyComplete
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\EPPlus.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\EPPlus.Interfaces.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\EPPlus.System.Drawing.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.Json.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\Microsoft.Extensions.Primitives.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\Microsoft.IO.RecyclableMemoryStream.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\System.Security.Cryptography.Pkcs.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+E:\C# Prog\Inspection\Inspection Report\obj\Debug\net6.0-windows\Inspection_Report.MainPage.resources
+E:\C# Prog\Inspection\Inspection Report\obj\Debug\net6.0-windows\Inspection_Report.Properties.Resources.resources
+E:\C# Prog\Inspection\Inspection Report\obj\Debug\net6.0-windows\Inspection_Report.registerForm.resources
+E:\C# Prog\Inspection\Inspection Report\obj\Debug\net6.0-windows\Inspection_Report.loginForm.resources
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\BCrypt.Net.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\BouncyCastle.Cryptography.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\PdfSharp.Charting.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\PdfSharp.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\de\PdfSharp.Charting.resources.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\de\PdfSharp.resources.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\MigraDoc.DocumentObjectModel.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\MigraDoc.Rendering.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\MigraDoc.RtfRendering.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\de\MigraDoc.DocumentObjectModel.resources.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\de\MigraDoc.Rendering.resources.dll
+E:\C# Prog\Inspection\Inspection Report\bin\Debug\net6.0-windows\de\MigraDoc.RtfRendering.resources.dll
