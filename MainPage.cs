@@ -15,7 +15,6 @@ using System.Windows.Forms;
 using System.IO;
 using PdfSharp;
 
-
 namespace Inspection_Report
 {
     public partial class MainPage : Form
@@ -1078,7 +1077,6 @@ namespace Inspection_Report
                 pdfRenderer.RenderDocument();
 
                 PdfDocument pdfDocument = new PdfDocument();
-
 
                 using (MemoryStream ms = new MemoryStream())
                 {
