@@ -973,7 +973,6 @@ namespace Inspection_Report
                 con.Open();
 
                 string sqlQuery = "SELECT * FROM InspectionReport";
-
                 using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
                 {
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
