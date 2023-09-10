@@ -15,7 +15,6 @@ using System.Windows.Forms;
 using System.IO;
 using PdfSharp;
 
-
 namespace Inspection_Report
 {
     public partial class MainPage : Form
