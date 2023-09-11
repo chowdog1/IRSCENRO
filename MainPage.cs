@@ -1082,6 +1082,7 @@ namespace Inspection_Report
                         pdfDocument.AddPage(page);
                     }
                 }
+
                 pdfDocument.Save(filePath);
                 MessageBox.Show("Data exported to PDF successfully!");
             }
