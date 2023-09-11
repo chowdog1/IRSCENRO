@@ -226,6 +226,7 @@
             generateReportsToExcelToolStripMenuItem = new ToolStripMenuItem();
             generateReportsToPDFToolStripMenuItem = new ToolStripMenuItem();
             auditTrailToolStripMenuItem = new ToolStripMenuItem();
+            advsearchBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -2173,7 +2174,7 @@
             // 
             // resetBtn
             // 
-            resetBtn.Location = new Point(1410, 1003);
+            resetBtn.Location = new Point(1410, 988);
             resetBtn.Name = "resetBtn";
             resetBtn.Size = new Size(108, 33);
             resetBtn.TabIndex = 70;
@@ -2263,12 +2264,22 @@
             auditTrailToolStripMenuItem.Text = "Audit Trail";
             auditTrailToolStripMenuItem.Click += auditTrailToolStripMenuItem_Click;
             // 
+            // advsearchBtn
+            // 
+            advsearchBtn.Location = new Point(1410, 1021);
+            advsearchBtn.Name = "advsearchBtn";
+            advsearchBtn.Size = new Size(108, 33);
+            advsearchBtn.TabIndex = 75;
+            advsearchBtn.Text = "Advanced Search";
+            advsearchBtn.UseVisualStyleBackColor = true;
+            // 
             // MainPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(1843, 1061);
+            Controls.Add(advsearchBtn);
             Controls.Add(reinspectdateTimePicker);
             Controls.Add(label49);
             Controls.Add(resetBtn);
@@ -2599,5 +2610,6 @@
         private ToolStripMenuItem generateReportsToPDFToolStripMenuItem;
         private ToolStripMenuItem registerNewUserToolStripMenuItem;
         private ToolStripMenuItem auditTrailToolStripMenuItem;
+        private Button advsearchBtn;
     }
 }
