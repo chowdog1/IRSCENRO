@@ -93,5 +93,10 @@ namespace Inspection_Report
             new registerForm().Show();
             this.Hide();
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

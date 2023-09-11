@@ -38,6 +38,7 @@
             usernametxtBox = new TextBox();
             label2 = new Label();
             label1 = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // label6
@@ -150,12 +151,26 @@
             label1.TabIndex = 12;
             label1.Text = "Hello!";
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Cursor = Cursors.Hand;
+            label4.Font = new Font("Nirmala UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = Color.FromArgb(116, 86, 174);
+            label4.Location = new Point(288, 9);
+            label4.Name = "label4";
+            label4.Size = new Size(35, 37);
+            label4.TabIndex = 24;
+            label4.Text = "X";
+            label4.Click += label4_Click;
+            // 
             // loginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(335, 576);
+            Controls.Add(label4);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(clrBtn);
@@ -189,5 +204,6 @@
         private TextBox usernametxtBox;
         private Label label2;
         private Label label1;
+        private Label label4;
     }
 }
