@@ -12,9 +12,31 @@ namespace Inspection_Report
 {
     public partial class LogForm : Form
     {
-        public LogForm()
+        private TextBox textBoxLog;
+        public LogForm(List<string> logEntries)
         {
             InitializeComponent();
+
+            textBoxLog = new TextBox
+            {
+                Multiline = true,
+                Dock = DockStyle.Fill,
+                ReadOnly = true
+            };
+            Controls.Add(textBoxLog);
+
+            foreach (string logEntry in logEntries)
+            {
+                textBoxLog.AppendText(logEntry + Environment.NewLine);
+            }
+        }
+
+        public void AppendLog(string logEntry)
+        {
+            if (!textBoxLog.IsDisposed)
+            {
+                textBoxLog.AppendText(logEntry + Environment.NewLine);
+            }
         }
     }
 }

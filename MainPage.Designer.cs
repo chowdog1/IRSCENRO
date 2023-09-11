@@ -225,6 +225,7 @@
             optionToolStripMenuItem = new ToolStripMenuItem();
             generateReportsToExcelToolStripMenuItem = new ToolStripMenuItem();
             generateReportsToPDFToolStripMenuItem = new ToolStripMenuItem();
+            auditTrailToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -2236,7 +2237,7 @@
             // 
             // optionToolStripMenuItem
             // 
-            optionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { generateReportsToExcelToolStripMenuItem, generateReportsToPDFToolStripMenuItem });
+            optionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { generateReportsToExcelToolStripMenuItem, generateReportsToPDFToolStripMenuItem, auditTrailToolStripMenuItem });
             optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             optionToolStripMenuItem.Size = new Size(56, 20);
             optionToolStripMenuItem.Text = "Option";
@@ -2254,6 +2255,13 @@
             generateReportsToPDFToolStripMenuItem.Size = new Size(208, 22);
             generateReportsToPDFToolStripMenuItem.Text = "Generate Reports to PDF";
             generateReportsToPDFToolStripMenuItem.Click += generateReportsToPDFToolStripMenuItem_Click;
+            // 
+            // auditTrailToolStripMenuItem
+            // 
+            auditTrailToolStripMenuItem.Name = "auditTrailToolStripMenuItem";
+            auditTrailToolStripMenuItem.Size = new Size(208, 22);
+            auditTrailToolStripMenuItem.Text = "Audit Trail";
+            auditTrailToolStripMenuItem.Click += auditTrailToolStripMenuItem_Click;
             // 
             // MainPage
             // 
@@ -2590,5 +2598,6 @@
         private ToolStripMenuItem generateReportsToExcelToolStripMenuItem;
         private ToolStripMenuItem generateReportsToPDFToolStripMenuItem;
         private ToolStripMenuItem registerNewUserToolStripMenuItem;
+        private ToolStripMenuItem auditTrailToolStripMenuItem;
     }
 }

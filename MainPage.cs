@@ -27,6 +27,8 @@ namespace Inspection_Report
         private DateTime? wdpdate;
         private DateTime? hwiddate;
         private DateTime? reinspectdate;
+        private LogForm? logform;
+        private List<string> logEntries = new List<string>();
         public MainPage()
         {
             InitializeComponent();
@@ -77,6 +79,23 @@ namespace Inspection_Report
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+        private void LogEvent(string eventDescription)
+        {
+            string logEntry = $"{DateTime.Now} - {accttxtBox.Text} {AuthenticatedUser.UserName}: {eventDescription}";
+            if (logform != null)
+            {
+                logform.AppendLog(logEntry);
+            }
+            logEntries.Add(logEntry);
+        }
+        private void ShowLogForm()
+        {
+            if (logform == null || logform.IsDisposed)
+            {
+                logform = new LogForm(logEntries);
+            }
+            logform.Show();
         }
         private void checkedListBox1_ItemCheck_1(object sender, ItemCheckEventArgs e)
         {
@@ -626,6 +645,7 @@ namespace Inspection_Report
                     {
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Successfully Saved!");
+                        LogEvent("Added Data");
                         ClearForm();
                         PopulateDataGridView();
                     }
@@ -861,6 +881,7 @@ namespace Inspection_Report
                     {
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Successfully Updated!");
+                        LogEvent("Updated Data");
                         ClearForm();
                         PopulateDataGridView();
                     }
@@ -900,6 +921,7 @@ namespace Inspection_Report
                     {
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Successfully Deleted!");
+                        LogEvent("Deleted Data");
                         ClearForm();
                         PopulateDataGridView();
                     }
@@ -917,9 +939,9 @@ namespace Inspection_Report
             {
                 con.Open();
 
-                string DeleteQuery = "SELECT * FROM InspectionReport where AccountNo=@AccountNo";
+                string searchQuery = "SELECT * FROM InspectionReport where AccountNo=@AccountNo";
 
-                using (SqlCommand cmd = new SqlCommand(DeleteQuery, con))
+                using (SqlCommand cmd = new SqlCommand(searchQuery, con))
                 {
                     cmd.Parameters.AddWithValue("@AccountNo", accttxtBox.Text);
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -1085,6 +1107,11 @@ namespace Inspection_Report
                 pdfDocument.Save(filePath);
                 MessageBox.Show("Data exported to PDF successfully!");
             }
+        }
+
+        private void auditTrailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowLogForm();
         }
     }
 }
