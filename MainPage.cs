@@ -29,6 +29,7 @@ namespace Inspection_Report
         private DateTime? reinspectdate;
         private LogForm? logform;
         private List<string> logEntries = new List<string>();
+        private string logFilePath = "log.txt";
         public MainPage()
         {
             InitializeComponent();
@@ -88,12 +89,13 @@ namespace Inspection_Report
                 logform.AppendLog(logEntry);
             }
             logEntries.Add(logEntry);
+            File.AppendAllText(logFilePath, logEntry + Environment.NewLine);
         }
         private void ShowLogForm()
         {
             if (logform == null || logform.IsDisposed)
             {
-                logform = new LogForm(logEntries);
+                logform = new LogForm(logEntries, logFilePath);
             }
             logform.Show();
         }

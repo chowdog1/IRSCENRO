@@ -13,7 +13,7 @@ namespace Inspection_Report
     public partial class LogForm : Form
     {
         private TextBox textBoxLog;
-        public LogForm(List<string> logEntries)
+        public LogForm(List<string> logEntries, string logFilePath)
         {
             InitializeComponent();
 
@@ -25,9 +25,15 @@ namespace Inspection_Report
             };
             Controls.Add(textBoxLog);
 
-            foreach (string logEntry in logEntries)
+            foreach (string entry in logEntries)
             {
-                textBoxLog.AppendText(logEntry + Environment.NewLine);
+                textBoxLog.AppendText(entry + Environment.NewLine);
+            }
+
+            if (File.Exists(logFilePath))
+            {
+                string[] fileLogEntries = File.ReadAllLines(logFilePath);
+                textBoxLog.Lines = fileLogEntries;
             }
         }
 
