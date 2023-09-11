@@ -36,6 +36,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(713, 539);
             Name = "LogForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "LogForm";
             ResumeLayout(false);
         }
