@@ -1115,5 +1115,63 @@ namespace Inspection_Report
         {
             ShowLogForm();
         }
+         private void ShowAdvancedSearchForm()
+        {
+            using (AdvancedSearch advancedSearch = new AdvancedSearch())
+            {
+                if (advancedSearch.ShowDialog() == DialogResult.OK)
+                {
+                    string sqlQuery = advancedSearch.SearchQuery;
+                    if (!string.IsNullOrWhiteSpace(sqlQuery))
+                    {
+                        PerformDataBaseSearch(sqlQuery);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Search query is null or empty");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Advanced search dialog was canceled");
+                }    
+            }
+        }
+        private void advsearchBtn_Click(object sender, EventArgs e)
+        {
+            ShowAdvancedSearchForm();
+        }
+        private void PerformDataBaseSearch(string sqlQuery)
+        {
+            try
+            {
+                string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
+
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+
+                    using (SqlCommand command = new SqlCommand(sqlQuery, con))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        if (dataTable.Rows.Count > 0)
+                        {
+                            dataGridView1.DataSource = dataTable;
+                        }
+                        else
+                        {
+                            MessageBox.Show("No Results found");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+        }
     }
 }

@@ -2272,6 +2272,7 @@
             advsearchBtn.TabIndex = 75;
             advsearchBtn.Text = "Advanced Search";
             advsearchBtn.UseVisualStyleBackColor = true;
+            advsearchBtn.Click += advsearchBtn_Click;
             // 
             // MainPage
             // 
