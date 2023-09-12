@@ -226,11 +226,11 @@
             generateReportsToExcelToolStripMenuItem = new ToolStripMenuItem();
             generateReportsToPDFToolStripMenuItem = new ToolStripMenuItem();
             auditTrailToolStripMenuItem = new ToolStripMenuItem();
+            manageUsersToolStripMenuItem = new ToolStripMenuItem();
             advsearchBtn = new Button();
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
-            manageUsersToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -2225,21 +2225,21 @@
             // switchUserToolStripMenuItem
             // 
             switchUserToolStripMenuItem.Name = "switchUserToolStripMenuItem";
-            switchUserToolStripMenuItem.Size = new Size(135, 22);
+            switchUserToolStripMenuItem.Size = new Size(180, 22);
             switchUserToolStripMenuItem.Text = "Switch User";
             switchUserToolStripMenuItem.Click += switchUserToolStripMenuItem_Click;
             // 
             // registerNewUserToolStripMenuItem
             // 
             registerNewUserToolStripMenuItem.Name = "registerNewUserToolStripMenuItem";
-            registerNewUserToolStripMenuItem.Size = new Size(135, 22);
+            registerNewUserToolStripMenuItem.Size = new Size(180, 22);
             registerNewUserToolStripMenuItem.Text = "Logout";
             registerNewUserToolStripMenuItem.Click += registerNewUserToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(135, 22);
+            exitToolStripMenuItem.Size = new Size(180, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
@@ -2270,6 +2270,13 @@
             auditTrailToolStripMenuItem.Size = new Size(208, 22);
             auditTrailToolStripMenuItem.Text = "Audit Trail";
             auditTrailToolStripMenuItem.Click += auditTrailToolStripMenuItem_Click;
+            // 
+            // manageUsersToolStripMenuItem
+            // 
+            manageUsersToolStripMenuItem.Name = "manageUsersToolStripMenuItem";
+            manageUsersToolStripMenuItem.Size = new Size(208, 22);
+            manageUsersToolStripMenuItem.Text = "Manage Users";
+            manageUsersToolStripMenuItem.Click += manageUsersToolStripMenuItem_Click;
             // 
             // advsearchBtn
             // 
@@ -2370,12 +2377,6 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(483, 556);
             panel3.TabIndex = 78;
-            // 
-            // manageUsersToolStripMenuItem
-            // 
-            manageUsersToolStripMenuItem.Name = "manageUsersToolStripMenuItem";
-            manageUsersToolStripMenuItem.Size = new Size(208, 22);
-            manageUsersToolStripMenuItem.Text = "Manage Users";
             // 
             // MainPage
             // 

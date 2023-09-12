@@ -968,7 +968,7 @@ namespace Inspection_Report
         {
             ClearForm();
             PopulateDataGridView();
-        }     
+        }
         private void switchUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             loginForm loginForm = new loginForm();
@@ -1193,7 +1193,7 @@ namespace Inspection_Report
                     item.Enabled = false;
                     item.Visible = false;
                 }
-                if(item.Text == "Manage Users")
+                if (item.Text == "Manage Users")
                 {
                     item.Enabled = false;
                     item.Visible = false;
@@ -1210,13 +1210,17 @@ namespace Inspection_Report
                     item.Enabled = true;
                     item.Visible = true;
                 }
-                if(item.Text == "Manage Users")
+                if (item.Text == "Manage Users")
                 {
                     item.Enabled = true;
                     item.Visible = true;
                     break;
                 }
             }
+        }
+        private void manageUsersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
