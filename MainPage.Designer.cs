@@ -227,6 +227,9 @@
             generateReportsToPDFToolStripMenuItem = new ToolStripMenuItem();
             auditTrailToolStripMenuItem = new ToolStripMenuItem();
             advsearchBtn = new Button();
+            panel1 = new Panel();
+            panel2 = new Panel();
+            panel3 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -253,21 +256,24 @@
             groupBox23.SuspendLayout();
             groupBox25.SuspendLayout();
             menuStrip1.SuspendLayout();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(25, 31);
+            dataGridView1.Location = new Point(12, 31);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(1804, 284);
+            dataGridView1.Size = new Size(1805, 284);
             dataGridView1.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(13, 329);
+            label1.Location = new Point(11, 10);
             label1.Name = "label1";
             label1.Size = new Size(74, 15);
             label1.TabIndex = 1;
@@ -276,7 +282,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 355);
+            label2.Location = new Point(11, 37);
             label2.Name = "label2";
             label2.Size = new Size(87, 15);
             label2.TabIndex = 2;
@@ -285,7 +291,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 382);
+            label3.Location = new Point(11, 64);
             label3.Name = "label3";
             label3.Size = new Size(49, 15);
             label3.TabIndex = 3;
@@ -295,7 +301,7 @@
             // 
             brgycmbBox.FormattingEnabled = true;
             brgycmbBox.Items.AddRange(new object[] { "Addition Hills", "Balong Bato", "Batis", "Corazon De Jesus", "Ermitaño", "Greenhills", "Isabelita", "Kabayanan", "Little Baguio", "Maytunas", "Onse", "Pasadena", "Pedro Cruz", "Progreso", "Rivera", "St. Joseph", "Salapan", "San Perfecto", "Sta. Lucia", "Tibagan", "West Crame" });
-            brgycmbBox.Location = new Point(120, 407);
+            brgycmbBox.Location = new Point(119, 88);
             brgycmbBox.Name = "brgycmbBox";
             brgycmbBox.Size = new Size(191, 23);
             brgycmbBox.TabIndex = 4;
@@ -303,7 +309,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(13, 410);
+            label4.Location = new Point(12, 92);
             label4.Name = "label4";
             label4.Size = new Size(34, 15);
             label4.TabIndex = 5;
@@ -313,7 +319,7 @@
             // 
             establishmenthaschklistBox.FormattingEnabled = true;
             establishmenthaschklistBox.Items.AddRange(new object[] { "Passed the CENRO standards", "Violated City Ordinances", "Notice/Warning", "BPLO Verification" });
-            establishmenthaschklistBox.Location = new Point(325, 339);
+            establishmenthaschklistBox.Location = new Point(10, 171);
             establishmenthaschklistBox.Name = "establishmenthaschklistBox";
             establishmenthaschklistBox.Size = new Size(185, 76);
             establishmenthaschklistBox.TabIndex = 6;
@@ -322,7 +328,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(327, 321);
+            label5.Location = new Point(12, 153);
             label5.Name = "label5";
             label5.Size = new Size(127, 15);
             label5.TabIndex = 7;
@@ -331,7 +337,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(945, 328);
+            label6.Location = new Point(10, 320);
             label6.Name = "label6";
             label6.Size = new Size(116, 15);
             label6.TabIndex = 8;
@@ -342,28 +348,28 @@
             violationschklistBox.Enabled = false;
             violationschklistBox.FormattingEnabled = true;
             violationschklistBox.Items.AddRange(new object[] { "3504-2A C.O. #35-2004 SEC. 2A (NO SEGREGATION)", "3099-5C C.O. #30-1999   SEC. 5C (NO LABELED MARK)", "9494-1 C.O. #94-1994   SEC. 1 (NO COVERED)", "5F-03D C.O. #91-2013 SEC. 5F-03D (NO ANTI-POLLUTION DEVICES)", "911-31 C.O. #09-2011   SEC. 3-1 (ANTI-LITTERING)", "2111-142 C.O. #21-2011  SEC. 14-2 (FAILURE TO DESLUDGE SEPTIC TANK)", "5F-03E C.O. #91-2013 SEC. 5F-03E (NO DENR-EMB PERMITS)", "5F-03B C.O. #91-2013 SEC. 5F-03B (NO PCO)", "1511-1B C.O. #15-2011  SEC. 1B (PROPER DISPOSAL OF USED COOKING OIL)", "5F-03A C.O. #91-2013 SEC. 5F-03A (FAILURE TO PAY EPP FEE)", "5F-03C C.O. #91-2013 SEC. 5F-03C (Refusal of ENTRY)", "517-A C.O. #05-2017 SEC. A (SMOKING IN PUBLIC PLACES)", "517-B C.O. #05-2017 SEC. B (PERSON INCHARGE)", "517-H C.O. #05-2017 SEC. H (SELLING TOBACCO W/O PERMIT)", "517-P C.O. #05-2017 SEC. P (DISPLAY & PLACE TOBACCO PRODUCT)" });
-            violationschklistBox.Location = new Point(945, 351);
+            violationschklistBox.Location = new Point(10, 343);
             violationschklistBox.Name = "violationschklistBox";
             violationschklistBox.Size = new Size(318, 148);
             violationschklistBox.TabIndex = 9;
             // 
             // accttxtBox
             // 
-            accttxtBox.Location = new Point(120, 326);
+            accttxtBox.Location = new Point(119, 5);
             accttxtBox.Name = "accttxtBox";
             accttxtBox.Size = new Size(130, 23);
             accttxtBox.TabIndex = 10;
             // 
             // businesstxtBox
             // 
-            businesstxtBox.Location = new Point(120, 352);
+            businesstxtBox.Location = new Point(119, 34);
             businesstxtBox.Name = "businesstxtBox";
             businesstxtBox.Size = new Size(191, 23);
             businesstxtBox.TabIndex = 11;
             // 
             // addresstxtBox
             // 
-            addresstxtBox.Location = new Point(120, 377);
+            addresstxtBox.Location = new Point(119, 59);
             addresstxtBox.Name = "addresstxtBox";
             addresstxtBox.Size = new Size(191, 23);
             addresstxtBox.TabIndex = 12;
@@ -371,7 +377,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(1282, 328);
+            label7.Location = new Point(7, 498);
             label7.Name = "label7";
             label7.Size = new Size(212, 15);
             label7.TabIndex = 13;
@@ -381,7 +387,7 @@
             // 
             complywithincmbBox.FormattingEnabled = true;
             complywithincmbBox.Items.AddRange(new object[] { "3 days", "5 days", "7 days", "31 days" });
-            complywithincmbBox.Location = new Point(1500, 325);
+            complywithincmbBox.Location = new Point(225, 495);
             complywithincmbBox.Name = "complywithincmbBox";
             complywithincmbBox.Size = new Size(121, 23);
             complywithincmbBox.TabIndex = 14;
@@ -389,7 +395,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(1627, 329);
+            label8.Location = new Point(352, 499);
             label8.Name = "label8";
             label8.Size = new Size(186, 15);
             label8.TabIndex = 15;
@@ -398,7 +404,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(13, 437);
+            label9.Location = new Point(12, 119);
             label9.Name = "label9";
             label9.Size = new Size(103, 15);
             label9.TabIndex = 16;
@@ -406,7 +412,7 @@
             // 
             // doidateTimePicker
             // 
-            doidateTimePicker.Location = new Point(120, 433);
+            doidateTimePicker.Location = new Point(119, 115);
             doidateTimePicker.Name = "doidateTimePicker";
             doidateTimePicker.Size = new Size(191, 23);
             doidateTimePicker.TabIndex = 17;
@@ -416,7 +422,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(1282, 350);
+            label10.Location = new Point(7, 520);
             label10.Name = "label10";
             label10.Size = new Size(118, 15);
             label10.TabIndex = 18;
@@ -426,7 +432,7 @@
             // 
             securetheffchklistBox.FormattingEnabled = true;
             securetheffchklistBox.Items.AddRange(new object[] { "Environmental Compliance Certificate/Certificate of Non-Coverage (ECC/CNC)", "Wastewater Discharge Permit", "Hazardous Waste Generator ID", "Permit to Operate for Air Pollution Source Installation/Equipment", "Pollution Control Officer Accreditation Certificate", "Transport, Storage and Disposal Certificate", "Environmental Protection and Preservation Fee/Environmenta Compliance Fee", "Appoint an accredited Pollution Control Officer", "Provide waste segregation bin (Biodegradable)", "Provide waste segregation bin (Recyclable)", "Provide waste segregation bin (Residual)", "Provide waste segregation bin (Special Wastes)", "Proper waste segregation in accordance with the markings", "Installation of Grease Trap", "Installation of Exhaust System", "Installation of Septic Tank/Desludging Certificate issued by a DENR-EMB accredited hauler" });
-            securetheffchklistBox.Location = new Point(1286, 368);
+            securetheffchklistBox.Location = new Point(11, 538);
             securetheffchklistBox.Name = "securetheffchklistBox";
             securetheffchklistBox.Size = new Size(542, 130);
             securetheffchklistBox.TabIndex = 19;
@@ -434,7 +440,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(1234, 505);
+            label11.Location = new Point(7, 676);
             label11.Name = "label11";
             label11.Size = new Size(373, 15);
             label11.TabIndex = 20;
@@ -443,7 +449,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(14, 480);
+            label12.Location = new Point(13, 9);
             label12.Name = "label12";
             label12.Size = new Size(170, 15);
             label12.TabIndex = 22;
@@ -453,7 +459,7 @@
             // 
             groupBox1.Controls.Add(mayornoRadioBtn);
             groupBox1.Controls.Add(mayoryesRadioBtn);
-            groupBox1.Location = new Point(14, 510);
+            groupBox1.Location = new Point(13, 39);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(128, 53);
             groupBox1.TabIndex = 24;
@@ -487,7 +493,7 @@
             groupBox2.Controls.Add(eppnaRadioBtn);
             groupBox2.Controls.Add(eppnoRadioBtn);
             groupBox2.Controls.Add(eppyesRadioBtn);
-            groupBox2.Location = new Point(148, 510);
+            groupBox2.Location = new Point(147, 39);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(148, 53);
             groupBox2.TabIndex = 25;
@@ -536,7 +542,7 @@
             groupBox3.Controls.Add(label13);
             groupBox3.Controls.Add(ecccncnoRadioBtn);
             groupBox3.Controls.Add(ecccncyesRadioBtn);
-            groupBox3.Location = new Point(14, 569);
+            groupBox3.Location = new Point(13, 98);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(282, 112);
             groupBox3.TabIndex = 26;
@@ -621,7 +627,7 @@
             groupBox4.Controls.Add(label16);
             groupBox4.Controls.Add(wdpnoRadioBtn);
             groupBox4.Controls.Add(wdpyesRadioBtn);
-            groupBox4.Location = new Point(14, 687);
+            groupBox4.Location = new Point(13, 216);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(282, 112);
             groupBox4.TabIndex = 27;
@@ -706,7 +712,7 @@
             groupBox5.Controls.Add(label18);
             groupBox5.Controls.Add(ptonoRadioBtn);
             groupBox5.Controls.Add(ptoyesRadioBtn);
-            groupBox5.Location = new Point(13, 805);
+            groupBox5.Location = new Point(12, 334);
             groupBox5.Name = "groupBox5";
             groupBox5.Size = new Size(282, 112);
             groupBox5.TabIndex = 28;
@@ -791,7 +797,7 @@
             groupBox6.Controls.Add(label20);
             groupBox6.Controls.Add(hwnoRadioBtn);
             groupBox6.Controls.Add(hwyesRadioBtn);
-            groupBox6.Location = new Point(12, 923);
+            groupBox6.Location = new Point(11, 452);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new Size(282, 126);
             groupBox6.TabIndex = 29;
@@ -870,7 +876,7 @@
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(317, 480);
+            label21.Location = new Point(316, 9);
             label21.Name = "label21";
             label21.Size = new Size(129, 15);
             label21.TabIndex = 30;
@@ -880,7 +886,7 @@
             // 
             groupBox7.Controls.Add(wastebinnoRadioBtn);
             groupBox7.Controls.Add(wastebinyesRadioBtn);
-            groupBox7.Location = new Point(317, 510);
+            groupBox7.Location = new Point(316, 39);
             groupBox7.Name = "groupBox7";
             groupBox7.Size = new Size(209, 53);
             groupBox7.TabIndex = 31;
@@ -913,7 +919,7 @@
             // 
             groupBox8.Controls.Add(binpropernoRadioBtn);
             groupBox8.Controls.Add(binproperyesRadioBtn);
-            groupBox8.Location = new Point(317, 569);
+            groupBox8.Location = new Point(316, 98);
             groupBox8.Name = "groupBox8";
             groupBox8.Size = new Size(209, 53);
             groupBox8.TabIndex = 32;
@@ -946,7 +952,7 @@
             // 
             groupBox9.Controls.Add(bincovernoRadioBtn);
             groupBox9.Controls.Add(bincoveryesRadioBtn);
-            groupBox9.Location = new Point(317, 628);
+            groupBox9.Location = new Point(316, 157);
             groupBox9.Name = "groupBox9";
             groupBox9.Size = new Size(209, 53);
             groupBox9.TabIndex = 33;
@@ -979,7 +985,7 @@
             // 
             groupBox10.Controls.Add(wastesegnoRadioBtn);
             groupBox10.Controls.Add(wastesegyesRadioBtn);
-            groupBox10.Location = new Point(317, 687);
+            groupBox10.Location = new Point(316, 216);
             groupBox10.Name = "groupBox10";
             groupBox10.Size = new Size(209, 53);
             groupBox10.TabIndex = 34;
@@ -1012,7 +1018,7 @@
             // 
             groupBox11.Controls.Add(mrfnoRadioBtn);
             groupBox11.Controls.Add(mrfyesRadioBtn);
-            groupBox11.Location = new Point(317, 746);
+            groupBox11.Location = new Point(316, 275);
             groupBox11.Name = "groupBox11";
             groupBox11.Size = new Size(209, 53);
             groupBox11.TabIndex = 35;
@@ -1049,7 +1055,7 @@
             groupBox12.Controls.Add(label22);
             groupBox12.Controls.Add(wastecollectnoRadioBtn);
             groupBox12.Controls.Add(wastecollectyesRadioBtn);
-            groupBox12.Location = new Point(317, 805);
+            groupBox12.Location = new Point(316, 334);
             groupBox12.Name = "groupBox12";
             groupBox12.Size = new Size(209, 112);
             groupBox12.TabIndex = 36;
@@ -1124,7 +1130,7 @@
             groupBox13.Controls.Add(label25);
             groupBox13.Controls.Add(pcdnoRadioBtn);
             groupBox13.Controls.Add(pcdyesRadioBtn);
-            groupBox13.Location = new Point(317, 923);
+            groupBox13.Location = new Point(316, 452);
             groupBox13.Name = "groupBox13";
             groupBox13.Size = new Size(209, 126);
             groupBox13.TabIndex = 37;
@@ -1202,7 +1208,7 @@
             // label26
             // 
             label26.AutoSize = true;
-            label26.Location = new Point(945, 506);
+            label26.Location = new Point(14, 11);
             label26.Name = "label26";
             label26.Size = new Size(122, 15);
             label26.TabIndex = 38;
@@ -1212,7 +1218,7 @@
             // 
             purposecmbBox.FormattingEnabled = true;
             purposecmbBox.Items.AddRange(new object[] { "New Establishment", "Reinspection/Monitoring", "For business establishment's compliance to the required pollution mitigating measures" });
-            purposecmbBox.Location = new Point(945, 524);
+            purposecmbBox.Location = new Point(14, 29);
             purposecmbBox.Name = "purposecmbBox";
             purposecmbBox.Size = new Size(269, 23);
             purposecmbBox.TabIndex = 39;
@@ -1223,7 +1229,7 @@
             groupBox14.Controls.Add(landuseindustrialRadioBtn);
             groupBox14.Controls.Add(landuseresidentialRadioBtn);
             groupBox14.Controls.Add(landusecommercialRadioBtn);
-            groupBox14.Location = new Point(945, 559);
+            groupBox14.Location = new Point(14, 64);
             groupBox14.Name = "groupBox14";
             groupBox14.Size = new Size(200, 112);
             groupBox14.TabIndex = 40;
@@ -1279,7 +1285,7 @@
             groupBox15.Controls.Add(multinationalRadioBtn);
             groupBox15.Controls.Add(privatecorpRadioBtn);
             groupBox15.Controls.Add(proprietorshipRadioBtn);
-            groupBox15.Location = new Point(1165, 559);
+            groupBox15.Location = new Point(234, 64);
             groupBox15.Name = "groupBox15";
             groupBox15.Size = new Size(200, 112);
             groupBox15.TabIndex = 41;
@@ -1323,7 +1329,7 @@
             // 
             groupBox16.Controls.Add(lesseenoRadioBtn);
             groupBox16.Controls.Add(lesseeyesRadioBtn);
-            groupBox16.Location = new Point(1371, 618);
+            groupBox16.Location = new Point(18, 249);
             groupBox16.Name = "groupBox16";
             groupBox16.Size = new Size(163, 53);
             groupBox16.TabIndex = 42;
@@ -1356,7 +1362,7 @@
             // 
             groupBox17.Controls.Add(standalonenoRadioBtn);
             groupBox17.Controls.Add(standaloneyesRadioBtn);
-            groupBox17.Location = new Point(1371, 559);
+            groupBox17.Location = new Point(18, 190);
             groupBox17.Name = "groupBox17";
             groupBox17.Size = new Size(163, 53);
             groupBox17.TabIndex = 43;
@@ -1391,7 +1397,7 @@
             groupBox18.Controls.Add(statusclosedRadioBtn);
             groupBox18.Controls.Add(statusnooperationRadioBtn);
             groupBox18.Controls.Add(statusoperationalRadioBtn);
-            groupBox18.Location = new Point(916, 687);
+            groupBox18.Location = new Point(16, 307);
             groupBox18.Name = "groupBox18";
             groupBox18.Size = new Size(412, 53);
             groupBox18.TabIndex = 44;
@@ -1445,7 +1451,7 @@
             // label27
             // 
             label27.AutoSize = true;
-            label27.Location = new Point(916, 758);
+            label27.Location = new Point(17, 376);
             label27.Name = "label27";
             label27.Size = new Size(191, 15);
             label27.TabIndex = 45;
@@ -1453,7 +1459,7 @@
             // 
             // obstxtBox
             // 
-            obstxtBox.Location = new Point(916, 776);
+            obstxtBox.Location = new Point(17, 394);
             obstxtBox.Multiline = true;
             obstxtBox.Name = "obstxtBox";
             obstxtBox.Size = new Size(412, 131);
@@ -1462,7 +1468,7 @@
             // label28
             // 
             label28.AutoSize = true;
-            label28.Location = new Point(916, 912);
+            label28.Location = new Point(17, 530);
             label28.Name = "label28";
             label28.Size = new Size(58, 15);
             label28.TabIndex = 47;
@@ -1470,7 +1476,7 @@
             // 
             // directivestxtBox
             // 
-            directivestxtBox.Location = new Point(916, 930);
+            directivestxtBox.Location = new Point(17, 548);
             directivestxtBox.Multiline = true;
             directivestxtBox.Name = "directivestxtBox";
             directivestxtBox.Size = new Size(412, 105);
@@ -1479,7 +1485,7 @@
             // label29
             // 
             label29.AutoSize = true;
-            label29.Location = new Point(1345, 687);
+            label29.Location = new Point(16, 666);
             label29.Name = "label29";
             label29.Size = new Size(107, 15);
             label29.TabIndex = 49;
@@ -1489,7 +1495,7 @@
             // 
             recommendationchklistBox.FormattingEnabled = true;
             recommendationchklistBox.Items.AddRange(new object[] { "Reinspection/Monitoring", "For Seminar", "For business establishment's compliance to the required pollution mitigating measures", "For endorsement to BPLO for the issuance of Cease and Desist order", "Issuance of Certificate of Environmental Compliance", "For Case Conference", "For Case Termination/Dismissal" });
-            recommendationchklistBox.Location = new Point(1345, 712);
+            recommendationchklistBox.Location = new Point(16, 689);
             recommendationchklistBox.Name = "recommendationchklistBox";
             recommendationchklistBox.Size = new Size(483, 130);
             recommendationchklistBox.TabIndex = 50;
@@ -1497,7 +1503,7 @@
             // label30
             // 
             label30.AutoSize = true;
-            label30.Location = new Point(1345, 845);
+            label30.Location = new Point(16, 827);
             label30.Name = "label30";
             label30.Size = new Size(61, 15);
             label30.TabIndex = 51;
@@ -1507,14 +1513,14 @@
             // 
             inspectorschklistBox.FormattingEnabled = true;
             inspectorschklistBox.Items.AddRange(new object[] { "Nina Tan", "Jaycel Eden", "Robin Romero", "Marc Joel Rato", "Vincent Sarmiento", "Jeffrey Basco" });
-            inspectorschklistBox.Location = new Point(1345, 869);
+            inspectorschklistBox.Location = new Point(17, 849);
             inspectorschklistBox.Name = "inspectorschklistBox";
             inspectorschklistBox.Size = new Size(482, 112);
             inspectorschklistBox.TabIndex = 52;
             // 
             // addBtn
             // 
-            addBtn.Location = new Point(1580, 987);
+            addBtn.Location = new Point(1522, 904);
             addBtn.Name = "addBtn";
             addBtn.Size = new Size(108, 33);
             addBtn.TabIndex = 53;
@@ -1524,7 +1530,7 @@
             // 
             // editBtn
             // 
-            editBtn.Location = new Point(1705, 987);
+            editBtn.Location = new Point(1653, 904);
             editBtn.Name = "editBtn";
             editBtn.Size = new Size(108, 33);
             editBtn.TabIndex = 55;
@@ -1534,7 +1540,7 @@
             // 
             // deleteBtn
             // 
-            deleteBtn.Location = new Point(1705, 1021);
+            deleteBtn.Location = new Point(1653, 947);
             deleteBtn.Name = "deleteBtn";
             deleteBtn.Size = new Size(108, 33);
             deleteBtn.TabIndex = 56;
@@ -1557,9 +1563,9 @@
             groupBox19.Controls.Add(label31);
             groupBox19.Controls.Add(pconoRadioBtn);
             groupBox19.Controls.Add(pcoyesRadioBtn);
-            groupBox19.Location = new Point(532, 433);
+            groupBox19.Location = new Point(531, 3);
             groupBox19.Name = "groupBox19";
-            groupBox19.Size = new Size(393, 176);
+            groupBox19.Size = new Size(345, 176);
             groupBox19.TabIndex = 57;
             groupBox19.TabStop = false;
             groupBox19.Text = "Pollution Control Officer";
@@ -1580,7 +1586,7 @@
             validitypcodateTimePicker.Enabled = false;
             validitypcodateTimePicker.Location = new Point(122, 94);
             validitypcodateTimePicker.Name = "validitypcodateTimePicker";
-            validitypcodateTimePicker.Size = new Size(254, 23);
+            validitypcodateTimePicker.Size = new Size(215, 23);
             validitypcodateTimePicker.TabIndex = 12;
             validitypcodateTimePicker.ValueChanged += validitypcodateTimePicker_ValueChanged;
             // 
@@ -1589,7 +1595,7 @@
             emailaddtxtBox.Enabled = false;
             emailaddtxtBox.Location = new Point(122, 147);
             emailaddtxtBox.Name = "emailaddtxtBox";
-            emailaddtxtBox.Size = new Size(254, 23);
+            emailaddtxtBox.Size = new Size(216, 23);
             emailaddtxtBox.TabIndex = 11;
             // 
             // contacttxtBox
@@ -1597,7 +1603,7 @@
             contacttxtBox.Enabled = false;
             contacttxtBox.Location = new Point(122, 122);
             contacttxtBox.Name = "contacttxtBox";
-            contacttxtBox.Size = new Size(254, 23);
+            contacttxtBox.Size = new Size(214, 23);
             contacttxtBox.TabIndex = 10;
             // 
             // accreditationtxtBox
@@ -1605,7 +1611,7 @@
             accreditationtxtBox.Enabled = false;
             accreditationtxtBox.Location = new Point(122, 69);
             accreditationtxtBox.Name = "accreditationtxtBox";
-            accreditationtxtBox.Size = new Size(254, 23);
+            accreditationtxtBox.Size = new Size(215, 23);
             accreditationtxtBox.TabIndex = 8;
             // 
             // pollutionofficertxtBox
@@ -1613,7 +1619,7 @@
             pollutionofficertxtBox.Enabled = false;
             pollutionofficertxtBox.Location = new Point(122, 43);
             pollutionofficertxtBox.Name = "pollutionofficertxtBox";
-            pollutionofficertxtBox.Size = new Size(254, 23);
+            pollutionofficertxtBox.Size = new Size(216, 23);
             pollutionofficertxtBox.TabIndex = 7;
             // 
             // label35
@@ -1697,7 +1703,7 @@
             groupBox20.Controls.Add(label36);
             groupBox20.Controls.Add(septicnoRadioBtn);
             groupBox20.Controls.Add(septicyesRadioBtn);
-            groupBox20.Location = new Point(532, 608);
+            groupBox20.Location = new Point(531, 178);
             groupBox20.Name = "groupBox20";
             groupBox20.Size = new Size(345, 137);
             groupBox20.TabIndex = 58;
@@ -1823,7 +1829,7 @@
             groupBox21.Controls.Add(label43);
             groupBox21.Controls.Add(greasenoRadioBtn);
             groupBox21.Controls.Add(greaseyesRadioBtn);
-            groupBox21.Location = new Point(532, 744);
+            groupBox21.Location = new Point(531, 314);
             groupBox21.Name = "groupBox21";
             groupBox21.Size = new Size(345, 137);
             groupBox21.TabIndex = 59;
@@ -1940,7 +1946,7 @@
             groupBox22.Controls.Add(wastewaternaRadioBtn);
             groupBox22.Controls.Add(wastewaternoRadioBtn);
             groupBox22.Controls.Add(wastewateryesRadioBtn);
-            groupBox22.Location = new Point(532, 879);
+            groupBox22.Location = new Point(531, 449);
             groupBox22.Name = "groupBox22";
             groupBox22.Size = new Size(345, 52);
             groupBox22.TabIndex = 60;
@@ -1991,7 +1997,7 @@
             groupBox23.Controls.Add(usedoilnaRadioBtn);
             groupBox23.Controls.Add(usedoilnoRadioBtn);
             groupBox23.Controls.Add(usedoilyesRadioBtn);
-            groupBox23.Location = new Point(533, 936);
+            groupBox23.Location = new Point(532, 506);
             groupBox23.Name = "groupBox23";
             groupBox23.Size = new Size(342, 113);
             groupBox23.TabIndex = 61;
@@ -2090,7 +2096,7 @@
             // 
             groupBox25.Controls.Add(highriskRadioBtn);
             groupBox25.Controls.Add(lowriskRadioBtn);
-            groupBox25.Location = new Point(515, 321);
+            groupBox25.Location = new Point(200, 153);
             groupBox25.Name = "groupBox25";
             groupBox25.Size = new Size(102, 79);
             groupBox25.TabIndex = 63;
@@ -2122,7 +2128,7 @@
             // label47
             // 
             label47.AutoSize = true;
-            label47.Location = new Point(634, 325);
+            label47.Location = new Point(7, 260);
             label47.Name = "label47";
             label47.Size = new Size(119, 15);
             label47.TabIndex = 64;
@@ -2132,14 +2138,14 @@
             // 
             establishmentiscmbBox.FormattingEnabled = true;
             establishmentiscmbBox.Items.AddRange(new object[] { "Priority", "Less Priority", "Closed/Non-Operational", "Review for CEC", "Moveout/Pull-out/Unlocated" });
-            establishmentiscmbBox.Location = new Point(638, 347);
+            establishmentiscmbBox.Location = new Point(11, 282);
             establishmentiscmbBox.Name = "establishmentiscmbBox";
             establishmentiscmbBox.Size = new Size(237, 23);
             establishmentiscmbBox.TabIndex = 65;
             // 
             // searchBtn
             // 
-            searchBtn.Location = new Point(1580, 1021);
+            searchBtn.Location = new Point(1522, 947);
             searchBtn.Name = "searchBtn";
             searchBtn.Size = new Size(108, 33);
             searchBtn.TabIndex = 66;
@@ -2150,7 +2156,7 @@
             // label48
             // 
             label48.AutoSize = true;
-            label48.Location = new Point(1692, 548);
+            label48.Location = new Point(321, 180);
             label48.Name = "label48";
             label48.Size = new Size(108, 15);
             label48.TabIndex = 67;
@@ -2160,21 +2166,21 @@
             // 
             levelofinspectionchklistBox.FormattingEnabled = true;
             levelofinspectionchklistBox.Items.AddRange(new object[] { "1st", "2nd", "3rd", "4th", "5th" });
-            levelofinspectionchklistBox.Location = new Point(1694, 566);
+            levelofinspectionchklistBox.Location = new Point(324, 197);
             levelofinspectionchklistBox.Name = "levelofinspectionchklistBox";
             levelofinspectionchklistBox.Size = new Size(133, 112);
             levelofinspectionchklistBox.TabIndex = 68;
             // 
             // seminartxtBox
             // 
-            seminartxtBox.Location = new Point(1234, 524);
+            seminartxtBox.Location = new Point(10, 694);
             seminartxtBox.Name = "seminartxtBox";
             seminartxtBox.Size = new Size(284, 23);
             seminartxtBox.TabIndex = 69;
             // 
             // resetBtn
             // 
-            resetBtn.Location = new Point(1410, 988);
+            resetBtn.Location = new Point(1390, 904);
             resetBtn.Name = "resetBtn";
             resetBtn.Size = new Size(108, 33);
             resetBtn.TabIndex = 70;
@@ -2185,7 +2191,7 @@
             // label49
             // 
             label49.AutoSize = true;
-            label49.Location = new Point(1555, 548);
+            label49.Location = new Point(187, 197);
             label49.Name = "label49";
             label49.Size = new Size(116, 15);
             label49.TabIndex = 72;
@@ -2193,7 +2199,7 @@
             // 
             // reinspectdateTimePicker
             // 
-            reinspectdateTimePicker.Location = new Point(1552, 569);
+            reinspectdateTimePicker.Location = new Point(187, 218);
             reinspectdateTimePicker.Name = "reinspectdateTimePicker";
             reinspectdateTimePicker.Size = new Size(131, 23);
             reinspectdateTimePicker.TabIndex = 73;
@@ -2204,7 +2210,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, optionToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1843, 24);
+            menuStrip1.Size = new Size(1829, 24);
             menuStrip1.TabIndex = 74;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -2266,7 +2272,7 @@
             // 
             // advsearchBtn
             // 
-            advsearchBtn.Location = new Point(1410, 1021);
+            advsearchBtn.Location = new Point(1390, 947);
             advsearchBtn.Name = "advsearchBtn";
             advsearchBtn.Size = new Size(108, 33);
             advsearchBtn.TabIndex = 75;
@@ -2274,81 +2280,111 @@
             advsearchBtn.UseVisualStyleBackColor = true;
             advsearchBtn.Click += advsearchBtn_Click;
             // 
+            // panel1
+            // 
+            panel1.AutoScroll = true;
+            panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(accttxtBox);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(brgycmbBox);
+            panel1.Controls.Add(seminartxtBox);
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(businesstxtBox);
+            panel1.Controls.Add(addresstxtBox);
+            panel1.Controls.Add(label9);
+            panel1.Controls.Add(establishmentiscmbBox);
+            panel1.Controls.Add(doidateTimePicker);
+            panel1.Controls.Add(label47);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(groupBox25);
+            panel1.Controls.Add(establishmenthaschklistBox);
+            panel1.Controls.Add(label6);
+            panel1.Controls.Add(violationschklistBox);
+            panel1.Controls.Add(label7);
+            panel1.Controls.Add(complywithincmbBox);
+            panel1.Controls.Add(label8);
+            panel1.Controls.Add(label10);
+            panel1.Controls.Add(securetheffchklistBox);
+            panel1.Controls.Add(label11);
+            panel1.Location = new Point(12, 327);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(377, 653);
+            panel1.TabIndex = 76;
+            // 
+            // panel2
+            // 
+            panel2.AutoScroll = true;
+            panel2.BorderStyle = BorderStyle.Fixed3D;
+            panel2.Controls.Add(label12);
+            panel2.Controls.Add(groupBox1);
+            panel2.Controls.Add(groupBox2);
+            panel2.Controls.Add(groupBox3);
+            panel2.Controls.Add(groupBox4);
+            panel2.Controls.Add(groupBox5);
+            panel2.Controls.Add(groupBox6);
+            panel2.Controls.Add(label21);
+            panel2.Controls.Add(groupBox7);
+            panel2.Controls.Add(groupBox23);
+            panel2.Controls.Add(groupBox8);
+            panel2.Controls.Add(groupBox22);
+            panel2.Controls.Add(groupBox9);
+            panel2.Controls.Add(groupBox21);
+            panel2.Controls.Add(groupBox10);
+            panel2.Controls.Add(groupBox20);
+            panel2.Controls.Add(groupBox11);
+            panel2.Controls.Add(groupBox19);
+            panel2.Controls.Add(groupBox12);
+            panel2.Controls.Add(groupBox13);
+            panel2.Location = new Point(397, 327);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(894, 653);
+            panel2.TabIndex = 77;
+            // 
+            // panel3
+            // 
+            panel3.AutoScroll = true;
+            panel3.BorderStyle = BorderStyle.Fixed3D;
+            panel3.Controls.Add(label26);
+            panel3.Controls.Add(purposecmbBox);
+            panel3.Controls.Add(groupBox14);
+            panel3.Controls.Add(groupBox15);
+            panel3.Controls.Add(reinspectdateTimePicker);
+            panel3.Controls.Add(groupBox17);
+            panel3.Controls.Add(label49);
+            panel3.Controls.Add(groupBox16);
+            panel3.Controls.Add(label29);
+            panel3.Controls.Add(levelofinspectionchklistBox);
+            panel3.Controls.Add(inspectorschklistBox);
+            panel3.Controls.Add(label48);
+            panel3.Controls.Add(label30);
+            panel3.Controls.Add(groupBox18);
+            panel3.Controls.Add(recommendationchklistBox);
+            panel3.Controls.Add(label27);
+            panel3.Controls.Add(obstxtBox);
+            panel3.Controls.Add(directivestxtBox);
+            panel3.Controls.Add(label28);
+            panel3.Location = new Point(1297, 328);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(520, 556);
+            panel3.TabIndex = 78;
+            // 
             // MainPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1843, 1061);
+            ClientSize = new Size(1829, 1004);
+            Controls.Add(panel3);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
             Controls.Add(advsearchBtn);
-            Controls.Add(reinspectdateTimePicker);
-            Controls.Add(label49);
             Controls.Add(resetBtn);
-            Controls.Add(seminartxtBox);
-            Controls.Add(levelofinspectionchklistBox);
-            Controls.Add(label48);
             Controls.Add(searchBtn);
-            Controls.Add(establishmentiscmbBox);
-            Controls.Add(label47);
-            Controls.Add(groupBox25);
-            Controls.Add(groupBox23);
-            Controls.Add(groupBox22);
-            Controls.Add(groupBox21);
-            Controls.Add(groupBox20);
-            Controls.Add(groupBox19);
             Controls.Add(deleteBtn);
             Controls.Add(editBtn);
             Controls.Add(addBtn);
-            Controls.Add(inspectorschklistBox);
-            Controls.Add(label30);
-            Controls.Add(recommendationchklistBox);
-            Controls.Add(label29);
-            Controls.Add(directivestxtBox);
-            Controls.Add(label28);
-            Controls.Add(obstxtBox);
-            Controls.Add(label27);
-            Controls.Add(groupBox18);
-            Controls.Add(groupBox17);
-            Controls.Add(groupBox16);
-            Controls.Add(groupBox15);
-            Controls.Add(groupBox14);
-            Controls.Add(purposecmbBox);
-            Controls.Add(label26);
-            Controls.Add(groupBox13);
-            Controls.Add(groupBox12);
-            Controls.Add(groupBox11);
-            Controls.Add(groupBox10);
-            Controls.Add(groupBox9);
-            Controls.Add(groupBox8);
-            Controls.Add(groupBox7);
-            Controls.Add(label21);
-            Controls.Add(groupBox6);
-            Controls.Add(groupBox5);
-            Controls.Add(groupBox4);
-            Controls.Add(groupBox3);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
-            Controls.Add(label12);
-            Controls.Add(label11);
-            Controls.Add(securetheffchklistBox);
-            Controls.Add(label10);
-            Controls.Add(doidateTimePicker);
-            Controls.Add(label9);
-            Controls.Add(label8);
-            Controls.Add(complywithincmbBox);
-            Controls.Add(label7);
-            Controls.Add(addresstxtBox);
-            Controls.Add(businesstxtBox);
-            Controls.Add(accttxtBox);
-            Controls.Add(violationschklistBox);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(establishmenthaschklistBox);
-            Controls.Add(label4);
-            Controls.Add(brgycmbBox);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(dataGridView1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -2407,6 +2443,12 @@
             groupBox25.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -2612,5 +2654,8 @@
         private ToolStripMenuItem registerNewUserToolStripMenuItem;
         private ToolStripMenuItem auditTrailToolStripMenuItem;
         private Button advsearchBtn;
+        private Panel panel1;
+        private Panel panel2;
+        private Panel panel3;
     }
 }

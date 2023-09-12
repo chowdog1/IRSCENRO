@@ -1115,7 +1115,7 @@ namespace Inspection_Report
         {
             ShowLogForm();
         }
-         private void ShowAdvancedSearchForm()
+        private void ShowAdvancedSearchForm()
         {
             using (AdvancedSearch advancedSearch = new AdvancedSearch())
             {
@@ -1134,7 +1134,7 @@ namespace Inspection_Report
                 else
                 {
                     MessageBox.Show("Advanced search dialog was canceled");
-                }    
+                }
             }
         }
         private void advsearchBtn_Click(object sender, EventArgs e)
