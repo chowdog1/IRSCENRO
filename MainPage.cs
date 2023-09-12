@@ -32,6 +32,7 @@ namespace Inspection_Report
         private string logFilePath = "log.txt";
         public MainPage()
         {
+
             InitializeComponent();
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True");
             con.Open();
@@ -967,16 +968,26 @@ namespace Inspection_Report
         {
             ClearForm();
             PopulateDataGridView();
-        }
+        }     
         private void switchUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             loginForm loginForm = new loginForm();
-            if (loginForm.ShowDialog() == DialogResult.OK)
+            loginForm.AdminLoggedIn += (s, args) =>
             {
-
-                MessageBox.Show($"Switched to user: {loginForm.Username}");
-            }
+                this.Close(); // Close the current MainForm
+            };
+            loginForm.RegularLoggedIn += (s, args) =>
+            {
+                this.Close(); // Close the current MainForm
+            };
+            loginForm.ShowDialog();
         }
+
+        private void LoginForm_RegularLoggedIn(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private void registerNewUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -1171,6 +1182,40 @@ namespace Inspection_Report
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred: " + ex.Message);
+            }
+        }
+        public void DisableTrailMenuItem()
+        {
+            foreach (ToolStripMenuItem item in optionToolStripMenuItem.DropDownItems)
+            {
+                if (item.Text == "Audit Trail")
+                {
+                    item.Enabled = false;
+                    item.Visible = false;
+                }
+                if(item.Text == "Manage Users")
+                {
+                    item.Enabled = false;
+                    item.Visible = false;
+                    break;
+                }
+            }
+        }
+        public void EnableTrailMenuItem()
+        {
+            foreach (ToolStripMenuItem item in optionToolStripMenuItem.DropDownItems)
+            {
+                if (item.Text == "Audit Trail")
+                {
+                    item.Enabled = true;
+                    item.Visible = true;
+                }
+                if(item.Text == "Manage Users")
+                {
+                    item.Enabled = true;
+                    item.Visible = true;
+                    break;
+                }
             }
         }
     }

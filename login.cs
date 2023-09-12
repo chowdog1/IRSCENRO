@@ -15,6 +15,9 @@ namespace Inspection_Report
     public partial class loginForm : Form
     {
         public string Username { get; private set; }
+        public event EventHandler? AdminLoggedIn;
+        public event EventHandler? RegularLoggedIn;
+        public MainPage? MainPageInstance { get; set; }
 
         public loginForm()
         {
@@ -42,10 +45,22 @@ namespace Inspection_Report
                     if (dr.Read())
                     {
                         string storedHashedPassword = dr["Password"]?.ToString() ?? string.Empty;
+                        bool IsAdmin = (bool)dr["IsAdmin"];
+
                         if (BCrypt.Net.BCrypt.Verify(password, storedHashedPassword))
                         {
                             AuthenticatedUser.UserName = username;
                             MainPage mainPage = new MainPage();
+                            if(!IsAdmin)
+                            {
+                                RegularLoggedIn?.Invoke(this, EventArgs.Empty);
+                                mainPage.DisableTrailMenuItem();
+                            }
+                            else if(IsAdmin)
+                            {
+                                AdminLoggedIn?.Invoke(this, EventArgs.Empty);
+                                mainPage.EnableTrailMenuItem();
+                            }    
                             mainPage.Show();
                             this.Hide();
                         }
@@ -97,6 +112,13 @@ namespace Inspection_Report
         private void label4_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        public void ResetForm()
+        {
+            usernametxtBox.Clear();
+            passwordtxtBox.Clear();
+            usernametxtBox.Focus();
         }
     }
 }

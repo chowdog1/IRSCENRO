@@ -30,6 +30,7 @@ namespace Inspection_Report
             string username = usernametxtBox.Text;
             string password = passwordtxtBox.Text;
             string confirmPassword = confirmpasswordtxtBox.Text;
+            bool IsAdmin = false;
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
             {
@@ -53,12 +54,13 @@ namespace Inspection_Report
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, salt);
 
                 con.Open();
-                string register = "INSERT INTO Users (Username, Salt, Password) VALUES (@Username, @Salt, @Password)";
+                string register = "INSERT INTO Users (Username, Salt, Password, IsAdmin) VALUES (@Username, @Salt, @Password, @IsAdmin)";
                 using (SqlCommand cmd = new SqlCommand(register, con))
                 {
                     cmd.Parameters.AddWithValue("@Username", username);
                     cmd.Parameters.AddWithValue("@Salt", salt);
                     cmd.Parameters.AddWithValue("@Password", hashedPassword);
+                    cmd.Parameters.AddWithValue("@IsAdmin", IsAdmin);
                     cmd.ExecuteNonQuery();
                 }
                 con.Close();

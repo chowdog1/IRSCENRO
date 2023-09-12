@@ -230,6 +230,7 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
+            manageUsersToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -2244,7 +2245,7 @@
             // 
             // optionToolStripMenuItem
             // 
-            optionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { generateReportsToExcelToolStripMenuItem, generateReportsToPDFToolStripMenuItem, auditTrailToolStripMenuItem });
+            optionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { generateReportsToExcelToolStripMenuItem, generateReportsToPDFToolStripMenuItem, auditTrailToolStripMenuItem, manageUsersToolStripMenuItem });
             optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             optionToolStripMenuItem.Size = new Size(56, 20);
             optionToolStripMenuItem.Text = "Option";
@@ -2369,6 +2370,12 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(483, 556);
             panel3.TabIndex = 78;
+            // 
+            // manageUsersToolStripMenuItem
+            // 
+            manageUsersToolStripMenuItem.Name = "manageUsersToolStripMenuItem";
+            manageUsersToolStripMenuItem.Size = new Size(208, 22);
+            manageUsersToolStripMenuItem.Text = "Manage Users";
             // 
             // MainPage
             // 
@@ -2657,5 +2664,6 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
+        private ToolStripMenuItem manageUsersToolStripMenuItem;
     }
 }
