@@ -1497,7 +1497,7 @@
             recommendationchklistBox.Items.AddRange(new object[] { "Reinspection/Monitoring", "For Seminar", "For business establishment's compliance to the required pollution mitigating measures", "For endorsement to BPLO for the issuance of Cease and Desist order", "Issuance of Certificate of Environmental Compliance", "For Case Conference", "For Case Termination/Dismissal" });
             recommendationchklistBox.Location = new Point(16, 689);
             recommendationchklistBox.Name = "recommendationchklistBox";
-            recommendationchklistBox.Size = new Size(483, 130);
+            recommendationchklistBox.Size = new Size(441, 130);
             recommendationchklistBox.TabIndex = 50;
             // 
             // label30
@@ -1515,7 +1515,7 @@
             inspectorschklistBox.Items.AddRange(new object[] { "Nina Tan", "Jaycel Eden", "Robin Romero", "Marc Joel Rato", "Vincent Sarmiento", "Jeffrey Basco" });
             inspectorschklistBox.Location = new Point(17, 849);
             inspectorschklistBox.Name = "inspectorschklistBox";
-            inspectorschklistBox.Size = new Size(482, 112);
+            inspectorschklistBox.Size = new Size(440, 112);
             inspectorschklistBox.TabIndex = 52;
             // 
             // addBtn
@@ -2310,7 +2310,7 @@
             panel1.Controls.Add(label11);
             panel1.Location = new Point(12, 327);
             panel1.Name = "panel1";
-            panel1.Size = new Size(377, 653);
+            panel1.Size = new Size(411, 653);
             panel1.TabIndex = 76;
             // 
             // panel2
@@ -2337,7 +2337,7 @@
             panel2.Controls.Add(groupBox19);
             panel2.Controls.Add(groupBox12);
             panel2.Controls.Add(groupBox13);
-            panel2.Location = new Point(397, 327);
+            panel2.Location = new Point(429, 328);
             panel2.Name = "panel2";
             panel2.Size = new Size(894, 653);
             panel2.TabIndex = 77;
@@ -2365,9 +2365,9 @@
             panel3.Controls.Add(obstxtBox);
             panel3.Controls.Add(directivestxtBox);
             panel3.Controls.Add(label28);
-            panel3.Location = new Point(1297, 328);
+            panel3.Location = new Point(1334, 328);
             panel3.Name = "panel3";
-            panel3.Size = new Size(520, 556);
+            panel3.Size = new Size(483, 556);
             panel3.TabIndex = 78;
             // 
             // MainPage
