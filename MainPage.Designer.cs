@@ -227,6 +227,7 @@
             generateReportsToPDFToolStripMenuItem = new ToolStripMenuItem();
             auditTrailToolStripMenuItem = new ToolStripMenuItem();
             manageUsersToolStripMenuItem = new ToolStripMenuItem();
+            importDataFromExcelToolStripMenuItem = new ToolStripMenuItem();
             changePasswordToolStripMenuItem = new ToolStripMenuItem();
             advsearchBtn = new Button();
             panel1 = new Panel();
@@ -2248,7 +2249,7 @@
             // 
             // optionToolStripMenuItem
             // 
-            optionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { generateReportsToExcelToolStripMenuItem, generateReportsToPDFToolStripMenuItem, auditTrailToolStripMenuItem, manageUsersToolStripMenuItem, changePasswordToolStripMenuItem });
+            optionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { generateReportsToExcelToolStripMenuItem, generateReportsToPDFToolStripMenuItem, auditTrailToolStripMenuItem, manageUsersToolStripMenuItem, importDataFromExcelToolStripMenuItem, changePasswordToolStripMenuItem });
             optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             optionToolStripMenuItem.Size = new Size(56, 20);
             optionToolStripMenuItem.Text = "Option";
@@ -2280,6 +2281,13 @@
             manageUsersToolStripMenuItem.Size = new Size(208, 22);
             manageUsersToolStripMenuItem.Text = "Manage Users";
             manageUsersToolStripMenuItem.Click += manageUsersToolStripMenuItem_Click;
+            // 
+            // importDataFromExcelToolStripMenuItem
+            // 
+            importDataFromExcelToolStripMenuItem.Name = "importDataFromExcelToolStripMenuItem";
+            importDataFromExcelToolStripMenuItem.Size = new Size(208, 22);
+            importDataFromExcelToolStripMenuItem.Text = "Import Data from Excel";
+            importDataFromExcelToolStripMenuItem.Click += importDataFromExcelToolStripMenuItem_Click_1;
             // 
             // changePasswordToolStripMenuItem
             // 
@@ -2699,5 +2707,6 @@
         private ToolStripMenuItem changePasswordToolStripMenuItem;
         private Label label50;
         private ComboBox naturofbusinesscmbBox;
+        private ToolStripMenuItem importDataFromExcelToolStripMenuItem;
     }
 }
