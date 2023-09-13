@@ -168,10 +168,11 @@ namespace Inspection_Report
 
                     if (foundRows.Length > 0)
                     {
-                        if (!(bool)foundRows[0]["IsAdmin"])
+                        if ((bool)foundRows[0]["IsAdmin"])
                         {
                             foundRows[0]["IsAdmin"] = false;
                             demoteuserDatabase(searchUsername, false);
+
                             dataGridViewUsers.Refresh();
                             MessageBox.Show($"{searchUsername} admin rights removed.");
                         }
