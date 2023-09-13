@@ -486,9 +486,28 @@ namespace Inspection_Report
             reinspectdateTimePicker.CustomFormat = "dd-MM-yyyy";
             reinspectdate = reinspectdateTimePicker.Value;
         }
+        private bool CheckDataExists(string accountNo)
+        {
+            string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
+            string query = "SELECT COUNT(*) FROM InspectionReport WHERE AccountNo = @AccountNo";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@AccountNo", accountNo);
+                    int count = (int)cmd.ExecuteScalar();
+                    return count > 0;
+                }
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             string username = AuthenticatedUser.UserName ?? "DefaultUsername";
+            string accountNo = accttxtBox.Text;
+            bool dataExists = CheckDataExists(accountNo);
             string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -645,6 +664,12 @@ namespace Inspection_Report
                     cmd.Parameters.AddWithValue("@Recommendations", string.Join(", ", recommendationchklistBox.CheckedItems.Cast<string>()));
                     cmd.Parameters.AddWithValue("@Inspector", string.Join(", ", inspectorschklistBox.CheckedItems.Cast<string>()));
                     cmd.Parameters.AddWithValue("@Encoder", username);
+
+                    if (dataExists)
+                    {
+                        DialogResult result = MessageBox.Show("Data with the same Account No.: " + accttxtBox.Text + " already exists!", "Data already existed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        ClearForm();
+                    }
 
                     try
                     {
