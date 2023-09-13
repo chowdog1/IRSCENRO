@@ -174,6 +174,7 @@ namespace Inspection_Report
                             demoteuserDatabase(searchUsername, false);
 
                             dataGridViewUsers.Refresh();
+
                             MessageBox.Show($"{searchUsername} admin rights removed.");
                         }
                         else
