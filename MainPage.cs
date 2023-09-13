@@ -1222,5 +1222,10 @@ namespace Inspection_Report
         {
             new UserManagement().Show();
         }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new ChangePassword().Show();
+        }
     }
 }

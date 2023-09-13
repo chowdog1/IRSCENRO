@@ -4,6 +4,9 @@
     <Compile Update="AdvancedSearch.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="LogForm.cs">
       <SubType>Form</SubType>
     </Compile>

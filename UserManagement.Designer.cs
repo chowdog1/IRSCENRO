@@ -43,14 +43,14 @@
             dataGridViewUsers.Location = new Point(28, 26);
             dataGridViewUsers.Name = "dataGridViewUsers";
             dataGridViewUsers.RowTemplate.Height = 25;
-            dataGridViewUsers.Size = new Size(452, 154);
+            dataGridViewUsers.Size = new Size(447, 150);
             dataGridViewUsers.TabIndex = 0;
             // 
             // dltuserBtn
             // 
             dltuserBtn.Location = new Point(28, 384);
             dltuserBtn.Name = "dltuserBtn";
-            dltuserBtn.Size = new Size(452, 44);
+            dltuserBtn.Size = new Size(447, 44);
             dltuserBtn.TabIndex = 2;
             dltuserBtn.Text = "Delete User";
             dltuserBtn.UseVisualStyleBackColor = true;
@@ -60,7 +60,7 @@
             // 
             promoteuserBtn.Location = new Point(28, 271);
             promoteuserBtn.Name = "promoteuserBtn";
-            promoteuserBtn.Size = new Size(452, 44);
+            promoteuserBtn.Size = new Size(447, 44);
             promoteuserBtn.TabIndex = 3;
             promoteuserBtn.Text = "Make this User an Admin";
             promoteuserBtn.UseVisualStyleBackColor = true;
@@ -86,7 +86,7 @@
             // 
             removeadminBtn.Location = new Point(28, 329);
             removeadminBtn.Name = "removeadminBtn";
-            removeadminBtn.Size = new Size(452, 44);
+            removeadminBtn.Size = new Size(447, 44);
             removeadminBtn.TabIndex = 6;
             removeadminBtn.Text = "Remove admin rights";
             removeadminBtn.UseVisualStyleBackColor = true;

@@ -227,6 +227,7 @@
             generateReportsToPDFToolStripMenuItem = new ToolStripMenuItem();
             auditTrailToolStripMenuItem = new ToolStripMenuItem();
             manageUsersToolStripMenuItem = new ToolStripMenuItem();
+            changePasswordToolStripMenuItem = new ToolStripMenuItem();
             advsearchBtn = new Button();
             panel1 = new Panel();
             panel2 = new Panel();
@@ -2225,27 +2226,27 @@
             // switchUserToolStripMenuItem
             // 
             switchUserToolStripMenuItem.Name = "switchUserToolStripMenuItem";
-            switchUserToolStripMenuItem.Size = new Size(180, 22);
+            switchUserToolStripMenuItem.Size = new Size(135, 22);
             switchUserToolStripMenuItem.Text = "Switch User";
             switchUserToolStripMenuItem.Click += switchUserToolStripMenuItem_Click;
             // 
             // registerNewUserToolStripMenuItem
             // 
             registerNewUserToolStripMenuItem.Name = "registerNewUserToolStripMenuItem";
-            registerNewUserToolStripMenuItem.Size = new Size(180, 22);
+            registerNewUserToolStripMenuItem.Size = new Size(135, 22);
             registerNewUserToolStripMenuItem.Text = "Logout";
             registerNewUserToolStripMenuItem.Click += registerNewUserToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(135, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // optionToolStripMenuItem
             // 
-            optionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { generateReportsToExcelToolStripMenuItem, generateReportsToPDFToolStripMenuItem, auditTrailToolStripMenuItem, manageUsersToolStripMenuItem });
+            optionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { generateReportsToExcelToolStripMenuItem, generateReportsToPDFToolStripMenuItem, auditTrailToolStripMenuItem, manageUsersToolStripMenuItem, changePasswordToolStripMenuItem });
             optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             optionToolStripMenuItem.Size = new Size(56, 20);
             optionToolStripMenuItem.Text = "Option";
@@ -2277,6 +2278,13 @@
             manageUsersToolStripMenuItem.Size = new Size(208, 22);
             manageUsersToolStripMenuItem.Text = "Manage Users";
             manageUsersToolStripMenuItem.Click += manageUsersToolStripMenuItem_Click;
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            changePasswordToolStripMenuItem.Size = new Size(208, 22);
+            changePasswordToolStripMenuItem.Text = "Change Password";
+            changePasswordToolStripMenuItem.Click += changePasswordToolStripMenuItem_Click;
             // 
             // advsearchBtn
             // 
@@ -2666,5 +2674,6 @@
         private Panel panel2;
         private Panel panel3;
         private ToolStripMenuItem manageUsersToolStripMenuItem;
+        private ToolStripMenuItem changePasswordToolStripMenuItem;
     }
 }
