@@ -493,7 +493,7 @@ namespace Inspection_Report
             {
                 con.Open();
 
-                string insertQuery = "INSERT INTO InspectionReport (AccountNo, BusinessName, Address, Barangay, Date, " +
+                string insertQuery = "INSERT INTO InspectionReport (AccountNo, BusinessName, Address, Barangay, Date, NatureOfBusiness, " +
                                      "EstablishmentHas, BusinessStatus, EstablishmentIs, Violations, ComplyWithin, SecuretheFF, AttendSeminar, " +
                                      "MayorsPermit, EPPFee, ECCCNC, ECCCNCNo, ECCDateIssued, WDP, WDPNo, WDPDateIssued, PTO, PTONo, PTODateIssued, HWID, HWIDNo, " +
                                      "HWIDDateIssued, HasPollutionOfficer, PollutionOfficer, Accreditation, ValidityOfPOC, ContactNo, Email, " +
@@ -503,7 +503,7 @@ namespace Inspection_Report
                                      "FrequencyofHaulingOil, HaulerOil, HasAirPollutionManager, DeviceType, MaintenanceProvider, PurposeOfInspection, " +
                                      "ReinspectDate, LevelofInspection, LandUse, OwnershipTerms, Lessee, StandAlone, EstablishmentStatus, InspectorObservation, " +
                                      "Directives, Recommendations, Inspector, Encoder) " +
-                                     "VALUES (@AccountNo, @BusinessName, @Address, @Barangay, @Date, @EstablishmentHas, @BusinessStatus, " +
+                                     "VALUES (@AccountNo, @BusinessName, @Address, @Barangay, @Date, @NatureOfBusiness, @EstablishmentHas, @BusinessStatus, " +
                                      "@EstablishmentIs, @Violations, @ComplyWithin, @SecuretheFF, @AttendSeminar, @MayorsPermit, @EPPFee, " +
                                      "@ECCCNC, @ECCCNCNo, @ECCDateIssued, @WDP, @WDPNo, @WDPDateIssued, @PTO, @PTONo, @PTODateIssued, @HWID, @HWIDNo, @HWIDDateIssued, " +
                                      "@HasPollutionOfficer, @PollutionOfficer, @Accreditation, @ValidityOfPOC, @ContactNo, @Email, @HasWasteBin, " +
@@ -528,6 +528,7 @@ namespace Inspection_Report
                     {
                         cmd.Parameters.AddWithValue("@Date", DBNull.Value);
                     }
+                    cmd.Parameters.AddWithValue("@NatureOfBusiness", naturofbusinesscmbBox.Text);
                     cmd.Parameters.AddWithValue("@EstablishmentHas", string.Join(", ", establishmenthaschklistBox.CheckedItems.Cast<string>()));
                     cmd.Parameters.AddWithValue("@BusinessStatus", GetSelectedRadioButtonText(lowriskRadioBtn, highriskRadioBtn));
                     cmd.Parameters.AddWithValue("@EstablishmentIs", establishmentiscmbBox.Text);
@@ -684,6 +685,7 @@ namespace Inspection_Report
                                     "Address = COALESCE(@Address, Address), " +
                                     "Barangay = COALESCE(@Barangay, Barangay), " +
                                     "Date = COALESCE(@Date, Date), " +
+                                    "NatureOfBusiness = COALESCE(@NatureOfBusiness, NatureOfBusiness), " +
                                     "EstablishmentHas = COALESCE(@EstablishmentHas, EstablishmentHas), " +
                                     "BusinessStatus = COALESCE(@BusinessStatus, BusinessStatus), " +
                                     "EstablishmentIs = COALESCE(@EstablishmentIs, EstablishmentIs), " +
@@ -765,6 +767,7 @@ namespace Inspection_Report
                     {
                         cmd.Parameters.AddWithValue("@Date", DBNull.Value);
                     }
+                    AddParameterIfNotEmpty(cmd,"@NatureOfBusiness", naturofbusinesscmbBox.Text);
                     AddParameterIfNotEmpty(cmd, "@EstablishmentHas", string.Join(", ", establishmenthaschklistBox.CheckedItems.Cast<string>()));
                     AddParameterIfNotEmpty(cmd, "@BusinessStatus", GetSelectedRadioButtonText(lowriskRadioBtn, highriskRadioBtn));
                     AddParameterIfNotEmpty(cmd, "@EstablishmentIs", establishmentiscmbBox.Text);
