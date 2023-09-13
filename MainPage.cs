@@ -1220,7 +1220,7 @@ namespace Inspection_Report
         }
         private void manageUsersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new UserManagement().Show();
         }
     }
 }
