@@ -14,6 +14,7 @@ using MigraDoc.Rendering;
 using System.Windows.Forms;
 using System.IO;
 using PdfSharp;
+using System.Globalization;
 
 namespace Inspection_Report
 {
@@ -767,7 +768,7 @@ namespace Inspection_Report
                     {
                         cmd.Parameters.AddWithValue("@Date", DBNull.Value);
                     }
-                    AddParameterIfNotEmpty(cmd,"@NatureOfBusiness", naturofbusinesscmbBox.Text);
+                    AddParameterIfNotEmpty(cmd, "@NatureOfBusiness", naturofbusinesscmbBox.Text);
                     AddParameterIfNotEmpty(cmd, "@EstablishmentHas", string.Join(", ", establishmenthaschklistBox.CheckedItems.Cast<string>()));
                     AddParameterIfNotEmpty(cmd, "@BusinessStatus", GetSelectedRadioButtonText(lowriskRadioBtn, highriskRadioBtn));
                     AddParameterIfNotEmpty(cmd, "@EstablishmentIs", establishmentiscmbBox.Text);

@@ -230,10 +230,10 @@
             changePasswordToolStripMenuItem = new ToolStripMenuItem();
             advsearchBtn = new Button();
             panel1 = new Panel();
+            naturofbusinesscmbBox = new ComboBox();
+            label50 = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
-            label50 = new Label();
-            naturofbusinesscmbBox = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -2141,7 +2141,7 @@
             // establishmentiscmbBox
             // 
             establishmentiscmbBox.FormattingEnabled = true;
-            establishmentiscmbBox.Items.AddRange(new object[] { "Priority", "Less Priority", "Closed/Non-Operational", "Review for CEC", "Moveout/Pull-out/Unlocated" });
+            establishmentiscmbBox.Items.AddRange(new object[] { "Priority", "Less Priority", "Closed/Non-Operational", "Review for CEC", "For BEEAS", "Moveout/Pull-out/Unlocated/Others" });
             establishmentiscmbBox.Location = new Point(11, 282);
             establishmentiscmbBox.Name = "establishmentiscmbBox";
             establishmentiscmbBox.Size = new Size(152, 23);
@@ -2333,6 +2333,24 @@
             panel1.Size = new Size(411, 653);
             panel1.TabIndex = 76;
             // 
+            // naturofbusinesscmbBox
+            // 
+            naturofbusinesscmbBox.FormattingEnabled = true;
+            naturofbusinesscmbBox.Items.AddRange(new object[] { "ADMIN OFFICE", "ANIMAL CLINICS AND SERVICES", "BAKERY - MANUFACTURING", "BANK (LESSEE/TENANT)", "BANK (STAND ALONE)", "BARBERSHOP NAIL SALON", "BEAUTY PARLOR OR SALON", "BIG SCALE MANUFACTURING INDUSTRIES", "CAR DEALER AND SERVICES SHOWROOM", "DANCE SCHOOL/STUDIO, MARTIAL ARTS, BOXING, DRIVING, GYM", "DELIVERY VEHICLES", "DRUGSTORE (SMALL)", "EVENT SERVICES", "EVENTS PLACE", "FILLING STATIONS AND LPG REFILLING STATIONS", "FINANCIAL INSTITUTION", "FOOD - RESTAURANT W/ LESS THAN 50 SEATING CAPACITY", "FOOD - RESTAURANT W/ MORE THAN 50 SEATING CAPACITY", "FOOD KIOSK", "FOOD KIOSK WITH PREPARATION", "FOOD KIOSK WITH PREPARATION AND SINK", "FORWARDING/TRUCKING AND COURIER", "FUEL DEPOT AND FUEL STORAGE FACILITIES AND GASOLINE SERVICES", "FUNERAL PARLOR SERVICES", "GARBAGE CONTRACTOR/GARBAGE TRUCK TERMINAL/TRANSFER STATIONS", "HABERDASHERY, TAILORING, CLOTHES MANUFACTURING SERVICES AND OTHERS", "HARDWARE STORE", "HIGH-RISE BUILDING", "HOLDING SERVICES", "HOUSING DEVELOPMENT PROJECTS, I.E RESIDENTIAL SUBDIVISIONS, PARK, CONDOMINIUMS AND TOWNHOUSES", "JUNKSHOPS", "LESSOR - COMMERCIAL", "LESSOR - HOUSE AND LOT AND RESIDENTIALS", "LESSOR - RESIDENTIAL", "LIAISON, ADMINISTRATIVE, ACCOUNTING, BUSINESS AGENCIES AND/OR SIMILAR OFFICES", "LOTTO OUTLET", "LPG RETAILERS", "MEDICAL AND DENTAL CLINIC", "MEDICAL CLINICS/WITH LYING-IN CLINICS", "MEDICAL EQUIPMENT RETAILER", "NURSERY, VOCATIONAL AND OTHER SCHOOLS", "OTHER ACTIVITIES, PROJECTS AND ESTABLISHMENTS AS MAYBE DETERMINED BY CENRO", "OTHER KIOSKS", "PERA PADALA, PAWNSHOPS, LENDING INVESTORS", "PRINTING SHOP", "PRIVATE HOSPITALS AND LYING-IN", "PRIVATE SCHOOLS AND MONTESSORI, COLLEGES AND UNIVERSITIES", "RETAILER - N-2", "RETAILER - SARI-SARI STORE", "SANITARY WASTE LANDFILLS AND TOXIC WASTE TREATMENT DISPOSAL SITES", "SERVICES - GENERAL ENGINEERING, GENERAL BUILDING AND SPECIALTY CONTRACTORS", "SEWAGE/HAZARDOUS WASTE COLLECTOR, TRANSPORTER AND TREATER", "SHOPPING CENTERS/MALLS/MARKETS/MEAT SHOP", "SKIN CARE CLINICS", "SMALL-SCALE MANUFACTURING INDUSTRIES", "SPA AND MASSAGE", "TUTORIAL SCHOOLS, LEARNING REVIEW CENTERS AND OTHER SIMILAR ESTABLISHMENTS", "VULCANIZING, WELDING AND AIR-CONDITIONING SHOPS", "WAREHOUSE", "WATER - REFILLING STATION", "WHOLESALER - N-2" });
+            naturofbusinesscmbBox.Location = new Point(176, 282);
+            naturofbusinesscmbBox.Name = "naturofbusinesscmbBox";
+            naturofbusinesscmbBox.Size = new Size(204, 23);
+            naturofbusinesscmbBox.TabIndex = 71;
+            // 
+            // label50
+            // 
+            label50.AutoSize = true;
+            label50.Location = new Point(175, 260);
+            label50.Name = "label50";
+            label50.Size = new Size(108, 15);
+            label50.TabIndex = 70;
+            label50.Text = "Nature of Business:";
+            // 
             // panel2
             // 
             panel2.AutoScroll = true;
@@ -2389,24 +2407,6 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(483, 556);
             panel3.TabIndex = 78;
-            // 
-            // label50
-            // 
-            label50.AutoSize = true;
-            label50.Location = new Point(175, 260);
-            label50.Name = "label50";
-            label50.Size = new Size(108, 15);
-            label50.TabIndex = 70;
-            label50.Text = "Nature of Business:";
-            // 
-            // naturofbusinesscmbBox
-            // 
-            naturofbusinesscmbBox.FormattingEnabled = true;
-            naturofbusinesscmbBox.Items.AddRange(new object[] { "ADMIN OFFICE", "ANIMAL CLINICS AND SERVICES", "BAKERY - MANUFACTURING", "BANK (LESSEE/TENANT)", "BANK (STAND ALONE)", "BARBERSHOP NAIL SALON", "BEAUTY PARLOR OR SALON", "BIG SCALE MANUFACTURING INDUSTRIES", "CAR DEALER AND SERVICES SHOWROOM", "DANCE SCHOOL/STUDIO, MARTIAL ARTS, BOXING, DRIVING, GYM", "DELIVERY VEHICLES", "DRUGSTORE (SMALL)", "EVENT SERVICES", "EVENTS PLACE", "FILLING STATIONS AND LPG REFILLING STATIONS", "FINANCIAL INSTITUTION", "FOOD - RESTAURANT W/ LESS THAN 50 SEATING CAPACITY", "FOOD - RESTAURANT W/ MORE THAN 50 SEATING CAPACITY", "FOOD KIOSK", "FOOD KIOSK WITH PREPARATION", "FOOD KIOSK WITH PREPARATION AND SINK", "FORWARDING/TRUCKING AND COURIER", "FUEL DEPOT AND FUEL STORAGE FACILITIES AND GASOLINE SERVICES", "FUNERAL PARLOR SERVICES", "GARBAGE CONTRACTOR/GARBAGE TRUCK TERMINAL/TRANSFER STATIONS", "HABERDASHERY, TAILORING, CLOTHES MANUFACTURING SERVICES AND OTHERS", "HARDWARE STORE", "HIGH-RISE BUILDING", "HOLDING SERVICES", "HOUSING DEVELOPMENT PROJECTS, I.E RESIDENTIAL SUBDIVISIONS, PARK, CONDOMINIUMS AND TOWNHOUSES", "JUNKSHOPS", "LESSOR - COMMERCIAL", "LESSOR - HOUSE AND LOT AND RESIDENTIALS", "LESSOR - RESIDENTIAL", "LIAISON, ADMINISTRATIVE, ACCOUNTING, BUSINESS AGENCIES AND/OR SIMILAR OFFICES", "LOTTO OUTLET", "LPG RETAILERS", "MEDICAL AND DENTAL CLINIC", "MEDICAL CLINICS/WITH LYING-IN CLINICS", "MEDICAL EQUIPMENT RETAILER", "NURSERY, VOCATIONAL AND OTHER SCHOOLS", "OTHER ACTIVITIES, PROJECTS AND ESTABLISHMENTS AS MAYBE DETERMINED BY CENRO", "OTHER KIOSKS", "PERA PADALA, PAWNSHOPS, LENDING INVESTORS", "PRINTING SHOP", "PRIVATE HOSPITALS AND LYING-IN", "PRIVATE SCHOOLS AND MONTESSORI, COLLEGES AND UNIVERSITIES", "RETAILER - N-2", "RETAILER - SARI-SARI STORE", "SANITARY WASTE LANDFILLS AND TOXIC WASTE TREATMENT DISPOSAL SITES", "SERVICES - GENERAL ENGINEERING, GENERAL BUILDING AND SPECIALTY CONTRACTORS", "SEWAGE/HAZARDOUS WASTE COLLECTOR, TRANSPORTER AND TREATER", "SHOPPING CENTERS/MALLS/MARKETS/MEAT SHOP", "SKIN CARE CLINICS", "SMALL-SCALE MANUFACTURING INDUSTRIES", "SPA AND MASSAGE", "TUTORIAL SCHOOLS, LEARNING REVIEW CENTERS AND OTHER SIMILAR ESTABLISHMENTS", "VULCANIZING, WELDING AND AIR-CONDITIONING SHOPS", "WAREHOUSE", "WATER - REFILLING STATION", "WHOLESALER - N-2" });
-            naturofbusinesscmbBox.Location = new Point(176, 282);
-            naturofbusinesscmbBox.Name = "naturofbusinesscmbBox";
-            naturofbusinesscmbBox.Size = new Size(204, 23);
-            naturofbusinesscmbBox.TabIndex = 71;
             // 
             // MainPage
             // 
