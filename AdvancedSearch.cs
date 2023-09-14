@@ -50,13 +50,13 @@ namespace Inspection_Report
                     $"AND (BusinessStatus LIKE '%{businessstatus}%') " +
                     $"AND (EstablishmentHas LIKE '%{establishmentstatus}%') " +
                     $"AND (EstablishmentIs LIKE '%{establishmentis}%') " +
-                    $"AND (Violations LIKE '%{violations}%') " +
+                    $"AND (Violations LIKE '%{violations}%')" +
                     $"AND (Date >= '{startdate:yyyy-MM-dd}' AND Date <= '{enddate:yyyy-MM-dd}')";
             }
             else
             {
                 SearchQuery = "SELECT * FROM InspectionReport WHERE " +
-                    $"(Barangay LIKE '%{barangay}%') " +
+                    $"(Barangay LIKE '{barangay}') " +
                     $"AND (BusinessStatus LIKE '%{businessstatus}%') " +
                     $"AND (EstablishmentHas LIKE '%{establishmentstatus}%') " +
                     $"AND (EstablishmentIs LIKE '%{establishmentis}%') " +

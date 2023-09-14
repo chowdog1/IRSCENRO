@@ -19,7 +19,6 @@ namespace Inspection_Report
         public event EventHandler? RegularLoggedIn;
         public MainPage? MainPageInstance { get; set; }
         private int animationfadein = 0;
-        private int animationfadeout = 0;
 
         public loginForm()
         {
