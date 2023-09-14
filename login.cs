@@ -26,6 +26,7 @@ namespace Inspection_Report
             Username = "defaultusername";
             InitializeComponent();
             timer1.Start();
+            this.AcceptButton = loginBtn;
         }
 
 
