@@ -21,7 +21,8 @@ namespace Inspection_Report
             {
                 Multiline = true,
                 Dock = DockStyle.Fill,
-                ReadOnly = true
+                ReadOnly = true,
+                Font = new Font("Arial", 16),
             };
             Controls.Add(textBoxLog);
 

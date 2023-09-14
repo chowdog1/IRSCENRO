@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label6 = new Label();
             label5 = new Label();
             clrBtn = new Button();
@@ -39,6 +40,8 @@
             label2 = new Label();
             label1 = new Label();
             label4 = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
+            timer2 = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // label6
@@ -164,6 +167,10 @@
             label4.Text = "X";
             label4.Click += label4_Click;
             // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
+            // 
             // loginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -185,6 +192,7 @@
             ForeColor = Color.FromArgb(164, 165, 169);
             FormBorderStyle = FormBorderStyle.None;
             Name = "loginForm";
+            Opacity = 0D;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form3";
             TransparencyKey = Color.Black;
@@ -205,5 +213,7 @@
         private Label label2;
         private Label label1;
         private Label label4;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
     }
 }

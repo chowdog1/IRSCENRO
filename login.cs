@@ -18,11 +18,14 @@ namespace Inspection_Report
         public event EventHandler? AdminLoggedIn;
         public event EventHandler? RegularLoggedIn;
         public MainPage? MainPageInstance { get; set; }
+        private int animationfadein = 0;
+        private int animationfadeout = 0;
 
         public loginForm()
         {
             Username = "defaultusername";
             InitializeComponent();
+            timer1.Start();
         }
 
 
@@ -51,16 +54,16 @@ namespace Inspection_Report
                         {
                             AuthenticatedUser.UserName = username;
                             MainPage mainPage = new MainPage();
-                            if(!IsAdmin)
+                            if (!IsAdmin)
                             {
                                 RegularLoggedIn?.Invoke(this, EventArgs.Empty);
                                 mainPage.DisableTrailMenuItem();
                             }
-                            else if(IsAdmin)
+                            else if (IsAdmin)
                             {
                                 AdminLoggedIn?.Invoke(this, EventArgs.Empty);
                                 mainPage.EnableTrailMenuItem();
-                            }    
+                            }
                             mainPage.Show();
                             this.Hide();
                         }
@@ -82,6 +85,7 @@ namespace Inspection_Report
                     }
                 }
             }
+            timer2.Start();
         }
 
         private void clrBtn_Click(object sender, EventArgs e)
@@ -119,6 +123,19 @@ namespace Inspection_Report
             usernametxtBox.Clear();
             passwordtxtBox.Clear();
             usernametxtBox.Focus();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (animationfadein < 255)
+            {
+                this.Opacity = animationfadein / 255.0;
+                animationfadein += 40;
+            }
+            else
+            {
+                timer1.Stop();
+            }
         }
     }
 }

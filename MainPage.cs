@@ -938,28 +938,33 @@ namespace Inspection_Report
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
-            using (SqlConnection con = new SqlConnection(connectionString))
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            
+            if(result == DialogResult.Yes)
             {
-                con.Open();
-
-                string DeleteQuery = "DELETE InspectionReport where AccountNo=@AccountNo";
-
-                using (SqlCommand cmd = new SqlCommand(DeleteQuery, con))
+                string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
+                using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    cmd.Parameters.AddWithValue("@AccountNo", accttxtBox.Text);
+                    con.Open();
 
-                    try
+                    string DeleteQuery = "DELETE InspectionReport where AccountNo=@AccountNo";
+
+                    using (SqlCommand cmd = new SqlCommand(DeleteQuery, con))
                     {
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Successfully Deleted!");
-                        LogEvent("Deleted Data");
-                        ClearForm();
-                        PopulateDataGridView();
-                    }
-                    catch (SqlException ex)
-                    {
-                        Console.WriteLine("Sql Error: " + ex.Message);
+                        cmd.Parameters.AddWithValue("@AccountNo", accttxtBox.Text);
+
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Successfully Deleted!");
+                            LogEvent("Deleted Data");
+                            ClearForm();
+                            PopulateDataGridView();
+                        }
+                        catch (SqlException ex)
+                        {
+                            Console.WriteLine("Sql Error: " + ex.Message);
+                        }
                     }
                 }
             }
