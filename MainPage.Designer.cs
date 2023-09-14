@@ -2223,27 +2223,27 @@
             // 
             fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { switchUserToolStripMenuItem, registerNewUserToolStripMenuItem, exitToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(37, 20);
-            fileToolStripMenuItem.Text = "File";
+            fileToolStripMenuItem.Size = new Size(42, 20);
+            fileToolStripMenuItem.Text = "User";
             // 
             // switchUserToolStripMenuItem
             // 
             switchUserToolStripMenuItem.Name = "switchUserToolStripMenuItem";
-            switchUserToolStripMenuItem.Size = new Size(135, 22);
+            switchUserToolStripMenuItem.Size = new Size(180, 22);
             switchUserToolStripMenuItem.Text = "Switch User";
             switchUserToolStripMenuItem.Click += switchUserToolStripMenuItem_Click;
             // 
             // registerNewUserToolStripMenuItem
             // 
             registerNewUserToolStripMenuItem.Name = "registerNewUserToolStripMenuItem";
-            registerNewUserToolStripMenuItem.Size = new Size(135, 22);
+            registerNewUserToolStripMenuItem.Size = new Size(180, 22);
             registerNewUserToolStripMenuItem.Text = "Logout";
             registerNewUserToolStripMenuItem.Click += registerNewUserToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(135, 22);
+            exitToolStripMenuItem.Size = new Size(180, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
