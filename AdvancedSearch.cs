@@ -43,25 +43,40 @@ namespace Inspection_Report
             DateTime startdate = fddateTimePicker.Value;
             DateTime enddate = tddateTimePicker.Value;
 
+            List<string> searchCriteria = new List<string>();
+
+            if (!string.IsNullOrEmpty(barangay))
+            {
+                searchCriteria.Add($"Barangay LIKE '%{barangay}%'");
+            }
+
+            if (!string.IsNullOrEmpty(businessstatus))
+            {
+                searchCriteria.Add($"BusinessStatus LIKE '%{businessstatus}%'");
+            }
+
+            if (!string.IsNullOrEmpty(establishmentstatus))
+            {
+                searchCriteria.Add($"EstablishmentHas LIKE '%{establishmentstatus}%'");
+            }
+
+            if (!string.IsNullOrEmpty(establishmentis))
+            {
+                searchCriteria.Add($"EstablishmentIs LIKE '%{establishmentis}%'");
+            }
+
+            if (!string.IsNullOrEmpty(violations))
+            {
+                searchCriteria.Add($"Violations LIKE '%{violations}%'");
+            }
+
             if (datePickersChanged)
             {
-                SearchQuery = "SELECT * FROM InspectionReport WHERE " +
-                    $"(Barangay LIKE '%{barangay}%') " +
-                    $"AND (BusinessStatus LIKE '%{businessstatus}%') " +
-                    $"AND (EstablishmentHas LIKE '%{establishmentstatus}%') " +
-                    $"AND (EstablishmentIs LIKE '%{establishmentis}%') " +
-                    $"AND (Violations LIKE '%{violations}%')" +
-                    $"AND (Date >= '{startdate:yyyy-MM-dd}' AND Date <= '{enddate:yyyy-MM-dd}')";
+                searchCriteria.Add($"Date >= '{startdate:yyyy-MM-dd}' AND Date <= '{enddate:yyyy-MM-dd}'");
             }
-            else
-            {
-                SearchQuery = "SELECT * FROM InspectionReport WHERE " +
-                    $"(Barangay LIKE '{barangay}') " +
-                    $"AND (BusinessStatus LIKE '%{businessstatus}%') " +
-                    $"AND (EstablishmentHas LIKE '%{establishmentstatus}%') " +
-                    $"AND (EstablishmentIs LIKE '%{establishmentis}%') " +
-                    $"AND (Violations LIKE '%{violations}%')";
-            }
+
+            SearchQuery = "SELECT * FROM InspectionReport WHERE " + string.Join(" AND ", searchCriteria);
+
             DialogResult = DialogResult.OK;
             Close();
         }
