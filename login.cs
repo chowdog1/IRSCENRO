@@ -109,7 +109,7 @@ namespace Inspection_Report
 
         private void label6_Click(object sender, EventArgs e)
         {
-            new registerForm().Show();
+            new Request().Show();
             this.Hide();
         }
 

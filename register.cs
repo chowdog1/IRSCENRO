@@ -105,16 +105,9 @@ namespace Inspection_Report
             passwordtxtBox.Clear();
             confirmpasswordtxtBox.Clear();
         }
-
-        private void label6_Click(object sender, EventArgs e)
+        private void cancelBtn_Click(object sender, EventArgs e)
         {
-            new loginForm().Show();
-            this.Hide();
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
+            this.Close();
         }
     }
 }

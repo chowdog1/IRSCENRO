@@ -49,11 +49,11 @@
             label6.AutoSize = true;
             label6.Cursor = Cursors.Hand;
             label6.ForeColor = Color.FromArgb(116, 86, 174);
-            label6.Location = new Point(118, 429);
+            label6.Location = new Point(96, 429);
             label6.Name = "label6";
-            label6.Size = new Size(93, 15);
+            label6.Size = new Size(130, 15);
             label6.TabIndex = 23;
-            label6.Text = "Create Account";
+            label6.Text = "Contact Administrator";
             label6.Click += label6_Click;
             // 
             // label5

@@ -939,8 +939,8 @@ namespace Inspection_Report
         private void button4_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            
-            if(result == DialogResult.Yes)
+
+            if (result == DialogResult.Yes)
             {
                 string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
                 using (SqlConnection con = new SqlConnection(connectionString))
@@ -1227,17 +1227,20 @@ namespace Inspection_Report
                     item.Enabled = false;
                     item.Visible = false;
                 }
-                if (item.Text == "Manage Users")
+                if (item.Text == "Create New User")
                 {
                     item.Enabled = false;
                     item.Visible = false;
-                    break;
                 }
                 if (item.Text == "Import Data from Excel")
                 {
                     item.Enabled = false;
                     item.Visible = false;
-                    break;
+                }
+                if (item.Text == "Manage Registered Users")
+                {
+                    item.Enabled = false;
+                    item.Visible = false;
                 }
             }
         }
@@ -1256,6 +1259,11 @@ namespace Inspection_Report
                     item.Visible = true;
                 }
                 if (item.Text == "Manage Users")
+                {
+                    item.Enabled = true;
+                    item.Visible = true;
+                }
+                if (item.Text == "Create New User")
                 {
                     item.Enabled = true;
                     item.Visible = true;
@@ -1433,6 +1441,11 @@ namespace Inspection_Report
                     MessageBox.Show("Data imported successfully!");
                 }
             }
+        }
+
+        private void createNewUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new registerForm().Show();
         }
     }
 }
