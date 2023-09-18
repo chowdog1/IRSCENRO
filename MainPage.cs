@@ -521,6 +521,21 @@ namespace Inspection_Report
         {
             string username = AuthenticatedUser.UserName ?? "DefaultUsername";
             string accountNo = accttxtBox.Text;
+            string businessName = businesstxtBox.Text;
+            string address = addresstxtBox.Text;
+            string barangay = brgycmbBox.Text;
+            string observation = obstxtBox.Text;
+            string directives = directivestxtBox.Text;
+
+            if (string.IsNullOrEmpty(accountNo) || string.IsNullOrEmpty(businessName) ||
+                string.IsNullOrEmpty(address) || string.IsNullOrEmpty(barangay) ||
+                string.IsNullOrEmpty(observation) || string.IsNullOrEmpty(directives) ||
+                inspectorschklistBox.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Please fill in all the required fields (Account No., Business Name, Address, Barangay, Observation, Directives, and at least one Inspector).", "Required Fields Missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             bool dataExists = CheckDataExists(accountNo);
             string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -562,7 +577,7 @@ namespace Inspection_Report
                     {
                         cmd.Parameters.AddWithValue("@Date", DBNull.Value);
                     }
-                    cmd.Parameters.AddWithValue("@NatureOfBusiness", naturofbusinesscmbBox.Text);
+                    cmd.Parameters.AddWithValue("@NatureOfBusiness", natureofbusinesscmbBox.Text);
                     cmd.Parameters.AddWithValue("@EstablishmentHas", string.Join(", ", establishmenthaschklistBox.CheckedItems.Cast<string>()));
                     cmd.Parameters.AddWithValue("@BusinessStatus", GetSelectedRadioButtonText(lowriskRadioBtn, highriskRadioBtn));
                     cmd.Parameters.AddWithValue("@EstablishmentIs", establishmentiscmbBox.Text);
@@ -715,83 +730,142 @@ namespace Inspection_Report
         private void button3_Click(object sender, EventArgs e)
         {
             string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
+            string accountNo = accttxtBox.Text;
+
+            if (string.IsNullOrEmpty(accountNo))
+            {
+                MessageBox.Show("Please fill in the Account No.", "Required Field Missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
 
-                string updateQuery = "UPDATE InspectionReport SET " +
-                                    "BusinessName = ISNULL(BusinessName, '') + @BusinessName, " +
-                                    "Address = COALESCE(@Address, Address), " +
-                                    "Barangay = COALESCE(@Barangay, Barangay), " +
-                                    "Date = COALESCE(@Date, Date), " +
-                                    "NatureOfBusiness = COALESCE(@NatureOfBusiness, NatureOfBusiness), " +
-                                    "EstablishmentHas = COALESCE(@EstablishmentHas, EstablishmentHas), " +
-                                    "BusinessStatus = COALESCE(@BusinessStatus, BusinessStatus), " +
-                                    "EstablishmentIs = COALESCE(@EstablishmentIs, EstablishmentIs), " +
-                                    "Violations = ISNULL(Violations, '') + @Violations, " +
-                                    "ComplyWithin = COALESCE(@ComplyWithin, ComplyWithin), " +
-                                    "SecuretheFF = ISNULL(SecuretheFF, '') + @SecuretheFF, " +
-                                    "AttendSeminar = COALESCE(@AttendSeminar, AttendSeminar), " +
-                                    "MayorsPermit = COALESCE(@MayorsPermit, MayorsPermit), " +
-                                    "EPPFee = COALESCE(@EPPFee, EPPFee), " +
-                                    "ECCCNC = COALESCE(@ECCCNC, ECCCNC), " +
-                                    "ECCCNCNo = COALESCE(@ECCCNCNo, ECCCNCNo), " +
-                                    "ECCDateIssued = COALESCE(@ECCDateIssued, ECCDateIssued), " +
-                                    "WDP = COALESCE(@WDP, WDP), " +
-                                    "WDPNo = COALESCE(@WDPNo, WDPNo), " +
-                                    "WDPDateIssued = COALESCE(@WDPDateIssued, WDPDateIssued), " +
-                                    "PTO = COALESCE(@PTO, PTO), " +
-                                    "PTONo = COALESCE(@PTONo, PTONo), " +
-                                    "PTODateIssued = COALESCE(@PTODateIssued, PTODateIssued), " +
-                                    "HWID = COALESCE(@HWID, HWID), " +
-                                    "HWIDNo = COALESCE(@HWIDNo, HWIDNo), " +
-                                    "HWIDDateIssued = COALESCE(@HWIDDateIssued, HWIDDateIssued), " +
-                                    "HasPollutionOfficer = COALESCE(@HasPollutionOfficer, HasPollutionOfficer), " +
-                                    "PollutionOfficer = COALESCE(@PollutionOfficer, PollutionOfficer), " +
-                                    "Accreditation = COALESCE(@Accreditation, Accreditation), " +
-                                    "ValidityOfPOC = COALESCE(@ValidityOfPOC, ValidityOfPOC), " +
-                                    "ContactNo = COALESCE(@ContactNo, ContactNo), " +
-                                    "Email = COALESCE(@Email, Email), " +
-                                    "HasWasteBin = COALESCE(@HasWasteBin, HasWasteBin), " +
-                                    "BinsLabeled = COALESCE(@BinsLabeled, BinsLabeled), " +
-                                    "BinsCovered = COALESCE(@BinsCovered, BinsCovered), " +
-                                    "BinsSegregated = COALESCE(@BinsSegregated, BinsSegregated), " +
-                                    "MRF = COALESCE(@MRF, MRF), " +
-                                    "WasteCollected = COALESCE(@WasteCollected, WasteCollected), " +
-                                    "FrequencyHauling = COALESCE(@FrequencyHauling, FrequencyHauling), " +
-                                    "Hauler = COALESCE(@Hauler, Hauler), " +
-                                    "HasSeptic = COALESCE(@HasSeptic, HasSeptic), " +
-                                    "LocationSeptic = COALESCE(@LocationSeptic, LocationSeptic), " +
-                                    "FrequencyDesludge = COALESCE(@FrequencyDesludge, FrequencyDesludge), " +
-                                    "DateDesludge = COALESCE(@DateDesludge, DateDesludge), " +
-                                    "ServiceProvider = COALESCE(@ServiceProvider, ServiceProvider), " +
-                                    "HasGreaseTrap = COALESCE(@HasGreaseTrap, HasGreaseTrap), " +
-                                    "LocationGrease = COALESCE(@LocationGrease, LocationGrease), " +
-                                    "CapacityGreaseTrap = COALESCE(@CapacityGreaseTrap, CapacityGreaseTrap), " +
-                                    "FrequencyGrease = COALESCE(@FrequencyGrease, FrequencyGrease), " +
-                                    "HaulerGrease = COALESCE(@HaulerGrease, HaulerGrease), " +
-                                    "HasWasteWater = COALESCE(@HasWasteWater, HasWasteWater), " +
-                                    "UsedOilProperlyDisposed = COALESCE(@UsedOilProperlyDisposed, UsedOilProperlyDisposed), " +
-                                    "TypeofOil = COALESCE(@TypeofOil, TypeofOil), " +
-                                    "FrequencyofHaulingOil = COALESCE(@FrequencyofHaulingOil, FrequencyofHaulingOil), " +
-                                    "HaulerOil = COALESCE(@HaulerOil, HaulerOil), " +
-                                    "HasAirPollutionManager = COALESCE(@HasAirPollutionManager, HasAirPollutionManager), " +
-                                    "DeviceType = COALESCE(@DeviceType, DeviceType), " +
-                                    "MaintenanceProvider = COALESCE(@MaintenanceProvider, MaintenanceProvider), " +
-                                    "PurposeOfInspection = COALESCE(@PurposeOfInspection, PurposeOfInspection), " +
-                                    "ReinspectDate = COALESCE(@ReinspectDate, ReinspectDate), " +
-                                    "LevelofInspection = ISNULL(LevelofInspection, '') + @LevelofInspection, " +
-                                    "LandUse = COALESCE(@LandUse, LandUse), " +
-                                    "OwnershipTerms = COALESCE(@OwnershipTerms, OwnershipTerms), " +
-                                    "Lessee = COALESCE(@Lessee, Lessee), " +
-                                    "StandAlone = COALESCE(@StandAlone, StandAlone), " +
-                                    "EstablishmentStatus = COALESCE(@EstablishmentStatus, EstablishmentStatus), " +
-                                    "InspectorObservation = ISNULL(InspectorObservation, '') + @InspectorObservation, " +
-                                    "Directives = ISNULL(Directives, '') + @Directives, " +
-                                    "Recommendations = ISNULL(Recommendations, '') + @Recommendations, " +
-                                    "Inspector = ISNULL(Inspector, '') + @Inspector " +
-                                    "WHERE AccountNo = @AccountNo";
+            string updateQuery = "UPDATE InspectionReport SET " +
+                            "BusinessName = COALESCE(@BusinessName, BusinessName), " +
+                            "Address = COALESCE(@Address, Address), " +
+                            "Barangay = COALESCE(@Barangay, Barangay), " +
+                            "Date = COALESCE(@Date, Date), " +
+                            "NatureOfBusiness = COALESCE(@NatureOfBusiness, NatureOfBusiness), " +
+                            "EstablishmentHas = COALESCE(@EstablishmentHas, EstablishmentHas), " +
+                            "BusinessStatus = COALESCE(@BusinessStatus, BusinessStatus), " +
+                            "EstablishmentIs = COALESCE(@EstablishmentIs, EstablishmentIs), " +
+                            "Violations = CASE " +
+                            "WHEN LEN(ISNULL(@Violations, '')) > 0 AND LEN(ISNULL(Violations, '')) > 0 " +
+                            "THEN COALESCE(Violations + ', ', '') + @Violations " +
+                            "WHEN LEN(ISNULL(@Violations, '')) > 0 " +
+                            "THEN @Violations " +
+                            "ELSE Violations " +
+                            "END, " +
+                            "ComplyWithin = COALESCE(@ComplyWithin, ComplyWithin), " +
+                            "SecuretheFF = CASE " +
+                            "WHEN LEN(ISNULL(@SecuretheFF, '')) > 0 AND LEN(ISNULL(SecuretheFF, '')) > 0 " +
+                            "THEN COALESCE(SecuretheFF + ', ', '') + @SecuretheFF " +
+                            "WHEN LEN(ISNULL(@SecuretheFF, '')) > 0 " +
+                            "THEN @SecuretheFF " +
+                            "ELSE SecuretheFF " +
+                            "END, " +
+                            "AttendSeminar = COALESCE(@AttendSeminar, AttendSeminar), " +
+                            "MayorsPermit = COALESCE(@MayorsPermit, MayorsPermit), " +
+                            "EPPFee = COALESCE(@EPPFee, EPPFee), " +
+                            "ECCCNC = COALESCE(@ECCCNC, ECCCNC), " +
+                            "ECCCNCNo = COALESCE(@ECCCNCNo, ECCCNCNo), " +
+                            "ECCDateIssued = COALESCE(@ECCDateIssued, ECCDateIssued), " +
+                            "WDP = COALESCE(@WDP, WDP), " +
+                            "WDPNo = COALESCE(@WDPNo, WDPNo), " +
+                            "WDPDateIssued = COALESCE(@WDPDateIssued, WDPDateIssued), " +
+                            "PTO = COALESCE(@PTO, PTO), " +
+                            "PTONo = COALESCE(@PTONo, PTONo), " +
+                            "PTODateIssued = COALESCE(@PTODateIssued, PTODateIssued), " +
+                            "HWID = COALESCE(@HWID, HWID), " +
+                            "HWIDNo = COALESCE(@HWIDNo, HWIDNo), " +
+                            "HWIDDateIssued = COALESCE(@HWIDDateIssued, HWIDDateIssued), " +
+                            "HasPollutionOfficer = COALESCE(@HasPollutionOfficer, HasPollutionOfficer), " +
+                            "PollutionOfficer = COALESCE(@PollutionOfficer, PollutionOfficer), " +
+                            "Accreditation = COALESCE(@Accreditation, Accreditation), " +
+                            "ValidityOfPOC = COALESCE(@ValidityOfPOC, ValidityOfPOC), " +
+                            "ContactNo = COALESCE(@ContactNo, ContactNo), " +
+                            "Email = COALESCE(@Email, Email), " +
+                            "HasWasteBin = COALESCE(@HasWasteBin, HasWasteBin), " +
+                            "BinsLabeled = COALESCE(@BinsLabeled, BinsLabeled), " +
+                            "BinsCovered = COALESCE(@BinsCovered, BinsCovered), " +
+                            "BinsSegregated = COALESCE(@BinsSegregated, BinsSegregated), " +
+                            "MRF = COALESCE(@MRF, MRF), " +
+                            "WasteCollected = COALESCE(@WasteCollected, WasteCollected), " +
+                            "FrequencyHauling = COALESCE(@FrequencyHauling, FrequencyHauling), " +
+                            "Hauler = COALESCE(@Hauler, Hauler), " +
+                            "HasSeptic = COALESCE(@HasSeptic, HasSeptic), " +
+                            "LocationSeptic = COALESCE(@LocationSeptic, LocationSeptic), " +
+                            "FrequencyDesludge = COALESCE(@FrequencyDesludge, FrequencyDesludge), " +
+                            "DateDesludge = COALESCE(@DateDesludge, DateDesludge), " +
+                            "ServiceProvider = COALESCE(@ServiceProvider, ServiceProvider), " +
+                            "HasGreaseTrap = COALESCE(@HasGreaseTrap, HasGreaseTrap), " +
+                            "LocationGrease = COALESCE(@LocationGrease, LocationGrease), " +
+                            "CapacityGreaseTrap = COALESCE(@CapacityGreaseTrap, CapacityGreaseTrap), " +
+                            "FrequencyGrease = COALESCE(@FrequencyGrease, FrequencyGrease), " +
+                            "HaulerGrease = COALESCE(@HaulerGrease, HaulerGrease), " +
+                            "HasWasteWater = COALESCE(@HasWasteWater, HasWasteWater), " +
+                            "UsedOilProperlyDisposed = COALESCE(@UsedOilProperlyDisposed, UsedOilProperlyDisposed), " +
+                            "TypeofOil = COALESCE(@TypeofOil, TypeofOil), " +
+                            "FrequencyofHaulingOil = COALESCE(@FrequencyofHaulingOil, FrequencyofHaulingOil), " +
+                            "HaulerOil = COALESCE(@HaulerOil, HaulerOil), " +
+                            "HasAirPollutionManager = COALESCE(@HasAirPollutionManager, HasAirPollutionManager), " +
+                            "DeviceType = COALESCE(@DeviceType, DeviceType), " +
+                            "MaintenanceProvider = COALESCE(@MaintenanceProvider, MaintenanceProvider), " +
+                            "PurposeOfInspection = COALESCE(@PurposeOfInspection, PurposeOfInspection), " +
+                            "ReinspectDate = COALESCE(@ReinspectDate, ReinspectDate), " +
+                            "LevelofInspection = " +
+                            "CASE " +
+                            "WHEN LEN(ISNULL(@LevelofInspection, '')) > 0 AND LEN(ISNULL(LevelofInspection, '')) > 0 " +
+                            "THEN COALESCE(LevelofInspection + ', ', '') + @LevelofInspection " +
+                            "WHEN LEN(ISNULL(@LevelofInspection, '')) > 0 " +
+                            "THEN @LevelofInspection " +
+                            "ELSE LevelofInspection " +
+                            "END, " +
+                            "LandUse = COALESCE(@LandUse, LandUse), " +
+                            "OwnershipTerms = COALESCE(@OwnershipTerms, OwnershipTerms), " +
+                            "Lessee = COALESCE(@Lessee, Lessee), " +
+                            "StandAlone = COALESCE(@StandAlone, StandAlone), " +
+                            "EstablishmentStatus = COALESCE(@EstablishmentStatus, EstablishmentStatus), " +
+
+                            "InspectorObservation = " +
+                            "CASE " +
+                            "WHEN LEN(ISNULL(@InspectorObservation, '')) > 0 AND LEN(ISNULL(InspectorObservation, '')) > 0 " +
+                            "THEN COALESCE(InspectorObservation + '\n', '') + @InspectorObservation " +
+                            "WHEN LEN(ISNULL(@InspectorObservation, '')) > 0 " +
+                            "THEN @InspectorObservation " +
+                            "ELSE InspectorObservation " +
+                            "END, " +
+
+                            "Directives = " +
+                            "CASE " +
+                            "WHEN LEN(ISNULL(@Directives, '')) > 0 AND LEN(ISNULL(Directives, '')) > 0 " +
+                            "THEN COALESCE(Directives + '\n', '') + @Directives " +
+                            "WHEN LEN(ISNULL(@Directives, '')) > 0 " +
+                            "THEN @Directives " +
+                            "ELSE Directives " +
+                            "END, " +
+
+                            "Recommendations = " +
+                            "CASE " +
+                            "WHEN LEN(ISNULL(@Recommendations, '')) > 0 AND LEN(ISNULL(Recommendations, '')) > 0 " +
+                            "THEN COALESCE(Recommendations + ', ', '') + @Recommendations " +
+                            "WHEN LEN(ISNULL(@Recommendations, '')) > 0 " +
+                            "THEN @Recommendations " +
+                            "ELSE Recommendations " +
+                            "END, " +
+
+                            "Inspector = " +
+                            "CASE " +
+                            "WHEN LEN(ISNULL(@Inspector, '')) > 0 AND LEN(ISNULL(Inspector, '')) > 0 " +
+                            "THEN COALESCE(Inspector + ', ', '') + @Inspector " +
+                            "WHEN LEN(ISNULL(@Inspector, '')) > 0 " +
+                            "THEN @Inspector " +
+                            "ELSE Inspector " +
+                            "END " +
+
+                            "WHERE AccountNo = @AccountNo";
 
                 using (SqlCommand cmd = new SqlCommand(updateQuery, con))
                 {
@@ -807,7 +881,7 @@ namespace Inspection_Report
                     {
                         cmd.Parameters.AddWithValue("@Date", DBNull.Value);
                     }
-                    AddParameterIfNotEmpty(cmd, "@NatureOfBusiness", naturofbusinesscmbBox.Text);
+                    AddParameterIfNotEmpty(cmd, "@NatureOfBusiness", natureofbusinesscmbBox.Text);
                     AddParameterIfNotEmpty(cmd, "@EstablishmentHas", string.Join(", ", establishmenthaschklistBox.CheckedItems.Cast<string>()));
                     AddParameterIfNotEmpty(cmd, "@BusinessStatus", GetSelectedRadioButtonText(lowriskRadioBtn, highriskRadioBtn));
                     AddParameterIfNotEmpty(cmd, "@EstablishmentIs", establishmentiscmbBox.Text);
@@ -946,7 +1020,17 @@ namespace Inspection_Report
             }
             else
             {
-                cmd.Parameters.AddWithValue(paramName, DBNull.Value);
+                // Check if the parameter already exists in the command
+                if (cmd.Parameters.Contains(paramName))
+                {
+                    // If it exists, set the parameter to an empty string to prevent data deletion
+                    cmd.Parameters[paramName].Value = "";
+                }
+                else
+                {
+                    // If it doesn't exist, add it as DBNull.Value
+                    cmd.Parameters.AddWithValue(paramName, DBNull.Value);
+                }
             }
         }
 

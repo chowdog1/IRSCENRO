@@ -34,6 +34,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(581, 481);
             Name = "LogForm";
             StartPosition = FormStartPosition.CenterScreen;
