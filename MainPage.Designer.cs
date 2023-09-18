@@ -226,6 +226,7 @@
             generateReportsToExcelToolStripMenuItem = new ToolStripMenuItem();
             generateReportsToPDFToolStripMenuItem = new ToolStripMenuItem();
             auditTrailToolStripMenuItem = new ToolStripMenuItem();
+            createNewUserToolStripMenuItem = new ToolStripMenuItem();
             manageUsersToolStripMenuItem = new ToolStripMenuItem();
             importDataFromExcelToolStripMenuItem = new ToolStripMenuItem();
             changePasswordToolStripMenuItem = new ToolStripMenuItem();
@@ -235,7 +236,6 @@
             label50 = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
-            createNewUserToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -2176,6 +2176,7 @@
             levelofinspectionchklistBox.Name = "levelofinspectionchklistBox";
             levelofinspectionchklistBox.Size = new Size(133, 112);
             levelofinspectionchklistBox.TabIndex = 68;
+            levelofinspectionchklistBox.ItemCheck += levelofinspectionchklistBox_ItemCheck;
             // 
             // seminartxtBox
             // 
@@ -2205,6 +2206,7 @@
             // 
             // reinspectdateTimePicker
             // 
+            reinspectdateTimePicker.Enabled = false;
             reinspectdateTimePicker.Location = new Point(187, 218);
             reinspectdateTimePicker.Name = "reinspectdateTimePicker";
             reinspectdateTimePicker.Size = new Size(131, 23);
@@ -2275,6 +2277,13 @@
             auditTrailToolStripMenuItem.Size = new Size(208, 22);
             auditTrailToolStripMenuItem.Text = "Audit Trail";
             auditTrailToolStripMenuItem.Click += auditTrailToolStripMenuItem_Click;
+            // 
+            // createNewUserToolStripMenuItem
+            // 
+            createNewUserToolStripMenuItem.Name = "createNewUserToolStripMenuItem";
+            createNewUserToolStripMenuItem.Size = new Size(208, 22);
+            createNewUserToolStripMenuItem.Text = "Create New User";
+            createNewUserToolStripMenuItem.Click += createNewUserToolStripMenuItem_Click;
             // 
             // manageUsersToolStripMenuItem
             // 
@@ -2416,13 +2425,6 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(483, 556);
             panel3.TabIndex = 78;
-            // 
-            // createNewUserToolStripMenuItem
-            // 
-            createNewUserToolStripMenuItem.Name = "createNewUserToolStripMenuItem";
-            createNewUserToolStripMenuItem.Size = new Size(208, 22);
-            createNewUserToolStripMenuItem.Text = "Create New User";
-            createNewUserToolStripMenuItem.Click += createNewUserToolStripMenuItem_Click;
             // 
             // MainPage
             // 

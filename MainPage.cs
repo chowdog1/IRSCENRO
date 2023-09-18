@@ -101,6 +101,20 @@ namespace Inspection_Report
             }
             logform.Show();
         }
+        private void levelofinspectionchklistBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (e.Index == levelofinspectionchklistBox.Items.IndexOf("2nd") || e.Index == levelofinspectionchklistBox.Items.IndexOf("3rd") || e.Index == levelofinspectionchklistBox.Items.IndexOf("4th") || e.Index == levelofinspectionchklistBox.Items.IndexOf("5th"))
+            {
+                if (e.NewValue == CheckState.Checked)
+                {
+                    reinspectdateTimePicker.Enabled = true;
+                }
+                else if (e.NewValue == CheckState.Unchecked)
+                {
+                    reinspectdateTimePicker.Enabled = false;
+                }
+            }
+        }
         private void checkedListBox1_ItemCheck_1(object sender, ItemCheckEventArgs e)
         {
             if (e.Index == establishmenthaschklistBox.Items.IndexOf("Violated City Ordinances") || e.Index == establishmenthaschklistBox.Items.IndexOf("Notice/Warning"))
