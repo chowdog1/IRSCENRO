@@ -1002,11 +1002,19 @@ namespace Inspection_Report
 
                         try
                         {
-                            cmd.ExecuteNonQuery();
-                            MessageBox.Show("Successfully Updated!");
-                            LogEvent("Updated Data");
-                            ClearForm();
-                            PopulateDataGridView();
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Successfully Updated!");
+                                LogEvent("Updated Data");
+                                ClearForm();
+                                PopulateDataGridView();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No record found for the specified Account No.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
                         catch (SqlException ex)
                         {
@@ -1065,11 +1073,19 @@ namespace Inspection_Report
 
                         try
                         {
-                            cmd.ExecuteNonQuery();
-                            MessageBox.Show("Successfully Deleted!");
-                            LogEvent("Deleted Data");
-                            ClearForm();
-                            PopulateDataGridView();
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Successfully Deleted!");
+                                LogEvent("Deleted Data");
+                                ClearForm();
+                                PopulateDataGridView();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No record found for the specified Account No.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
                         catch (SqlException ex)
                         {
