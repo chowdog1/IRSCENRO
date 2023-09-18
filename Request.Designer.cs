@@ -134,6 +134,7 @@
             // sendBtn
             // 
             sendBtn.BackColor = Color.FromArgb(116, 86, 174);
+            sendBtn.Cursor = Cursors.Hand;
             sendBtn.FlatStyle = FlatStyle.Flat;
             sendBtn.Font = new Font("Nirmala UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             sendBtn.ForeColor = Color.White;
@@ -148,6 +149,7 @@
             // cancelBtn
             // 
             cancelBtn.BackColor = Color.White;
+            cancelBtn.Cursor = Cursors.Hand;
             cancelBtn.FlatStyle = FlatStyle.Flat;
             cancelBtn.Font = new Font("Nirmala UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             cancelBtn.ForeColor = Color.FromArgb(116, 86, 174);
