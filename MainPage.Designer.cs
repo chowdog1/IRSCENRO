@@ -222,6 +222,9 @@
             switchUserToolStripMenuItem = new ToolStripMenuItem();
             registerNewUserToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
+            transactionsToolStripMenuItem = new ToolStripMenuItem();
+            compliancesToolStripMenuItem = new ToolStripMenuItem();
+            violationsToolStripMenuItem = new ToolStripMenuItem();
             optionToolStripMenuItem = new ToolStripMenuItem();
             generateReportsToExcelToolStripMenuItem = new ToolStripMenuItem();
             generateReportsToPDFToolStripMenuItem = new ToolStripMenuItem();
@@ -2215,7 +2218,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, optionToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, transactionsToolStripMenuItem, optionToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1829, 24);
@@ -2249,6 +2252,26 @@
             exitToolStripMenuItem.Size = new Size(135, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+            // 
+            // transactionsToolStripMenuItem
+            // 
+            transactionsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { compliancesToolStripMenuItem, violationsToolStripMenuItem });
+            transactionsToolStripMenuItem.Name = "transactionsToolStripMenuItem";
+            transactionsToolStripMenuItem.Size = new Size(84, 20);
+            transactionsToolStripMenuItem.Text = "Transactions";
+            // 
+            // compliancesToolStripMenuItem
+            // 
+            compliancesToolStripMenuItem.Name = "compliancesToolStripMenuItem";
+            compliancesToolStripMenuItem.Size = new Size(180, 22);
+            compliancesToolStripMenuItem.Text = "Compliances";
+            compliancesToolStripMenuItem.Click += compliancesToolStripMenuItem_Click;
+            // 
+            // violationsToolStripMenuItem
+            // 
+            violationsToolStripMenuItem.Name = "violationsToolStripMenuItem";
+            violationsToolStripMenuItem.Size = new Size(180, 22);
+            violationsToolStripMenuItem.Text = "Violations";
             // 
             // optionToolStripMenuItem
             // 
@@ -2719,5 +2742,8 @@
         private ComboBox natureofbusinesscmbBox;
         private ToolStripMenuItem importDataFromExcelToolStripMenuItem;
         private ToolStripMenuItem createNewUserToolStripMenuItem;
+        private ToolStripMenuItem transactionsToolStripMenuItem;
+        private ToolStripMenuItem compliancesToolStripMenuItem;
+        private ToolStripMenuItem violationsToolStripMenuItem;
     }
 }

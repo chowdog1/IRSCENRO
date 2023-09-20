@@ -1573,5 +1573,10 @@ namespace Inspection_Report
         {
             new registerForm().Show();
         }
+
+        private void compliancesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Compliance().Show();
+        }
     }
 }

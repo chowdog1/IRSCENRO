@@ -49,3 +49,5 @@
 18/09/2023 2:03:04 pm - A-02979 test1: Updated Data
 18/09/2023 2:05:34 pm - dkjahdkjahd test1: Updated Data
 18/09/2023 2:27:55 pm - L-01809 test1: Updated Data
+20/09/2023 9:18:28 am - E-00982 test1: Deleted Data
+20/09/2023 9:19:42 am - J-00371 test1: Deleted Data
