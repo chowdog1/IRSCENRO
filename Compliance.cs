@@ -23,28 +23,14 @@ namespace Inspection_Report
             {
                 connection.Open();
 
-                string query = "SELECT * FROM Compliance";
-
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                DataTable dataTable = new DataTable();
-
-                adapter.Fill(dataTable);
-
-                dataGridView1.DataSource = dataTable;
-            }
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
                 string insertQuery = "INSERT INTO Compliance (AccountNo, BusinessName, Address, Barangay, BusinessStatus, Compliances) " +
                                      "SELECT i.AccountNo, i.BusinessName, i.Address, i.Barangay, i.BusinessStatus, i.SecuretheFF " +
                                      "FROM InspectionReport i " +
-                                     "WHERE i.EstablishmentHas = 'Violated City Ordinances' " +
+                                     "WHERE i.EstablishmentHas IN ('Violated City Ordinances', 'Notice/Warning') " +
                                      "AND NOT EXISTS (SELECT 1 FROM Compliance c WHERE c.AccountNo = i.AccountNo)";
 
                 string deleteQuery = "DELETE FROM Compliance " +
-                                     "WHERE AccountNo NOT IN (SELECT AccountNo FROM InspectionReport WHERE EstablishmentHas = 'Violated City Ordinances')";
+                                     "WHERE AccountNo NOT IN (SELECT AccountNo FROM InspectionReport WHERE EstablishmentHas IN ('Violated City Ordinances', 'Notice/Warning'))";
 
                 using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
                 using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
@@ -52,6 +38,98 @@ namespace Inspection_Report
                     int insertRowsAffected = insertCommand.ExecuteNonQuery();
 
                     int deleteRowsAffected = deleteCommand.ExecuteNonQuery();
+                    PopulateDataGridView();
+                }
+            }
+        }
+
+        private void confirmBtn_Click(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+
+                string update = "Update Compliance SET " +
+                                "Compliances = " +
+                                "CASE " +
+                                "WHEN LEN(ISNULL(@Compliances, '')) > 0 AND LEN(ISNULL(Compliances, '')) > 0 " +
+                                "THEN COALESCE(Compliances + ', ', '') + @Compliances " +
+                                "WHEN LEN(ISNULL(@Compliances, '')) > 0 " +
+                                "THEN @Compliances " +
+                                "ELSE Compliances " +
+                                "END, " +
+                                "Others = " +
+                                "CASE " +
+                                "WHEN LEN(ISNULL(@Others, '')) > 0 AND LEN(ISNULL(Others, '')) > 0 " +
+                                "THEN COALESCE(Others + ', ', '') + @Others " +
+                                "WHEN LEN(ISNULL(@Others, '')) > 0 " +
+                                "THEN @Others " +
+                                "ELSE Others " +
+                                "END, " +
+                                "IsComplied = CASE " +
+                                "WHEN LEN(ISNULL(@IsComplied, '')) > 0 THEN @IsComplied " +
+                                "ELSE IsComplied " +
+                                "END " +
+                                "WHERE AccountNo = @AccountNo";
+                using(SqlCommand cmd = new SqlCommand(update,con))
+                {
+                    cmd.Parameters.AddWithValue("@AccountNo", acctnotextBox.Text);
+                    cmd.Parameters.AddWithValue("@Compliances", string.Join(", ", compliancechklistBox.CheckedItems.Cast<string>()));
+                    cmd.Parameters.AddWithValue("@Others", otherstextBox.Text);
+                    cmd.Parameters.AddWithValue("@IsComplied", GetSelectedRadioButtonText(submittedyesradioBtn, submittednoradioBtn));
+
+                    try
+                    {
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Successfully Updated!");
+                            PopulateDataGridView();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No record found for the specified Account No.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine("Sql Error: " + ex.Message);
+                    }
+                }
+            }
+        }
+        private string GetSelectedRadioButtonText(params RadioButton[] radioButtons)
+        {
+            foreach (var radioButton in radioButtons)
+            {
+                if (radioButton.Checked)
+                {
+                    return radioButton.Text;
+                }
+            }
+            return string.Empty;
+        }
+        private void PopulateDataGridView()
+        {
+            string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+
+                string selectQuery = "SELECT * FROM Compliance";
+
+                using (SqlCommand cmd = new SqlCommand(selectQuery, con))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        dataGridView1.DataSource = dataTable;
+                    }
                 }
             }
         }
