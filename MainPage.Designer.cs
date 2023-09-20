@@ -440,7 +440,7 @@
             // securetheffchklistBox
             // 
             securetheffchklistBox.FormattingEnabled = true;
-            securetheffchklistBox.Items.AddRange(new object[] { "Environmental Compliance Certificate/Certificate of Non-Coverage (ECC/CNC)", "Wastewater Discharge Permit", "Hazardous Waste Generator ID", "Permit to Operate for Air Pollution Source Installation/Equipment", "Pollution Control Officer Accreditation Certificate", "Transport, Storage and Disposal Certificate", "Environmental Protection and Preservation Fee/Environmenta Compliance Fee", "Appoint an accredited Pollution Control Officer", "Provide waste segregation bin (Biodegradable)", "Provide waste segregation bin (Recyclable)", "Provide waste segregation bin (Residual)", "Provide waste segregation bin (Special Wastes)", "Proper waste segregation in accordance with the markings", "Installation of Grease Trap", "Installation of Exhaust System", "Installation of Septic Tank/Desludging Certificate issued by a DENR-EMB accredited hauler" });
+            securetheffchklistBox.Items.AddRange(new object[] { "Environmental Compliance Certificate/Certificate of Non-Coverage (ECC/CNC)", "Wastewater Discharge Permit", "Hazardous Waste Generator ID", "Permit to Operate for Air Pollution Source Installation or Equipment", "Pollution Control Officer Accreditation Certificate", "Transport, Storage and Disposal Certificate", "Environmental Protection and Preservation Fee/Environmenta Compliance Fee", "Appoint an accredited Pollution Control Officer", "Provide waste segregation bin (Biodegradable)", "Provide waste segregation bin (Recyclable)", "Provide waste segregation bin (Residual)", "Provide waste segregation bin (Special Wastes)", "Proper waste segregation in accordance with the markings", "Installation of Grease Trap", "Installation of Exhaust System", "Installation of Septic Tank/Desludging Certificate issued by a DENR-EMB accredited hauler" });
             securetheffchklistBox.Location = new Point(11, 538);
             securetheffchklistBox.Name = "securetheffchklistBox";
             securetheffchklistBox.Size = new Size(542, 130);
@@ -2263,14 +2263,14 @@
             // compliancesToolStripMenuItem
             // 
             compliancesToolStripMenuItem.Name = "compliancesToolStripMenuItem";
-            compliancesToolStripMenuItem.Size = new Size(180, 22);
+            compliancesToolStripMenuItem.Size = new Size(143, 22);
             compliancesToolStripMenuItem.Text = "Compliances";
             compliancesToolStripMenuItem.Click += compliancesToolStripMenuItem_Click;
             // 
             // violationsToolStripMenuItem
             // 
             violationsToolStripMenuItem.Name = "violationsToolStripMenuItem";
-            violationsToolStripMenuItem.Size = new Size(180, 22);
+            violationsToolStripMenuItem.Size = new Size(143, 22);
             violationsToolStripMenuItem.Text = "Violations";
             // 
             // optionToolStripMenuItem

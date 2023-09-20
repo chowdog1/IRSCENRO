@@ -38,10 +38,14 @@
             confirmBtn = new Button();
             cancelBtn = new Button();
             groupBox1 = new GroupBox();
-            submittedyesradioBtn = new RadioButton();
             submittednoradioBtn = new RadioButton();
+            submittedyesradioBtn = new RadioButton();
+            menuStrip1 = new MenuStrip();
+            optionToolStripMenuItem = new ToolStripMenuItem();
+            printToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView1
@@ -122,6 +126,7 @@
             cancelBtn.TabIndex = 8;
             cancelBtn.Text = "Cancel";
             cancelBtn.UseVisualStyleBackColor = true;
+            cancelBtn.Click += cancelBtn_Click;
             // 
             // groupBox1
             // 
@@ -134,6 +139,17 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Submitted?";
             // 
+            // submittednoradioBtn
+            // 
+            submittednoradioBtn.AutoSize = true;
+            submittednoradioBtn.Location = new Point(61, 33);
+            submittednoradioBtn.Name = "submittednoradioBtn";
+            submittednoradioBtn.Size = new Size(41, 19);
+            submittednoradioBtn.TabIndex = 1;
+            submittednoradioBtn.TabStop = true;
+            submittednoradioBtn.Text = "No";
+            submittednoradioBtn.UseVisualStyleBackColor = true;
+            // 
             // submittedyesradioBtn
             // 
             submittedyesradioBtn.AutoSize = true;
@@ -145,16 +161,28 @@
             submittedyesradioBtn.Text = "Yes";
             submittedyesradioBtn.UseVisualStyleBackColor = true;
             // 
-            // submittednoradioBtn
+            // menuStrip1
             // 
-            submittednoradioBtn.AutoSize = true;
-            submittednoradioBtn.Location = new Point(61, 33);
-            submittednoradioBtn.Name = "submittednoradioBtn";
-            submittednoradioBtn.Size = new Size(41, 19);
-            submittednoradioBtn.TabIndex = 1;
-            submittednoradioBtn.TabStop = true;
-            submittednoradioBtn.Text = "No";
-            submittednoradioBtn.UseVisualStyleBackColor = true;
+            menuStrip1.Items.AddRange(new ToolStripItem[] { optionToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(727, 24);
+            menuStrip1.TabIndex = 10;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // optionToolStripMenuItem
+            // 
+            optionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { printToolStripMenuItem });
+            optionToolStripMenuItem.Name = "optionToolStripMenuItem";
+            optionToolStripMenuItem.Size = new Size(56, 20);
+            optionToolStripMenuItem.Text = "Option";
+            // 
+            // printToolStripMenuItem
+            // 
+            printToolStripMenuItem.Name = "printToolStripMenuItem";
+            printToolStripMenuItem.Size = new Size(180, 22);
+            printToolStripMenuItem.Text = "Print";
+            printToolStripMenuItem.Click += printToolStripMenuItem_Click;
             // 
             // Compliance
             // 
@@ -171,12 +199,16 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dataGridView1);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "Compliance";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Compliance";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -195,5 +227,8 @@
         private GroupBox groupBox1;
         private RadioButton submittednoradioBtn;
         private RadioButton submittedyesradioBtn;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem optionToolStripMenuItem;
+        private ToolStripMenuItem printToolStripMenuItem;
     }
 }

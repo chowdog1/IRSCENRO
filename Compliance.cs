@@ -72,7 +72,7 @@ namespace Inspection_Report
                                 "ELSE IsComplied " +
                                 "END " +
                                 "WHERE AccountNo = @AccountNo";
-                using(SqlCommand cmd = new SqlCommand(update,con))
+                using (SqlCommand cmd = new SqlCommand(update, con))
                 {
                     cmd.Parameters.AddWithValue("@AccountNo", acctnotextBox.Text);
                     cmd.Parameters.AddWithValue("@Compliances", string.Join(", ", compliancechklistBox.CheckedItems.Cast<string>()));
@@ -132,6 +132,16 @@ namespace Inspection_Report
                     }
                 }
             }
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new PrintCompliance().Show();
         }
     }
 }
