@@ -12,6 +12,8 @@ using PdfSharp.Drawing;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using PdfSharp.Drawing.Layout;
+using System.Diagnostics;
+using System.IO;
 
 namespace Inspection_Report
 {
@@ -42,13 +44,6 @@ namespace Inspection_Report
                             string accountNo = reader["AccountNo"].ToString() ?? "DefaultValue";
                             string businessName = reader["BusinessName"].ToString() ?? "DefaultValue";
                             string compliances = reader["Compliances"].ToString() ?? "DefaultValue";
-
-                            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                            saveFileDialog1.Filter = "PDF Files|*.pdf";
-                            saveFileDialog1.Title = "Save PDF File";
-                            saveFileDialog1.FileName = "Receipt.pdf";
-
-                            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                             {
                                 PdfDocument document = new PdfDocument();
                                 PdfPage page = document.AddPage();
@@ -215,21 +210,47 @@ namespace Inspection_Report
                                     }
                                 }
 
-                                document.Save(saveFileDialog1.FileName);
+                                using (MemoryStream stream = new MemoryStream())
+                                {
+                                    document.Save(stream);
 
-                                MessageBox.Show("PDF saved successfully.");                            }
+                                    // Specify the full path to the Google Chrome executable
+                                    string chromePath = @"C:\Program Files\Google\Chrome\Application\chrome.exe"; // Update with the correct path
+
+                                    // Create a temporary PDF file to open in Chrome
+                                    string tempPdfPath = Path.Combine(Path.GetTempPath(), "temp.pdf");
+                                    File.WriteAllBytes(tempPdfPath, stream.ToArray());
+
+
+
+                                    // Open the temporary PDF file with Google Chrome
+                                    Process.Start(new ProcessStartInfo
+                                    {
+                                        FileName = chromePath,
+                                        Arguments = $"\"{tempPdfPath}\"",
+                                        UseShellExecute = true,
+                                    });
+                                }
+                            }
                         }
                         else
                         {
                             MessageBox.Show("Account not found.");
+                            this.Close();
                         }
                     }
+                    this.Close();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
