@@ -80,6 +80,11 @@ namespace Inspection_Report
             dopdatetimePicker.CustomFormat = "dd-MM-yyyy";
             dopdate = dopdatetimePicker.Value;
         }
+        private void apprehensiondatetimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            apprehensiondatetimePicker.CustomFormat = "dd-MM-yyyy";
+            apprehension = apprehensiondatetimePicker.Value;
+        }
         private void submitBtn_Click(object sender, EventArgs e)
         {
             string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
@@ -158,10 +163,9 @@ namespace Inspection_Report
                             MessageBox.Show("No record found for the specified Account No.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
-                    catch (SqlException ex)
+                    catch (Exception ex)
                     {
-                        Console.WriteLine("SQL Error: " + ex.Message);
-                        MessageBox.Show("An error occurred while updating the record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("An error occurred: " + ex.Message);
                     }
                 }
             }

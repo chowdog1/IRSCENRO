@@ -241,6 +241,7 @@
             apprehensiondatetimePicker.Name = "apprehensiondatetimePicker";
             apprehensiondatetimePicker.Size = new Size(213, 23);
             apprehensiondatetimePicker.TabIndex = 18;
+            apprehensiondatetimePicker.ValueChanged += apprehensiondatetimePicker_ValueChanged;
             // 
             // Violations
             // 
