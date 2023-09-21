@@ -111,3 +111,4 @@ E:\CENRO\Inspection Report\obj\Debug\net6.0-windows\Inspection_Report.ChangePass
 E:\CENRO\Inspection Report\obj\Debug\net6.0-windows\Inspection_Report.Request.resources
 E:\CENRO\Inspection Report\obj\Debug\net6.0-windows\Inspection_Report.Compliance.resources
 E:\CENRO\Inspection Report\obj\Debug\net6.0-windows\Inspection_Report.PrintCompliance.resources
+E:\CENRO\Inspection Report\obj\Debug\net6.0-windows\Inspection_Report.Violations.resources

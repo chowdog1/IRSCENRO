@@ -31,5 +31,8 @@
     <Compile Update="UserManagement.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Violations.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

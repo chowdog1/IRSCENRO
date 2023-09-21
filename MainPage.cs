@@ -314,6 +314,7 @@ namespace Inspection_Report
             hwidtxtBox.Clear();
             wdptxtBox.Clear();
             ecccnctxtBox.Clear();
+            ovrtextBox.Clear();
 
             // Clear combobox
             brgycmbBox.SelectedIndex = -1;
@@ -551,7 +552,7 @@ namespace Inspection_Report
                                      "CapacityGreaseTrap, FrequencyGrease, HaulerGrease, HasWasteWater, UsedOilProperlyDisposed, TypeofOil, " +
                                      "FrequencyofHaulingOil, HaulerOil, HasAirPollutionManager, DeviceType, MaintenanceProvider, PurposeOfInspection, " +
                                      "ReinspectDate, LevelofInspection, LandUse, OwnershipTerms, Lessee, StandAlone, EstablishmentStatus, InspectorObservation, " +
-                                     "Directives, Recommendations, Inspector, Encoder) " +
+                                     "Directives, OVR, Recommendations, Inspector, Encoder) " +
                                      "VALUES (@AccountNo, @BusinessName, @Address, @Barangay, @Date, @NatureOfBusiness, @EstablishmentHas, @BusinessStatus, " +
                                      "@EstablishmentIs, @Violations, @ComplyWithin, @SecuretheFF, @AttendSeminar, @MayorsPermit, @EPPFee, " +
                                      "@ECCCNC, @ECCCNCNo, @ECCDateIssued, @WDP, @WDPNo, @WDPDateIssued, @PTO, @PTONo, @PTODateIssued, @HWID, @HWIDNo, @HWIDDateIssued, " +
@@ -561,7 +562,7 @@ namespace Inspection_Report
                                      "@LocationGrease, @CapacityGreaseTrap, @FrequencyGrease, @HaulerGrease, @HasWasteWater, " +
                                      "@UsedOilProperlyDisposed, @TypeofOil, @FrequencyofHaulingOil, @HaulerOil, @HasAirPollutionManager, " +
                                      "@DeviceType, @MaintenanceProvider, @PurposeOfInspection, @ReinspectDate, @LevelofInspection, @LandUse, @OwnershipTerms, " +
-                                     "@Lessee, @StandAlone, @EstablishmentStatus, @InspectorObservation, @Directives, @Recommendations, @Inspector, @Encoder)";
+                                     "@Lessee, @StandAlone, @EstablishmentStatus, @InspectorObservation, @Directives, @OVR, @Recommendations, @Inspector, @Encoder)";
 
                 using (SqlCommand cmd = new SqlCommand(insertQuery, con))
                 {
@@ -690,6 +691,7 @@ namespace Inspection_Report
                     cmd.Parameters.AddWithValue("@EstablishmentStatus", GetSelectedRadioButtonText(statusoperationalRadioBtn, statusnooperationRadioBtn, statusclosedRadioBtn, statuswfhRadioBtn));
                     cmd.Parameters.AddWithValue("@InspectorObservation", obstxtBox.Text);
                     cmd.Parameters.AddWithValue("@Directives", directivestxtBox.Text);
+                    cmd.Parameters.AddWithValue("@OVR", ovrtextBox.Text);
                     cmd.Parameters.AddWithValue("@Recommendations", string.Join(", ", recommendationchklistBox.CheckedItems.Cast<string>()));
                     cmd.Parameters.AddWithValue("@Inspector", string.Join(", ", inspectorschklistBox.CheckedItems.Cast<string>()));
                     cmd.Parameters.AddWithValue("@Encoder", username);
@@ -850,6 +852,15 @@ namespace Inspection_Report
                                     "ELSE Directives " +
                                     "END, " +
 
+                                    "OVR = " +
+                                    "CASE " +
+                                    "WHEN LEN(ISNULL(@OVR, '')) > 0 AND LEN(ISNULL(OVR, '')) > 0 " +
+                                    "THEN COALESCE(OVR + '\n', '') + @OVR " +
+                                    "WHEN LEN(ISNULL(@OVR, '')) > 0 " +
+                                    "THEN @OVR " +
+                                    "ELSE OVR " +
+                                    "END, " +
+
                                     "Recommendations = " +
                                     "CASE " +
                                     "WHEN LEN(ISNULL(@Recommendations, '')) > 0 AND LEN(ISNULL(Recommendations, '')) > 0 " +
@@ -997,6 +1008,7 @@ namespace Inspection_Report
                         AddParameterIfNotEmpty(cmd, "@EstablishmentStatus", GetSelectedRadioButtonText(statusoperationalRadioBtn, statusnooperationRadioBtn, statusclosedRadioBtn, statuswfhRadioBtn));
                         AddParameterIfNotEmpty(cmd, "@InspectorObservation", obstxtBox.Text);
                         AddParameterIfNotEmpty(cmd, "@Directives", directivestxtBox.Text);
+                        AddParameterIfNotEmpty(cmd, "@OVR", ovrtextBox.Text);
                         AddParameterIfNotEmpty(cmd, "@Recommendations", string.Join(", ", recommendationchklistBox.CheckedItems.Cast<string>()));
                         AddParameterIfNotEmpty(cmd, "@Inspector", string.Join(", ", inspectorschklistBox.CheckedItems.Cast<string>()));
 
@@ -1577,6 +1589,11 @@ namespace Inspection_Report
         private void compliancesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Compliance().Show();
+        }
+
+        private void violationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Violations().Show();
         }
     }
 }

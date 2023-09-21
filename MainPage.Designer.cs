@@ -239,6 +239,8 @@
             label50 = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
+            label51 = new Label();
+            ovrtextBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -1494,7 +1496,7 @@
             // label29
             // 
             label29.AutoSize = true;
-            label29.Location = new Point(16, 666);
+            label29.Location = new Point(16, 714);
             label29.Name = "label29";
             label29.Size = new Size(107, 15);
             label29.TabIndex = 49;
@@ -1504,7 +1506,7 @@
             // 
             recommendationchklistBox.FormattingEnabled = true;
             recommendationchklistBox.Items.AddRange(new object[] { "Reinspection/Monitoring", "For Seminar", "For business establishment's compliance to the required pollution mitigating measures", "For endorsement to BPLO for the issuance of Cease and Desist order", "Issuance of Certificate of Environmental Compliance", "For Case Conference", "For Case Termination/Dismissal" });
-            recommendationchklistBox.Location = new Point(16, 689);
+            recommendationchklistBox.Location = new Point(16, 737);
             recommendationchklistBox.Name = "recommendationchklistBox";
             recommendationchklistBox.Size = new Size(441, 130);
             recommendationchklistBox.TabIndex = 50;
@@ -1512,7 +1514,7 @@
             // label30
             // 
             label30.AutoSize = true;
-            label30.Location = new Point(16, 827);
+            label30.Location = new Point(16, 875);
             label30.Name = "label30";
             label30.Size = new Size(61, 15);
             label30.TabIndex = 51;
@@ -1522,7 +1524,7 @@
             // 
             inspectorschklistBox.FormattingEnabled = true;
             inspectorschklistBox.Items.AddRange(new object[] { "Nina Tan", "Jaycel Eden", "Robin Romero", "Marc Joel Rato", "Vincent Sarmiento", "Jeffrey Basco" });
-            inspectorschklistBox.Location = new Point(17, 849);
+            inspectorschklistBox.Location = new Point(17, 897);
             inspectorschklistBox.Name = "inspectorschklistBox";
             inspectorschklistBox.Size = new Size(440, 112);
             inspectorschklistBox.TabIndex = 52;
@@ -2272,6 +2274,7 @@
             violationsToolStripMenuItem.Name = "violationsToolStripMenuItem";
             violationsToolStripMenuItem.Size = new Size(143, 22);
             violationsToolStripMenuItem.Text = "Violations";
+            violationsToolStripMenuItem.Click += violationsToolStripMenuItem_Click;
             // 
             // optionToolStripMenuItem
             // 
@@ -2425,6 +2428,8 @@
             // 
             panel3.AutoScroll = true;
             panel3.BorderStyle = BorderStyle.Fixed3D;
+            panel3.Controls.Add(ovrtextBox);
+            panel3.Controls.Add(label51);
             panel3.Controls.Add(label26);
             panel3.Controls.Add(purposecmbBox);
             panel3.Controls.Add(groupBox14);
@@ -2448,6 +2453,22 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(483, 556);
             panel3.TabIndex = 78;
+            // 
+            // label51
+            // 
+            label51.AutoSize = true;
+            label51.Location = new Point(19, 677);
+            label51.Name = "label51";
+            label51.Size = new Size(33, 15);
+            label51.TabIndex = 74;
+            label51.Text = "OVR:";
+            // 
+            // ovrtextBox
+            // 
+            ovrtextBox.Location = new Point(65, 674);
+            ovrtextBox.Name = "ovrtextBox";
+            ovrtextBox.Size = new Size(240, 23);
+            ovrtextBox.TabIndex = 75;
             // 
             // MainPage
             // 
@@ -2745,5 +2766,7 @@
         private ToolStripMenuItem transactionsToolStripMenuItem;
         private ToolStripMenuItem compliancesToolStripMenuItem;
         private ToolStripMenuItem violationsToolStripMenuItem;
+        private TextBox ovrtextBox;
+        private Label label51;
     }
 }
