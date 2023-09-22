@@ -32,7 +32,7 @@
             lblBusinessName = new Label();
             lblApprehension = new Label();
             lblInspectors = new Label();
-            label5 = new Label();
+            lblTotal = new Label();
             lblOVR = new Label();
             lblViolations = new Label();
             SuspendLayout();
@@ -40,81 +40,83 @@
             // lblAccountNo
             // 
             lblAccountNo.AutoSize = true;
-            lblAccountNo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblAccountNo.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblAccountNo.Location = new Point(26, 40);
             lblAccountNo.Name = "lblAccountNo";
-            lblAccountNo.Size = new Size(101, 21);
+            lblAccountNo.Size = new Size(111, 16);
             lblAccountNo.TabIndex = 0;
             lblAccountNo.Text = "Account No.: ";
             // 
             // lblBusinessName
             // 
             lblBusinessName.AutoSize = true;
-            lblBusinessName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblBusinessName.Location = new Point(26, 86);
+            lblBusinessName.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblBusinessName.Location = new Point(26, 66);
             lblBusinessName.Name = "lblBusinessName";
-            lblBusinessName.Size = new Size(123, 21);
+            lblBusinessName.Size = new Size(127, 16);
             lblBusinessName.TabIndex = 1;
             lblBusinessName.Text = "Business Name: ";
             // 
             // lblApprehension
             // 
             lblApprehension.AutoSize = true;
-            lblApprehension.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblApprehension.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblApprehension.Location = new Point(541, 40);
             lblApprehension.Name = "lblApprehension";
-            lblApprehension.Size = new Size(150, 21);
+            lblApprehension.Size = new Size(159, 16);
             lblApprehension.TabIndex = 2;
             lblApprehension.Text = "Apprehension Date: ";
             // 
             // lblInspectors
             // 
             lblInspectors.AutoSize = true;
-            lblInspectors.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblInspectors.Location = new Point(541, 86);
+            lblInspectors.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblInspectors.Location = new Point(541, 66);
             lblInspectors.Name = "lblInspectors";
-            lblInspectors.Size = new Size(88, 21);
+            lblInspectors.Size = new Size(103, 16);
             lblInspectors.TabIndex = 3;
             lblInspectors.Text = "Inspectors: ";
             // 
-            // label5
+            // lblTotal
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(26, 536);
-            label5.Name = "label5";
-            label5.Size = new Size(112, 37);
-            label5.TabIndex = 4;
-            label5.Text = "TOTAL: ";
+            lblTotal.AccessibleName = "";
+            lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Courier New", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTotal.Location = new Point(26, 407);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(126, 31);
+            lblTotal.TabIndex = 4;
+            lblTotal.Text = "TOTAL: ";
             // 
             // lblOVR
             // 
             lblOVR.AutoSize = true;
-            lblOVR.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblOVR.Location = new Point(26, 142);
+            lblOVR.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblOVR.Location = new Point(26, 103);
             lblOVR.Name = "lblOVR";
-            lblOVR.Size = new Size(49, 21);
+            lblOVR.Size = new Size(47, 16);
             lblOVR.TabIndex = 5;
             lblOVR.Text = "OVR: ";
             // 
             // lblViolations
             // 
             lblViolations.AutoSize = true;
-            lblViolations.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblViolations.Location = new Point(26, 201);
+            lblViolations.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblViolations.Location = new Point(26, 143);
             lblViolations.Name = "lblViolations";
-            lblViolations.Size = new Size(82, 21);
+            lblViolations.Size = new Size(62, 13);
             lblViolations.TabIndex = 6;
             lblViolations.Text = "Violations:";
+            lblViolations.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // PaymentBreakdown
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(928, 634);
+            ClientSize = new Size(859, 475);
             Controls.Add(lblViolations);
             Controls.Add(lblOVR);
-            Controls.Add(label5);
+            Controls.Add(lblTotal);
             Controls.Add(lblInspectors);
             Controls.Add(lblApprehension);
             Controls.Add(lblBusinessName);
@@ -132,7 +134,7 @@
         private Label lblBusinessName;
         private Label lblApprehension;
         private Label lblInspectors;
-        private Label label5;
+        private Label lblTotal;
         private Label lblOVR;
         private Label lblViolations;
     }

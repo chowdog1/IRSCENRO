@@ -239,8 +239,8 @@
             label50 = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
-            label51 = new Label();
             ovrtextBox = new TextBox();
+            label51 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -358,7 +358,7 @@
             // 
             violationschklistBox.Enabled = false;
             violationschklistBox.FormattingEnabled = true;
-            violationschklistBox.Items.AddRange(new object[] { "3504-2A C.O. #35-2004 SEC. 2A (NO SEGREGATION)", "3099-5C C.O. #30-1999   SEC. 5C (NO LABELED MARK)", "9494-1 C.O. #94-1994   SEC. 1 (NO COVERED)", "5F-03D C.O. #91-2013 SEC. 5F-03D (NO ANTI-POLLUTION DEVICES)", "911-31 C.O. #09-2011   SEC. 3-1 (ANTI-LITTERING)", "2111-142 C.O. #21-2011  SEC. 14-2 (FAILURE TO DESLUDGE SEPTIC TANK)", "5F-03E C.O. #91-2013 SEC. 5F-03E (NO DENR-EMB PERMITS)", "5F-03B C.O. #91-2013 SEC. 5F-03B (NO PCO)", "1511-1B C.O. #15-2011  SEC. 1B (PROPER DISPOSAL OF USED COOKING OIL)", "5F-03A C.O. #91-2013 SEC. 5F-03A (FAILURE TO PAY EPP FEE)", "5F-03C C.O. #91-2013 SEC. 5F-03C (Refusal of ENTRY)", "517-A C.O. #05-2017 SEC. A (SMOKING IN PUBLIC PLACES)", "517-B C.O. #05-2017 SEC. B (PERSON INCHARGE)", "517-H C.O. #05-2017 SEC. H (SELLING TOBACCO W/O PERMIT)", "517-P C.O. #05-2017 SEC. P (DISPLAY & PLACE TOBACCO PRODUCT)" });
+            violationschklistBox.Items.AddRange(new object[] { "3504-2A C.O. #35-2004 SEC. 2A (NO SEGREGATION)", "3099-5C C.O. #30-1999 SEC. 5C (NO LABELED MARK)", "9494-1 C.O. #94-1994 SEC. 1 (NO COVERED)", "5F-03D C.O. #91-2013 SEC. 5F-03D (NO ANTI-POLLUTION DEVICES)", "911-31 C.O. #09-2011 SEC. 3-1 (ANTI-LITTERING)", "2111-142 C.O. #21-2011 SEC. 14-2 (FAILURE TO DESLUDGE SEPTIC TANK)", "5F-03E C.O. #91-2013 SEC. 5F-03E (NO DENR-EMB PERMITS)", "5F-03B C.O. #91-2013 SEC. 5F-03B (NO PCO)", "1511-1B C.O. #15-2011  SEC. 1B (PROPER DISPOSAL OF USED COOKING OIL)", "5F-03A C.O. #91-2013 SEC. 5F-03A (FAILURE TO PAY EPP FEE)", "5F-03C C.O. #91-2013 SEC. 5F-03C (Refusal of ENTRY)", "517-A C.O. #05-2017 SEC. A (SMOKING IN PUBLIC PLACES)", "517-B C.O. #05-2017 SEC. B (PERSON INCHARGE)", "517-H C.O. #05-2017 SEC. H (SELLING TOBACCO W/O PERMIT)", "517-P C.O. #05-2017 SEC. P (DISPLAY & PLACE TOBACCO PRODUCT)" });
             violationschklistBox.Location = new Point(10, 343);
             violationschklistBox.Name = "violationschklistBox";
             violationschklistBox.Size = new Size(318, 148);
@@ -2454,6 +2454,13 @@
             panel3.Size = new Size(483, 556);
             panel3.TabIndex = 78;
             // 
+            // ovrtextBox
+            // 
+            ovrtextBox.Location = new Point(65, 674);
+            ovrtextBox.Name = "ovrtextBox";
+            ovrtextBox.Size = new Size(240, 23);
+            ovrtextBox.TabIndex = 75;
+            // 
             // label51
             // 
             label51.AutoSize = true;
@@ -2462,13 +2469,6 @@
             label51.Size = new Size(33, 15);
             label51.TabIndex = 74;
             label51.Text = "OVR:";
-            // 
-            // ovrtextBox
-            // 
-            ovrtextBox.Location = new Point(65, 674);
-            ovrtextBox.Name = "ovrtextBox";
-            ovrtextBox.Size = new Size(240, 23);
-            ovrtextBox.TabIndex = 75;
             // 
             // MainPage
             // 
