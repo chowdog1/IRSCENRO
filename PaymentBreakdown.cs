@@ -34,7 +34,16 @@ namespace Inspection_Report
                 lblAccountNo.Text = "Account Number: " + violation.AccountNo;
                 lblBusinessName.Text = "Business Name: " + violation.BusinessName;
                 lblApprehension.Text = "Apprehension Date: " + violation.ApprehensionDate?.ToString("yyyy-MM-dd");
-                lblViolations.Text = "Violation: \n" + violation.ViolationCommitted;
+                if (!string.IsNullOrEmpty(violation.ViolationCommitted))
+                {
+                    // Split the violations by commas and add each one as a new line
+                    string[] violations = violation.ViolationCommitted.Split(',');
+
+                    foreach (string singleViolation in violations)
+                    {
+                        lblViolations.Text += "\n" + singleViolation.Trim(); // Trim to remove leading/trailing spaces
+                    }
+                }
                 lblInspectors.Text = "Inspector: " + violation.Inspector;
                 lblOVR.Text = "OVR: " + violation.OVR;
             }
