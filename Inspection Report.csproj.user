@@ -16,6 +16,9 @@
     <Compile Update="MainPage.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="PaymentBreakdown.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="PrintCompliance.cs">
       <SubType>Form</SubType>
     </Compile>

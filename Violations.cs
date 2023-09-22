@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,23 +36,38 @@ namespace Inspection_Report
             {
                 connection.Open();
 
-                string insertQuery = "INSERT INTO Violations (AccountNo, BusinessName, Address, Barangay, BusinessStatus, ApprehensionDate, Violation, InspectorEEandEO, OVR) " +
-                                     "SELECT i.AccountNo, i.BusinessName, i.Address, i.Barangay, i.BusinessStatus, i.Date, i.Violations, i.Inspector, i.OVR " +
-                                     "FROM InspectionReport i " +
-                                     "WHERE i.EstablishmentHas IN ('Violated City Ordinances') " +
-                                     "AND NOT EXISTS (SELECT 1 FROM Violations v WHERE v.AccountNo = i.AccountNo)";
+                string insertOrUpdateQuery = @"
+                                    MERGE INTO Violations AS target
+                                    USING (
+                                        SELECT i.AccountNo, i.BusinessName, i.Address, i.Barangay, i.BusinessStatus, i.Date AS ApprehensionDate, i.Violations, i.Inspector, i.OVR
+                                        FROM InspectionReport i
+                                        WHERE i.EstablishmentHas = 'Violated City Ordinances'
+                                    ) AS source
+                                    ON target.AccountNo = source.AccountNo
+                                    WHEN MATCHED THEN
+                                        UPDATE SET
+                                            target.BusinessName = source.BusinessName,
+                                            target.Address = source.Address,
+                                            target.Barangay = source.Barangay,
+                                            target.BusinessStatus = source.BusinessStatus,
+                                            target.ApprehensionDate = source.ApprehensionDate,
+                                            target.Violation = source.Violations,
+                                            target.InspectorEEandEO = source.Inspector,
+                                            target.OVR = source.OVR
+                                    WHEN NOT MATCHED BY TARGET THEN
+                                        INSERT (AccountNo, BusinessName, Address, Barangay, BusinessStatus, ApprehensionDate, Violation, InspectorEEandEO, OVR)
+                                        VALUES (source.AccountNo, source.BusinessName, source.Address, source.Barangay, source.BusinessStatus, source.ApprehensionDate, source.Violations, source.Inspector, source.OVR)
+                                    WHEN NOT MATCHED BY SOURCE THEN
+                                        DELETE;
+                                ";
 
-                string deleteQuery = "DELETE FROM Violations " +
-                                     "WHERE AccountNo NOT IN (SELECT AccountNo FROM InspectionReport WHERE EstablishmentHas = 'Violated City Ordinances')";
-
-                using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
-                using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
+                using (SqlCommand insertOrUpdateCommand = new SqlCommand(insertOrUpdateQuery, connection))
                 {
-                    int insertRowsAffected = insertCommand.ExecuteNonQuery();
-
-                    int deleteRowsAffected = deleteCommand.ExecuteNonQuery();
-                    PopulateDataGridView();
+                    int rowsAffected = insertOrUpdateCommand.ExecuteNonQuery();
+                    // rowsAffected will contain the total number of rows affected by INSERT, UPDATE, and DELETE operations
                 }
+
+                PopulateDataGridView();
             }
         }
         private void PopulateDataGridView()
@@ -195,15 +211,55 @@ namespace Inspection_Report
             }
             return string.Empty;
         }
-
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void paymentbreakdownBtn_Click(object sender, EventArgs e)
         {
+            string accountNo = acctnotextBox.Text;
+            string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
 
+            // Assuming you have a database connection
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Create a SQL command to retrieve violations for the specified account number
+                string sqlQuery = "SELECT AccountNo, BusinessName, ApprehensionDate, Violation, InspectorEEandEO, OVR FROM Violations WHERE AccountNo = @AccountNo";
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.AddWithValue("@AccountNo", accountNo);
+
+                List<ViolationClass> violationsList = new List<ViolationClass>();
+
+                // Execute the query and populate the violations list
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ViolationClass violation = new ViolationClass
+                        {
+                            AccountNo = reader["AccountNo"].ToString(),
+                            BusinessName = reader["BusinessName"].ToString(),
+                            ApprehensionDate = DateTime.TryParseExact(reader["ApprehensionDate"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime apprehensionDate)
+                            ? (DateTime?)apprehensionDate
+                            : null,
+                            Inspector = reader["InspectorEEandEO"].ToString(),
+                            ViolationCommitted = reader["Violation"].ToString(),
+                            OVR = reader["OVR"].ToString()
+                        };
+
+                        violationsList.Add(violation);
+                    }
+                }
+
+                // Close the database connection
+                connection.Close();
+
+                // Open the Payment Breakdown Form and pass the accountNo and violationsList as parameters
+                PaymentBreakdown paymentBreakdownForm = new PaymentBreakdown(accountNo, violationsList);
+                paymentBreakdownForm.ShowDialog();
+            }
         }
     }
 }
