@@ -95,8 +95,8 @@ namespace Inspection_Report
                 string update = "UPDATE Violations SET " +
                                 "ApprehensionDate = CASE " +
                                 "WHEN LEN(ISNULL(@ApprehensionDate, '')) > 0 " +
-                                "THEN COALESCE(ApprehensionDate + ', ', '') + @ApprehensionDate " +
-                                "ELSE ApprehensionDate " +
+                                "THEN COALESCE(CONVERT(NVARCHAR(MAX), ApprehensionDate, 120) + ', ', '') + CONVERT(NVARCHAR(MAX), @ApprehensionDate, 120) " +
+                                "ELSE COALESCE(CONVERT(NVARCHAR(MAX), ApprehensionDate, 120), '') " +
                                 "END, " +
                                 "InspectorEEandEO = CASE " +
                                 "WHEN LEN(ISNULL(@InspectorEEandEO, '')) > 0 AND LEN(ISNULL(InspectorEEandEO, '')) > 0 " +
@@ -132,21 +132,35 @@ namespace Inspection_Report
                                 "END, " +
                                 "DatePaid = CASE " +
                                 "WHEN LEN(ISNULL(@DatePaid, '')) > 0 " +
-                                "THEN COALESCE(DatePaid + ', ', '') + @DatePaid " +
-                                "ELSE DatePaid " +
+                                "THEN COALESCE(CONVERT(NVARCHAR(MAX), DatePaid, 120) + ', ', '') + CONVERT(NVARCHAR(MAX), @DatePaid, 120) " +
+                                "ELSE COALESCE(CONVERT(NVARCHAR(MAX), DatePaid, 120), '') " +
                                 "END " +
                                 "WHERE AccountNo = @AccountNo";
 
                 using (SqlCommand cmd = new SqlCommand(update, con))
                 {
                     cmd.Parameters.AddWithValue("@AccountNo", acctnotextBox.Text);
-                    cmd.Parameters.AddWithValue("@ApprehensionDate", apprehensiondatetimePicker.Value.ToString("dd-MM-yyyy"));
+                    if (apprehension.HasValue)
+                    {
+                        cmd.Parameters.AddWithValue("@ApprehensionDate", apprehensiondatetimePicker.Value.ToString("yyyy-MM-dd"));
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@ApprehensionDate", DBNull.Value);
+                    }
                     cmd.Parameters.AddWithValue("@InspectorEEandEO", string.Join(", ", eoeechklistBox.CheckedItems.Cast<string>()));
                     cmd.Parameters.AddWithValue("@Violation", string.Join(", ", violationschklistBox.CheckedItems.Cast<string>()));
                     cmd.Parameters.AddWithValue("@OVR", ovrtextBox.Text);
                     cmd.Parameters.AddWithValue("@Paid", GetSelectedRadioButtonText(paidyesradioBtn, paidnoradioBtn));
                     cmd.Parameters.AddWithValue("@ReceiptNo", ornotextBox.Text);
-                    cmd.Parameters.AddWithValue("@DatePaid", dopdatetimePicker.Value.ToString("dd-MM-yyyy"));
+                    if (dopdate.HasValue)
+                    {
+                        cmd.Parameters.AddWithValue("@DatePaid", dopdatetimePicker.Value.ToString("yyyy-MM-dd"));
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@DatePaid", DBNull.Value);
+                    }
 
                     try
                     {
@@ -165,7 +179,7 @@ namespace Inspection_Report
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("An error occurred: " + ex.Message);
+                        MessageBox.Show("An error occured: " + ex.Message);
                     }
                 }
             }
