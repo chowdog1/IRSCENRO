@@ -70,6 +70,29 @@ namespace Inspection_Report
                 PopulateDataGridView();
             }
         }
+        void ClearSelectedItems(CheckedListBox listBox)
+        {
+            for (int i = 0; i < listBox.Items.Count; i++)
+            {
+                listBox.SetItemChecked(i, false);
+            }
+        }
+        private void ClearForm()
+        {
+            dopdate = null;
+            apprehension = null;
+
+            acctnotextBox.Clear();
+            ornotextBox.Clear();
+            paidyesradioBtn.Checked = false;
+            paidnoradioBtn.Checked = false;
+            ClearSelectedItems(violationschklistBox);
+            ClearSelectedItems(eoeechklistBox);
+            dopdatetimePicker.Format = DateTimePickerFormat.Custom;
+            dopdatetimePicker.CustomFormat = " ";
+            apprehensiondatetimePicker.Format = DateTimePickerFormat.Custom;
+            apprehensiondatetimePicker.CustomFormat = " ";
+        }
         private void PopulateDataGridView()
         {
             string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
@@ -103,6 +126,14 @@ namespace Inspection_Report
         }
         private void submitBtn_Click(object sender, EventArgs e)
         {
+            string accountNo = acctnotextBox.Text;
+
+            if (string.IsNullOrEmpty(accountNo))
+            {
+                MessageBox.Show("Please enter an account number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Exit the function
+            }
+
             string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -187,6 +218,7 @@ namespace Inspection_Report
                         {
                             MessageBox.Show("Successfully Updated!");
                             PopulateDataGridView();
+                            ClearForm();
                         }
                         else
                         {
@@ -218,6 +250,13 @@ namespace Inspection_Report
         private void paymentbreakdownBtn_Click(object sender, EventArgs e)
         {
             string accountNo = acctnotextBox.Text;
+
+            if (string.IsNullOrEmpty(accountNo))
+            {
+                MessageBox.Show("Please enter an account number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Exit the function
+            }
+
             string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
 
             // Assuming you have a database connection
