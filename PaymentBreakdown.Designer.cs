@@ -35,6 +35,7 @@
             lblTotal = new Label();
             lblOVR = new Label();
             lblViolations = new Label();
+            printBtn = new Button();
             SuspendLayout();
             // 
             // lblAccountNo
@@ -109,11 +110,22 @@
             lblViolations.Text = "Violations:";
             lblViolations.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // printBtn
+            // 
+            printBtn.Location = new Point(690, 404);
+            printBtn.Name = "printBtn";
+            printBtn.Size = new Size(128, 42);
+            printBtn.TabIndex = 7;
+            printBtn.Text = "Print";
+            printBtn.UseVisualStyleBackColor = true;
+            printBtn.Click += printBtn_Click;
+            // 
             // PaymentBreakdown
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(859, 475);
+            Controls.Add(printBtn);
             Controls.Add(lblViolations);
             Controls.Add(lblOVR);
             Controls.Add(lblTotal);
@@ -137,5 +149,6 @@
         private Label lblTotal;
         private Label lblOVR;
         private Label lblViolations;
+        private Button printBtn;
     }
 }

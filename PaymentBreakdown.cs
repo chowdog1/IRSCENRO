@@ -1,9 +1,17 @@
-﻿using System;
+﻿using PdfSharp.Pdf;
+using PdfSharp.Drawing;
+using System.Data.SqlClient;
+using System.Text.RegularExpressions;
+using PdfSharp.Drawing.Layout;
+using System.Diagnostics;
+using System.IO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -126,6 +134,92 @@ namespace Inspection_Report
                 lblViolations.Text = "Violation: ";
                 lblInspectors.Text = "Inspector: ";
                 lblOVR.Text = "OVR: ";
+            }
+        }
+
+        private void printBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PdfDocument document = new PdfDocument();
+                PdfPage page = document.AddPage();
+                XGraphics gfx = XGraphics.FromPdfPage(page);
+                XFont regularFont = new XFont("Courier New", 8);
+                XFont labelFont = new XFont("Courier New", 8, XFontStyle.Bold);
+                XFont LabelTotalFont = new XFont("Courier New",12, XFontStyle.Bold);
+                XFont RegularTotalFont = new XFont("Courier New", 12);
+                XTextFormatter tf = new XTextFormatter(gfx);
+
+                string accountno = lblAccountNo.Text;
+                string businessname = lblBusinessName.Text;
+                string ovr = lblOVR.Text;
+                string inspectors = lblInspectors.Text;
+                string apprehension = lblApprehension.Text;
+                string violations = lblViolations.Text;
+                string totalfee = lblTotal.Text;
+
+                tf.DrawString("Account Number:", labelFont, XBrushes.Black, new XRect(30, 50, 1000, 20), XStringFormats.TopLeft);
+                tf.DrawString(accountno.Replace("Account Number:", ""), regularFont, XBrushes.Black, new XRect(100, 50, 1000, 20), XStringFormats.TopLeft);
+                tf.DrawString("Business Name:", labelFont, XBrushes.Black, new XRect(30, 80, 1000, 20), XStringFormats.TopLeft);
+                tf.DrawString(businessname.Replace("Business Name:", ""), regularFont, XBrushes.Black, new XRect(100, 80, 1000, 20), XStringFormats.TopLeft);
+                tf.DrawString("Apprehension Date:", labelFont, XBrushes.Black, new XRect(390, 50, 1000, 20), XStringFormats.TopLeft);
+                tf.DrawString(apprehension.Replace("Apprehension Date:", ""), regularFont, XBrushes.Black, new XRect(480, 50, 1000, 20), XStringFormats.TopLeft);
+                tf.DrawString("Inspectors:", labelFont, XBrushes.Black, new XRect(390, 80, 1000, 1000), XStringFormats.TopLeft);
+                string[] inspectorLines = inspectors.Replace("Inspectors:", "").Split('\n');
+                float yCoordinate = 80;
+
+                foreach (var line in inspectorLines)
+                {
+                    tf.DrawString(line.Trim(), regularFont, XBrushes.Black, new XRect(450, yCoordinate, 1000, 1000), XStringFormats.TopLeft);
+                    yCoordinate += regularFont.Height;
+                }
+                tf.DrawString("OVR:", labelFont, XBrushes.Black, new XRect(30, 120, 1000, 20), XStringFormats.TopLeft);
+                tf.DrawString(ovr.Replace("OVR:",""),regularFont, XBrushes.Black, new XRect(50,120,1000,20), XStringFormats.TopLeft);
+                tf.DrawString("Violations:", labelFont, XBrushes.Black, new XRect(30, 160, 1000, 1000), XStringFormats.TopLeft);
+                string[] violationLines = violations.Replace("Violations:", "").Split('\n');
+                float yCoordinates = 170;
+
+                foreach (var line in violationLines)
+                {
+                    tf.DrawString(line.Trim(), regularFont, XBrushes.Black, new XRect(30, yCoordinates, 1000, 1000), XStringFormats.TopLeft);
+                    yCoordinates += regularFont.Height;
+                }
+                tf.DrawString("Total Fees:", LabelTotalFont, XBrushes.Black, new XRect(260, 310, 1000, 1000), XStringFormats.TopLeft);
+                tf.DrawString(totalfee.Replace("Total Fees:",""), RegularTotalFont, XBrushes.Black, new XRect(340, 310, 1000, 1000), XStringFormats.TopLeft);
+                tf.DrawString("ISSUED BY:_____________________________", labelFont, XBrushes.Black, new XRect(30,390,1000,1000), XStringFormats.TopLeft);
+
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    document.Save(stream);
+
+                    // Specify the full path to the Google Chrome executable
+                    string chromePath = @"C:\Program Files (x86)\AVAST Software\Browser\Application\AvastBrowser.exe"; // Update with the correct path
+
+                    // Create a temporary PDF file to open in Chrome
+                    string tempPdfPath = Path.Combine(Path.GetTempPath(), "temp.pdf");
+
+                    // Check if the temporary PDF file exists
+                    if (File.Exists(tempPdfPath))
+                    {
+                        // Delete the temporary PDF file
+                        File.Delete(tempPdfPath);
+                    }
+
+                    // Create the temporary PDF file
+                    File.WriteAllBytes(tempPdfPath, stream.ToArray());
+
+                    // Open the temporary PDF file with Google Chrome
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = chromePath,
+                        Arguments = $"\"{tempPdfPath}\"",
+                        UseShellExecute = true,
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
     }

@@ -215,7 +215,7 @@ namespace Inspection_Report
                                     document.Save(stream);
 
                                     // Specify the full path to the Google Chrome executable
-                                    string chromePath = @"C:\Program Files\Google\Chrome\Application\chrome.exe"; // Update with the correct path
+                                    string chromePath = @"C:\Program Files (x86)\AVAST Software\Browser\Application\AvastBrowser.exe"; // Update with the correct path
 
                                     // Create a temporary PDF file to open in Chrome
                                     string tempPdfPath = Path.Combine(Path.GetTempPath(), "temp.pdf");
