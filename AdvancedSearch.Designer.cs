@@ -194,7 +194,7 @@
             // establishmentisadvcmbBox
             // 
             establishmentisadvcmbBox.FormattingEnabled = true;
-            establishmentisadvcmbBox.Items.AddRange(new object[] { "Priority", "Less Priority", "Closed/Non-Operational", "Review for CEC", "Moveout/Pull-out/Unlocated" });
+            establishmentisadvcmbBox.Items.AddRange(new object[] { "Priority", "Less Priority", "Closed/Non-Operational", "Review for CEC", "Moveout/Pull-out/Unlocated/Others" });
             establishmentisadvcmbBox.Location = new Point(419, 70);
             establishmentisadvcmbBox.Name = "establishmentisadvcmbBox";
             establishmentisadvcmbBox.Size = new Size(186, 23);

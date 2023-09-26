@@ -50,18 +50,18 @@ namespace Inspection_Report
                     { "3504-2A C.O. #35-2004 SEC. 2A (NO SEGREGATION)", 1000.0m },
                     { "3099-5C C.O. #30-1999 SEC. 5C (NO LABELED MARK)", 500.0m },
                     { "9494-1 C.O. #94-1994 SEC. 1 (NO COVERED)", 500.0m },
-                    { "5F-03D C.O. #91-2013 SEC. 5F-03D (NO ANTI-POLLUTION DEVICES)", 1000.0m },
-                    { "911-31 C.O. #09-2011 SEC. 3-1 (ANTI-LITTERING)", 1500.0m },
-                    { "2111-142 C.O. #21-2011 SEC. 14-2 (FAILURE TO DESLUDGE SEPTIC TANK)", 2000.0m },
-                    { "5F-03E C.O. #91-2013 SEC. 5F-03E (NO DENR-EMB PERMITS)", 3500.0m },
-                    { "5F-03B C.O. #91-2013 SEC. 5F-03B (NO PCO)", 2000.0m },
-                    { "1511-1B C.O. #15-2011 SEC. 1B (PROPER DISPOSAL OF USED COOKING OIL)", 2000.0m },
-                    { "5F-03A C.O. #91-2013 SEC. 5F-03A (FAILURE TO PAY EPP FEE)", 1000.0m },
-                    { "5F-03C C.O. #91-2013 SEC. 5F-03C (Refusal of ENTRY)", 3000.0m },
-                    { "517-A C.O. #05-2017 SEC. A (SMOKING IN PUBLIC PLACES)", 500.0m },
+                    { "5F-03D C.O. #91-2013 SEC. 5F-03D (NO ANTI-POLLUTION DEVICES)", 5000.0m },
+                    { "911-31 C.O. #09-2011 SEC. 3-1 (ANTI-LITTERING)", 500.0m },
+                    { "2111-142 C.O. #21-2011 SEC. 14-2 (FAILURE TO DESLUDGE SEPTIC TANK)", 3000.0m },
+                    { "5F-03E C.O. #91-2013 SEC. 5F-03E (NO DENR-EMB PERMITS)", 5000.0m },
+                    { "5F-03B C.O. #91-2013 SEC. 5F-03B (NO PCO)", 2500.0m },
+                    { "1511-1B C.O. #15-2011 SEC. 1B (PROPER DISPOSAL OF USED COOKING OIL)", 5000.0m },
+                    { "5F-03A C.O. #91-2013 SEC. 5F-03A (FAILURE TO PAY EPP FEE)", 2500.0m },
+                    { "5F-03C C.O. #91-2013 SEC. 5F-03C (Refusal of ENTRY)", 2500.0m },
+                    { "517-A C.O. #05-2017 SEC. A (SMOKING IN PUBLIC PLACES)", 1000.0m },
                     { "517-B C.O. #05-2017 SEC. B (PERSON INCHARGE)", 1000.0m },
-                    { "517-H C.O. #05-2017 SEC. H (SELLING TOBACCO W/O PERMIT)", 1000.0m },
-                    { "517-P C.O. #05-2017 SEC. P (DISPLAY & PLACE TOBACCO PRODUCT)", 1000.0m }
+                    { "517-H C.O. #05-2017 SEC. H (SELLING TOBACCO W/O PERMIT)", 2000.0m },
+                    { "517-P C.O. #05-2017 SEC. P (DISPLAY & PLACE TOBACCO PRODUCT)", 2000.0m }
                 };
 
 

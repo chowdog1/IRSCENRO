@@ -113,3 +113,4 @@ E:\CENRO\Inspection Report\obj\Debug\net6.0-windows\Inspection_Report.Compliance
 E:\CENRO\Inspection Report\obj\Debug\net6.0-windows\Inspection_Report.PrintCompliance.resources
 E:\CENRO\Inspection Report\obj\Debug\net6.0-windows\Inspection_Report.Violations.resources
 E:\CENRO\Inspection Report\obj\Debug\net6.0-windows\Inspection_Report.PaymentBreakdown.resources
+E:\CENRO\Inspection Report\obj\Debug\net6.0-windows\Inspection_Report.GeneratePDF.resources

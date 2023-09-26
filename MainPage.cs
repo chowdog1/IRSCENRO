@@ -15,6 +15,8 @@ using System.Windows.Forms;
 using System.IO;
 using PdfSharp;
 using System.Globalization;
+using PdfSharp.Drawing.Layout;
+using PdfSharp.Drawing;
 
 namespace Inspection_Report
 {
@@ -1214,84 +1216,7 @@ namespace Inspection_Report
 
         private void generateReportsToPDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "PDF Files|*.pdf";
-            saveFileDialog.Title = "Save PDF File";
-            saveFileDialog.FileName = "output.pdf";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = saveFileDialog.FileName;
-
-                Document doc = new Document();
-                doc.Info.Title = "Data Report";
-
-                Section section = doc.AddSection();
-
-                Table table = section.AddTable();
-                table.Style = "Table";
-                table.Borders.Color = Colors.Black;
-                table.Borders.Width = 0.5;
-
-                double[] columnWidths = new double[dataGridView1.Columns.Count];
-                for (int i = 0; i < dataGridView1.Columns.Count; i++)
-                {
-                    string headerText = dataGridView1.Columns[i].HeaderText;
-                    double multiplier = 1.5;
-                    columnWidths[i] = Math.Max(headerText.Length * multiplier, 2.0);
-                    table.AddColumn(Unit.FromCentimeter(columnWidths[i]));
-                }
-
-                Row headerRow = table.AddRow();
-                headerRow.HeadingFormat = true;
-                headerRow.Format.Alignment = ParagraphAlignment.Center;
-                headerRow.Format.Font.Bold = true;
-                foreach (DataGridViewColumn column in dataGridView1.Columns)
-                {
-                    headerRow.Cells[column.Index].AddParagraph(column.HeaderText);
-                }
-
-                foreach (DataGridViewRow dataRow in dataGridView1.Rows)
-                {
-                    Row row = table.AddRow();
-                    foreach (DataGridViewCell cell in dataRow.Cells)
-                    {
-                        if (cell.Value != null)
-                        {
-                            Paragraph paragraph = row.Cells[cell.ColumnIndex].AddParagraph();
-                            paragraph.AddText(cell.Value.ToString());
-                        }
-                        else
-                        {
-                            Paragraph paragraph = row.Cells[cell.ColumnIndex].AddParagraph();
-                            paragraph.AddText("");
-                        }
-                    }
-                }
-
-                section.PageSetup.Orientation = MigraDoc.DocumentObjectModel.Orientation.Landscape;
-
-                PdfDocumentRenderer pdfRenderer = new PdfDocumentRenderer();
-                pdfRenderer.Document = doc;
-                pdfRenderer.RenderDocument();
-
-                PdfDocument pdfDocument = new PdfDocument();
-
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    pdfRenderer.PdfDocument.Save(ms, false);
-                    ms.Position = 0;
-                    PdfDocument importPdfDocument = PdfReader.Open(ms, PdfDocumentOpenMode.Import);
-
-                    foreach (PdfPage page in importPdfDocument.Pages)
-                    {
-                        pdfDocument.AddPage(page);
-                    }
-                }
-                pdfDocument.Save(filePath);
-                MessageBox.Show("Data exported to PDF successfully!");
-            }
+            new GeneratePDF().Show();
         }
 
         private void auditTrailToolStripMenuItem_Click(object sender, EventArgs e)

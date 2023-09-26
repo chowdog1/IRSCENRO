@@ -62,7 +62,7 @@ namespace Inspection_Report
 
             if (!string.IsNullOrEmpty(establishmentis))
             {
-                searchCriteria.Add($"EstablishmentIs LIKE '%{establishmentis}%'");
+                searchCriteria.Add($"EstablishmentIs = '{establishmentis}'");
             }
 
             if (!string.IsNullOrEmpty(violations))
