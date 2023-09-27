@@ -43,8 +43,8 @@ namespace Inspection_Report
                             if (reader.Read())
                             {
                                 PdfDocument document = new PdfDocument();
-                                PdfPage page = document.AddPage();
-                                XGraphics gfx = XGraphics.FromPdfPage(page);
+                                PdfPage page1 = document.AddPage();
+                                XGraphics gfx = XGraphics.FromPdfPage(page1);
                                 XFont regularFont = new XFont("Courier New", 8);
                                 XFont labelFont = new XFont("Courier New", 8, XFontStyle.Bold);
                                 XFont titleFont = new XFont("Courier New", 14, XFontStyle.Bold);
@@ -58,10 +58,10 @@ namespace Inspection_Report
                                 XUnit xPositioncomply = XUnit.FromInch(0.20); // Change this to the desired X position
                                 XUnit yPositioncomply = XUnit.FromInch(3.80);
 
-                                XRect rect = new XRect(xPositioncomply, yPositioncomply, page.Width - leftMargin - rightMargin, page.Height - topMargin - bottomMargin);
+                                XRect rect = new XRect(xPositioncomply, yPositioncomply, page1.Width - leftMargin - rightMargin, page1.Height - topMargin - bottomMargin);
 
-                                page.Width = XUnit.FromMillimeter(210);
-                                page.Height = XUnit.FromMillimeter(297);
+                                page1.Width = XUnit.FromMillimeter(210);
+                                page1.Height = XUnit.FromMillimeter(297);
 
                                 string AccountNo = (reader["AccountNo"] as string) ?? string.Empty;
                                 string BusinessName = (reader["BusinessName"] as string) ?? string.Empty;
@@ -81,25 +81,20 @@ namespace Inspection_Report
                                 string EPPFee = (reader["EPPFee"] as string) ?? string.Empty;
                                 string ECCCNC = (reader["ECCCNC"] as string) ?? string.Empty;
                                 string ECCCNCNo = (reader["ECCCNCNo"] as string) ?? string.Empty;
-                                //DateTime ECCDateIssued = (DateTime)reader["ECCDateIssued"];
-                                //string formattedECCDateIssued = ECCDateIssued.ToString("yyyy-MM-dd");
+                                object eccDateObject = reader["ECCDateIssued"];
                                 string WDP = (reader["WDP"] as string) ?? string.Empty;
                                 string WDPNo = (reader["WDPNo"] as string) ?? string.Empty;
-                                //DateTime WDPDateIssued = (DateTime)reader["WDPDateIssued"];
-                                //string formattedWDPDateIssued = WDPDateIssued.ToString("yyyy-MM-dd");
+                                object wdpDateObject = reader["WDPDateIssued"];
                                 string PTO = (reader["PTO"] as string) ?? string.Empty;
                                 string PTONo = (reader["PTONo"] as string) ?? string.Empty;
-                                //DateTime PTODateIssued = (DateTime)reader["PTODateIssued"];
-                                //string formattedPTODateIssued = PTODateIssued.ToString("yyyy-MM-dd");
+                                object ptoDateObject = reader["PTODateIssued"];
                                 string HWID = (reader["HWID"] as string) ?? string.Empty;
                                 string HWIDNo = (reader["HWIDNo"] as string) ?? string.Empty;
-                                //DateTime HWIDDateIssued = (DateTime)reader["HWIDDateIssued"];
-                                //string formattedHWIDDateIssued = HWIDDateIssued.ToString("yyyy-MM-dd");
+                                object hwidDateObject = reader["HWIDDateIssued"];
                                 string HasPollutionOfficer = (reader["HasPollutionOfficer"] as string) ?? string.Empty;
                                 string PollutionOfficer = (reader["PollutionOfficer"] as string) ?? string.Empty;
                                 string Accreditation = (reader["Accreditation"] as string) ?? string.Empty;
-                                //DateTime ValidityOfPOC = (DateTime)reader["ValidityOfPOC"];
-                                //string formattedValidityOfPOC = ValidityOfPOC.ToString("yyyy-MM-dd");
+                                object pocDateObject = reader["ValidityOfPOC"];
                                 string ContactNo = (reader["ContactNo"] as string) ?? string.Empty;
                                 string Email = (reader["Email"] as string) ?? string.Empty;
                                 string HasWasteBin = (reader["HasWasteBin"] as string) ?? string.Empty;
@@ -113,8 +108,7 @@ namespace Inspection_Report
                                 string HasSeptic = (reader["HasSeptic"] as string) ?? string.Empty;
                                 string LocationSeptic = (reader["LocationSeptic"] as string) ?? string.Empty;
                                 string FrequencyDesludge = (reader["FrequencyDesludge"] as string) ?? string.Empty;
-                                //DateTime DateDesludge = (DateTime)reader["DateDesludge"];
-                                //string formmatedDateDesludge = DateDesludge.ToString("yyyy-MM-dd");
+                                object desludgeDateObject = reader["DateDesludge"]; 
                                 string ServiceProvider = (reader["ServiceProvider"] as string) ?? string.Empty;
                                 string HasGreaseTrap = (reader["HasGreaseTrap"] as string) ?? string.Empty;
                                 string LocationGrease = (reader["LocationGrease"] as string) ?? string.Empty;
@@ -184,7 +178,7 @@ namespace Inspection_Report
                                 foreach (string paragraph in comply)
                                 {
                                     tf.DrawString(paragraph, regularFont, XBrushes.Black, rect, XStringFormats.TopLeft);
-                                    rect = new XRect(leftMargin, rect.Top + labelFont.Height, page.Width - leftMargin - rightMargin, page.Height - topMargin - bottomMargin);
+                                    rect = new XRect(leftMargin, rect.Top + labelFont.Height, page1.Width - leftMargin - rightMargin, page1.Height - topMargin - bottomMargin);
                                 }
                                 gfx.DrawString(ComplyWithin, labelFont, XBrushes.Black, new XRect(145, 283, 1000, 1000), XStringFormats.TopLeft);
                                 gfx.DrawString("from the actual date of inspection.", regularFont, XBrushes.Black, new XRect(200, 283, 1000, 1000), XStringFormats.TopLeft);
@@ -209,6 +203,309 @@ namespace Inspection_Report
                                     }
 
                                     yCoordinates += regularFont.Height;
+                                }
+                                gfx.DrawString("***INSPECTION CHECKLIST***", titleFont, XBrushes.Black, new XRect(190, 430, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Permits & Certifications", labelFont, XBrushes.Black, new XRect(10,455,1000,1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Mayor's Permit:", labelFont, XBrushes.Black, new XRect(10, 470, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(MayorsPermit, regularFont, XBrushes.Black, new XRect(90,470,1000,1000), XStringFormats.TopLeft);
+                                gfx.DrawString("EPP Fee:", labelFont, XBrushes.Black, new XRect(10, 480, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(EPPFee, regularFont, XBrushes.Black, new XRect(60, 480, 1000, 1000), XStringFormats.TopLeft);
+                                
+                                gfx.DrawString("ECC/CNC:", labelFont, XBrushes.Black, new XRect(10, 495, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(ECCCNC, regularFont, XBrushes.Black, new XRect(60, 495, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("ECC/CNC No:", labelFont, XBrushes.Black, new XRect(10, 505, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(ECCCNCNo, regularFont, XBrushes.Black, new XRect(80, 505, 1000, 1000), XStringFormats.TopLeft);
+
+                                if (eccDateObject != DBNull.Value)
+                                {
+                                    DateTime ECCDateIssued = (DateTime)reader["ECCDateIssued"];
+                                    string formattedECCDateIssued = ECCDateIssued.ToString("yyyy-MM-dd");
+                                    gfx.DrawString("ECC/CNC Date Issued:", labelFont, XBrushes.Black, new XRect(10, 515, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx.DrawString(formattedECCDateIssued, regularFont, XBrushes.Black, new XRect(120, 515, 1000, 1000), XStringFormats.TopLeft);
+                                }
+                                else
+                                {
+                                    gfx.DrawString("ECC/CNC Date Issued:", labelFont, XBrushes.Black, new XRect(10, 515, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx.DrawString(" ", regularFont, XBrushes.Black, new XRect(120, 515, 1000, 1000), XStringFormats.TopLeft);
+                                }
+
+                                gfx.DrawString("WDP:", labelFont, XBrushes.Black, new XRect(10,530,1000,1000), XStringFormats.TopLeft);
+                                gfx.DrawString(WDP, regularFont, XBrushes.Black, new XRect(40,530,1000,1000), XStringFormats.TopLeft);
+                                gfx.DrawString("WDP No:",labelFont,XBrushes.Black, new XRect(10,540,1000,1000),XStringFormats.TopLeft);
+                                gfx.DrawString(WDPNo, regularFont, XBrushes.Black, new XRect(60, 540, 1000, 1000), XStringFormats.TopLeft);
+                                if (wdpDateObject != DBNull.Value)
+                                {
+                                    DateTime WDPDateIssued = (DateTime)reader["WDPDateIssued"];
+                                    string formattedWDPDateIssued = WDPDateIssued.ToString("yyyy-MM-dd");
+                                    gfx.DrawString("WDP Date Issued:", labelFont, XBrushes.Black, new XRect(10, 550, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx.DrawString(formattedWDPDateIssued, regularFont, XBrushes.Black, new XRect(90, 550, 1000, 1000), XStringFormats.TopLeft);
+                                }
+                                else
+                                {
+                                    gfx.DrawString("WDP Date Issued:", labelFont, XBrushes.Black, new XRect(10, 550, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx.DrawString(" ", regularFont, XBrushes.Black, new XRect(90, 550, 1000, 1000), XStringFormats.TopLeft);
+                                }
+
+                                gfx.DrawString("PTO for APSI/APSE:",labelFont, XBrushes.Black, new XRect(10,565,1000,1000), XStringFormats.TopLeft);
+                                gfx.DrawString(PTO, regularFont,XBrushes.Black, new XRect(100,565,1000,1000), XStringFormats.TopLeft);
+                                gfx.DrawString("PTO No:",labelFont,XBrushes.Black, new XRect(10,575,1000,1000),XStringFormats.TopLeft);
+                                gfx.DrawString(PTONo, regularFont, XBrushes.Black, new XRect(40, 575, 1000, 1000), XStringFormats.TopLeft);
+                                if (ptoDateObject != DBNull.Value)
+                                {
+                                    DateTime PTODateIssued = (DateTime)reader["PTODateIssued"];
+                                    string formattedPTODateIssued = PTODateIssued.ToString("yyyy-MM-dd");
+                                    gfx.DrawString("PTO Date Issued:", labelFont, XBrushes.Black, new XRect(10, 585, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx.DrawString(formattedPTODateIssued, regularFont, XBrushes.Black, new XRect(90, 585, 1000, 1000), XStringFormats.TopLeft);
+                                }
+                                else
+                                {
+                                    gfx.DrawString("PTO Date Issued:", labelFont, XBrushes.Black, new XRect(10, 585, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx.DrawString(" ", regularFont, XBrushes.Black, new XRect(95, 585, 1000, 1000), XStringFormats.TopLeft);
+                                }
+
+                                gfx.DrawString("HWID:",labelFont, XBrushes.Black, new XRect(10,600,1000,1000), XStringFormats.TopLeft);
+                                gfx.DrawString(HWID, regularFont, XBrushes.Black, new XRect(40,600,1000,1000), XStringFormats.TopLeft);
+                                gfx.DrawString("HWID No:", labelFont, XBrushes.Black, new XRect(10, 610, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(HWIDNo, regularFont, XBrushes.Black, new XRect(65, 610, 1000, 1000), XStringFormats.TopLeft);
+                                if (hwidDateObject != DBNull.Value)
+                                {
+                                    DateTime HWIDDateIssued = (DateTime)reader["HWIDDateIssued"];
+                                    string formattedHWIDDateIssued = HWIDDateIssued.ToString("yyyy-MM-dd");
+                                    gfx.DrawString("HWID Date Issued:", labelFont, XBrushes.Black, new XRect(10, 620, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx.DrawString(formattedHWIDDateIssued, regularFont, XBrushes.Black, new XRect(90, 620, 1000, 1000), XStringFormats.TopLeft);
+                                }
+                                else
+                                {
+                                    gfx.DrawString("HWID Date Issued:", labelFont, XBrushes.Black, new XRect(10, 620, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx.DrawString(" ", regularFont, XBrushes.Black, new XRect(95, 620, 1000, 1000), XStringFormats.TopLeft);
+                                }
+
+                                gfx.DrawString("Pollution Control Officer", labelFont, XBrushes.Black, new XRect(10, 650, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Name:", labelFont,XBrushes.Black, new XRect(10,665,1000,1000), XStringFormats.TopLeft); 
+                                gfx.DrawString(PollutionOfficer, regularFont, XBrushes.Black, new XRect(30,665,1000,1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Accreditation No:", labelFont, XBrushes.Black, new XRect(10,675,1000,1000), XStringFormats.TopLeft);
+                                gfx.DrawString(Accreditation, regularFont, XBrushes.Black, new XRect(70, 675, 1000, 1000), XStringFormats.TopLeft);
+                                if (pocDateObject != DBNull.Value)
+                                {
+                                    DateTime ValidityOfPOC = (DateTime)reader["ValidityOfPOC"];
+                                    string formattedValidityOfPOC = ValidityOfPOC.ToString("yyyy-MM-dd");
+                                    gfx.DrawString("Validity:", labelFont, XBrushes.Black, new XRect(10, 685, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx.DrawString(formattedValidityOfPOC, regularFont, XBrushes.Black, new XRect(60, 685, 1000, 1000), XStringFormats.TopLeft);
+                                }
+                                else
+                                {
+                                    gfx.DrawString("Validity:", labelFont, XBrushes.Black, new XRect(10, 685, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx.DrawString(" ", regularFont, XBrushes.Black, new XRect(60, 685, 1000, 1000), XStringFormats.TopLeft);
+                                }
+                                gfx.DrawString("Contact No:",labelFont, XBrushes.Black, new XRect(10,695,1000,1000), XStringFormats.TopLeft);
+                                gfx.DrawString(ContactNo, regularFont, XBrushes.Black, new XRect(40, 695, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Email Address:",labelFont, XBrushes.Black, new XRect(10,705,1000,1000), XStringFormats.TopLeft);
+                                gfx.DrawString(Email, regularFont, XBrushes.Black,new XRect(80,705,1000,1000), XStringFormats.TopLeft);
+
+                                gfx.DrawString("Waste Management", labelFont, XBrushes.Black, new XRect(250, 455, 1000, 1000), XStringFormats.TopLeft);
+
+                                gfx.DrawString("Waste bins were provided:",labelFont, XBrushes.Black, new XRect(250,470,1000,1000), XStringFormats.TopLeft);
+                                gfx.DrawString(HasWasteBin,regularFont,XBrushes.Black, new XRect(380,470,1000,1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Bins were properly labeled:", labelFont, XBrushes.Black, new XRect(250, 480, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(BinsLabeled, regularFont, XBrushes.Black, new XRect(390, 480, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Bins were appropriately covered:", labelFont, XBrushes.Black, new XRect(250, 490, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(BinsCovered, regularFont, XBrushes.Black, new XRect(410, 490, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Proper waste segregation was practiced:", labelFont, XBrushes.Black, new XRect(250, 500, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(BinsSegregated, regularFont, XBrushes.Black, new XRect(445, 500, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Provision of MRF:", labelFont, XBrushes.Black, new XRect(250, 510, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(MRF, regularFont, XBrushes.Black, new XRect(340, 510, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Waste were collected:", labelFont, XBrushes.Black, new XRect(250, 520, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(WasteCollected, regularFont, XBrushes.Black, new XRect(360, 520, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Frequency of Hauling:", labelFont, XBrushes.Black, new XRect(250, 530, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(FrequencyHauling, regularFont, XBrushes.Black, new XRect(360, 530, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Hauler:", labelFont, XBrushes.Black, new XRect(250, 540, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(Hauler, regularFont, XBrushes.Black, new XRect(300, 540, 1000, 1000), XStringFormats.TopLeft);
+
+                                gfx.DrawString("Installed Septic Tank:", labelFont, XBrushes.Black, new XRect(250, 555, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(HasSeptic, regularFont, XBrushes.Black, new XRect(360, 555, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Location:", labelFont, XBrushes.Black, new XRect(250, 565, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(LocationSeptic, regularFont, XBrushes.Black, new XRect(310, 565, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Frequency of Desludging:", labelFont, XBrushes.Black, new XRect(250, 575, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(FrequencyDesludge, regularFont, XBrushes.Black, new XRect(375, 575, 1000, 1000), XStringFormats.TopLeft);
+                                if (desludgeDateObject != DBNull.Value)
+                                {
+                                    DateTime DateDesludge = (DateTime)reader["DateDesludge"];
+                                    string formattedDateDesludge = DateDesludge.ToString("yyyy-MM-dd");
+                                    gfx.DrawString("Date of Desludge:", labelFont, XBrushes.Black, new XRect(250, 585, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx.DrawString(formattedDateDesludge, regularFont, XBrushes.Black, new XRect(340, 585, 1000, 1000), XStringFormats.TopLeft);
+                                }
+                                else
+                                {
+                                    gfx.DrawString("Date of Desludge:", labelFont, XBrushes.Black, new XRect(250, 585, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx.DrawString(" ", regularFont, XBrushes.Black, new XRect(340, 585, 1000, 1000), XStringFormats.TopLeft);
+                                }
+                                gfx.DrawString("Service Provider:", labelFont, XBrushes.Black, new XRect(250, 595, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(ServiceProvider, regularFont, XBrushes.Black, new XRect(340, 595, 1000, 1000), XStringFormats.TopLeft);
+
+                                gfx.DrawString("Installed Grease Trap:", labelFont, XBrushes.Black, new XRect(250, 610, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(HasGreaseTrap, regularFont, XBrushes.Black, new XRect(360, 610, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Location:", labelFont, XBrushes.Black, new XRect(250, 620, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(LocationGrease, regularFont, XBrushes.Black, new XRect(310, 620, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Frequency of Hauling:", labelFont, XBrushes.Black, new XRect(250, 630, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(FrequencyGrease, regularFont, XBrushes.Black, new XRect(375, 630, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Hauler:", labelFont, XBrushes.Black, new XRect(250, 640, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(HaulerGrease, regularFont, XBrushes.Black, new XRect(300, 640, 1000, 1000), XStringFormats.TopLeft);
+
+                                gfx.DrawString("Wastewater Treatment Plant:", labelFont, XBrushes.Black, new XRect(250, 655, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(HasWasteWater, regularFont, XBrushes.Black, new XRect(390, 655, 1000, 1000), XStringFormats.TopLeft);
+
+                                gfx.DrawString("Used oil were properly disposed:", labelFont, XBrushes.Black, new XRect(250, 670, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(UsedOilProperlyDisposed, regularFont, XBrushes.Black, new XRect(410, 670, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Type of Oil:", labelFont, XBrushes.Black, new XRect(250, 680, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(TypeofOil, regularFont, XBrushes.Black, new XRect(310, 680, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Frequency of Hauling:", labelFont, XBrushes.Black, new XRect(250, 690, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(FrequencyofHaulingOil, regularFont, XBrushes.Black, new XRect(375, 690, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Hauler:", labelFont, XBrushes.Black, new XRect(250, 700, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(HaulerOil, regularFont, XBrushes.Black, new XRect(300, 700, 1000, 1000), XStringFormats.TopLeft);
+
+                                gfx.DrawString("Air Pollution Management", labelFont, XBrushes.Black, new XRect(250, 735, 1000, 1000), XStringFormats.TopLeft);
+
+                                gfx.DrawString("Pollution Control Devices:", labelFont, XBrushes.Black, new XRect(250, 750, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(HasAirPollutionManager, regularFont, XBrushes.Black, new XRect(390, 750, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Device Type:", labelFont, XBrushes.Black, new XRect(250, 760, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(DeviceType, regularFont, XBrushes.Black, new XRect(300, 760, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("Maintenance Provider:", labelFont, XBrushes.Black, new XRect(250, 770, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString(MaintenanceProvider, regularFont, XBrushes.Black, new XRect(360, 770, 1000, 1000), XStringFormats.TopLeft);
+
+                                PdfPage page2 = document.AddPage();
+                                XGraphics gfx2 = XGraphics.FromPdfPage(page2);
+                                XFont regularFont2 = new XFont("Courier New", 8);
+                                XFont labelFont2 = new XFont("Courier New", 8, XFontStyle.Bold);
+                                XFont titleFont2 = new XFont("Courier New", 14, XFontStyle.Bold);
+                                XTextFormatter tf2 = new XTextFormatter(gfx2);
+
+                                XUnit leftMargin2 = XUnit.FromInch(0.5);
+                                XUnit rightMargin2 = XUnit.FromInch(0.5);
+                                XUnit topMargin2 = XUnit.FromInch(0.5);
+                                XUnit bottomMargin2 = XUnit.FromInch(0.5);
+
+                                page2.Width = XUnit.FromMillimeter(210);
+                                page2.Height = XUnit.FromMillimeter(297);
+
+                                gfx2.DrawString("***After Inspection Report***", titleFont2, XBrushes.Black, new XRect(180, 10, 1000, 1000), XStringFormats.TopLeft);
+                                gfx2.DrawString("I. Purpose of Inspection:", labelFont2, XBrushes.Black, new XRect(10,40,1000,1000), XStringFormats.TopLeft);
+                                gfx2.DrawString(PurposeOfInspection, regularFont2, XBrushes.Black, new XRect(140, 40, 1000, 1000), XStringFormats.TopLeft);
+                                gfx2.DrawString("Level of Inspection:", labelFont2, XBrushes.Black, new XRect(30,50,1000,1000), XStringFormats.TopLeft);
+                                gfx2.DrawString(LevelofInspection, regularFont2, XBrushes.Black, new XRect(140,50,1000,1000), XStringFormats.TopLeft);
+
+                                gfx2.DrawString("II. General Description of the Physical Environment", labelFont2, XBrushes.Black, new XRect(10, 90, 1000, 1000), XStringFormats.TopLeft);
+
+                                gfx2.DrawString("Land Use:", labelFont2, XBrushes.Black, new XRect(30, 110, 1000, 1000), XStringFormats.TopLeft);
+                                gfx2.DrawString(LandUse, regularFont2, XBrushes.Black, new XRect(90,110,1000,1000), XStringFormats.TopLeft);
+                                gfx2.DrawString("Ownership Terms:", labelFont2, XBrushes.Black, new XRect(30, 120, 1000, 1000), XStringFormats.TopLeft);
+                                gfx2.DrawString(OwnershipTerms, regularFont2, XBrushes.Black, new XRect(120, 120, 1000, 1000), XStringFormats.TopLeft);
+
+                                gfx2.DrawString("Occupancy Terms", labelFont2, XBrushes.Black, new XRect(10, 145,1000,1000), XStringFormats.TopLeft);
+
+                                gfx2.DrawString("Lessee:", labelFont2, XBrushes.Black, new XRect(30, 155, 1000, 1000), XStringFormats.TopLeft);
+                                gfx2.DrawString(Lessee, regularFont2, XBrushes.Black, new XRect(80, 155, 1000, 1000), XStringFormats.TopLeft);
+                                gfx2.DrawString("Stand Alone:", labelFont2, XBrushes.Black, new XRect(30, 165, 1000, 1000), XStringFormats.TopLeft);
+                                gfx2.DrawString(StandAlone, regularFont2, XBrushes.Black, new XRect(110, 165, 1000, 1000), XStringFormats.TopLeft);
+
+                                gfx2.DrawString("III. Findings and Observations", labelFont2, XBrushes.Black, new XRect(10, 220, 1000, 1000), XStringFormats.TopLeft);
+
+                                gfx2.DrawString("Establishment Operation's Status During Operation:", labelFont2, XBrushes.Black, new XRect(30, 235, 1000, 1000), XStringFormats.TopLeft);
+                                gfx2.DrawString(EstablishmentStatus, regularFont2, XBrushes.Black, new XRect(280, 235, 1000, 1000), XStringFormats.TopLeft);
+
+                                gfx2.DrawString("Inspectors Observation Statement:", labelFont2, XBrushes.Black, new XRect(30, 255, 1000, 1000),XStringFormats.TopLeft);
+                                //gfx2.DrawString(InspectorObservation, regularFont2, XBrushes.Black, new XRect(30, 240, 1000, 1000), XStringFormats.TopLeft);
+                                string[] observationLines = InspectorObservation.Split('\n');
+                                float yCoordinateObs = 270;
+
+                                foreach (var line in observationLines)
+                                {
+                                    string[] segments = line.Trim().Split("\n");
+                                    if (segments.Length > 1)
+                                    {
+                                        for (int i = 0; i < segments.Length - 1; i++)
+                                        {
+                                            tf2.DrawString(segments[i], regularFont2, XBrushes.Black, new XRect(60, yCoordinateObs, 1000, 1000), XStringFormats.TopLeft);
+                                            yCoordinates += regularFont.Height;
+                                        }
+                                        // Append the last segment as a list item without a comma
+                                        tf2.DrawString(segments[segments.Length - 1].Trim(), regularFont, XBrushes.Black, new XRect(60, yCoordinateObs, 1000, 1000), XStringFormats.TopLeft);
+                                    }
+                                    else
+                                    {
+                                        // If there are no commas in the line, just draw it as is
+                                        tf2.DrawString(line.Trim(), regularFont, XBrushes.Black, new XRect(60, yCoordinateObs, 1000, 1000), XStringFormats.TopLeft);
+                                    }
+
+                                    yCoordinateObs += regularFont.Height;
+                                }
+                                
+                                gfx2.DrawString("IV. Directives", labelFont2, XBrushes.Black, new XRect(10,400,1000,1000), XStringFormats.TopLeft);
+                                string[] directivesLines = Directives.Split('\n');
+                                float yCoordinateDir = 420;
+
+                                foreach (var line in directivesLines)
+                                {
+                                    string[] segments = line.Trim().Split("\n");
+                                    if (segments.Length > 1)
+                                    {
+                                        for (int i = 0; i < segments.Length - 1; i++)
+                                        {
+                                            tf2.DrawString(segments[i], regularFont2, XBrushes.Black, new XRect(60, yCoordinateDir, 1000, 1000), XStringFormats.TopLeft);
+                                            yCoordinates += regularFont2.Height;
+                                        }
+                                        // Append the last segment as a list item without a comma
+                                        tf2.DrawString(segments[segments.Length - 1].Trim(), regularFont2, XBrushes.Black, new XRect(60, yCoordinateDir, 1000, 1000), XStringFormats.TopLeft);
+                                    }
+                                    else
+                                    {
+                                        // If there are no commas in the line, just draw it as is
+                                        tf2.DrawString(line.Trim(), regularFont2, XBrushes.Black, new XRect(60, yCoordinateDir, 1000, 1000), XStringFormats.TopLeft);
+                                    }
+
+                                    yCoordinateDir += regularFont2.Height;
+                                }
+
+                                gfx2.DrawString("V. Recommendations", labelFont2, XBrushes.Black, new XRect(10, 550,1000,1000), XStringFormats.TopLeft);
+                                string[] recommendationLines = Recommendations.Split('\n');
+                                float yCoordinatereco = 570;
+                                foreach (var line in recommendationLines)
+                                {
+                                    string[] segments = line.Trim().Split(", ");
+                                    if (segments.Length > 1)
+                                    {
+                                        for (int i = 0; i < segments.Length - 1; i++)
+                                        {
+                                            tf2.DrawString(segments[i], regularFont2, XBrushes.Black, new XRect(60, yCoordinatereco, 1000, 1000), XStringFormats.TopLeft);
+                                            yCoordinatereco += regularFont2.Height;
+                                        }
+                                        tf2.DrawString(segments[segments.Length - 1].Trim(), regularFont2, XBrushes.Black, new XRect(60, yCoordinatereco, 1000, 1000), XStringFormats.TopLeft);
+                                    }
+                                    else
+                                    {
+                                        tf2.DrawString(line.Trim(), regularFont2, XBrushes.Black, new XRect(60, yCoordinatereco, 1000, 1000), XStringFormats.TopLeft);
+                                    }
+
+                                    yCoordinatereco += regularFont2.Height;
+                                }
+
+                                string[] inspectors = Inspector.Split(", ");
+
+                                double xCoordinateinsp = 70;
+                                double yCoordinateinsp = 700;
+
+                                for (int i = 0; i < inspectors.Length; i++)
+                                {
+                                    string inspectorName = inspectors[i].Trim();
+
+                                    gfx2.DrawString(inspectorName, regularFont2, XBrushes.Black, new XRect(xCoordinateinsp, yCoordinateinsp,1000,1000),XStringFormats.TopLeft);
+                                    gfx2.DrawString("___________________________", regularFont2, XBrushes.Black, new XRect(40, 700, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx2.DrawString("Environmental Inspector", labelFont2, XBrushes.Black, new XRect(50, 710, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx2.DrawString("___________________________", regularFont2, XBrushes.Black, new XRect(225, 700, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx2.DrawString("Environmental Inspector", labelFont2, XBrushes.Black, new XRect(235, 710, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx2.DrawString("___________________________", regularFont2, XBrushes.Black, new XRect(410, 700, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx2.DrawString("Environmental Inspector", labelFont2, XBrushes.Black, new XRect(420, 710, 1000, 1000), XStringFormats.TopLeft);
+
+                                    xCoordinateinsp += 190;
                                 }
 
                                 using (MemoryStream stream = new MemoryStream())
