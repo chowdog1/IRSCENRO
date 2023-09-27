@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             accttxtBox = new TextBox();
             printBtn = new Button();
+            timer1 = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // label1
@@ -62,6 +64,10 @@
             printBtn.UseVisualStyleBackColor = true;
             printBtn.Click += printBtn_Click;
             // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
+            // 
             // GeneratePDF
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -73,6 +79,7 @@
             Name = "GeneratePDF";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "GeneratePDF";
+            FormClosed += GeneratePDF_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -82,5 +89,6 @@
         private Label label1;
         private TextBox accttxtBox;
         private Button printBtn;
+        private System.Windows.Forms.Timer timer1;
     }
 }

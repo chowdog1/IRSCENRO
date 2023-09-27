@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             dataGridView1 = new DataGridView();
             label1 = new Label();
             acctnotextBox = new TextBox();
@@ -49,6 +50,7 @@
             label6 = new Label();
             label7 = new Label();
             apprehensiondatetimePicker = new DateTimePicker();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -243,6 +245,10 @@
             apprehensiondatetimePicker.TabIndex = 18;
             apprehensiondatetimePicker.ValueChanged += apprehensiondatetimePicker_ValueChanged;
             // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
+            // 
             // Violations
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -270,6 +276,7 @@
             Name = "Violations";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Violations";
+            FormClosed += Violations_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -300,5 +307,6 @@
         private Label label6;
         private Label label7;
         private DateTimePicker apprehensiondatetimePicker;
+        private System.Windows.Forms.Timer timer1;
     }
 }

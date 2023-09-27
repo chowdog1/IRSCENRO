@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             dataGridView1 = new DataGridView();
             label1 = new Label();
             acctnotextBox = new TextBox();
@@ -43,6 +44,7 @@
             menuStrip1 = new MenuStrip();
             optionToolStripMenuItem = new ToolStripMenuItem();
             printToolStripMenuItem = new ToolStripMenuItem();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -180,9 +182,13 @@
             // printToolStripMenuItem
             // 
             printToolStripMenuItem.Name = "printToolStripMenuItem";
-            printToolStripMenuItem.Size = new Size(180, 22);
+            printToolStripMenuItem.Size = new Size(99, 22);
             printToolStripMenuItem.Text = "Print";
             printToolStripMenuItem.Click += printToolStripMenuItem_Click;
+            // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
             // 
             // Compliance
             // 
@@ -204,6 +210,7 @@
             Name = "Compliance";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Compliance";
+            FormClosed += Compliance_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -230,5 +237,6 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem optionToolStripMenuItem;
         private ToolStripMenuItem printToolStripMenuItem;
+        private System.Windows.Forms.Timer timer1;
     }
 }

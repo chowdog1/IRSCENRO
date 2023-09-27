@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             label2 = new Label();
             usernametxtBox = new TextBox();
@@ -39,6 +40,7 @@
             registerBtn = new Button();
             button1 = new Button();
             cancelBtn = new Button();
+            timer1 = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // label1
@@ -163,6 +165,10 @@
             cancelBtn.UseVisualStyleBackColor = false;
             cancelBtn.Click += cancelBtn_Click;
             // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
+            // 
             // registerForm
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
@@ -187,6 +193,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
             TransparencyKey = Color.Black;
+            FormClosed += registerForm_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -204,5 +211,6 @@
         private Button registerBtn;
         private Button button1;
         private Button cancelBtn;
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -59,5 +59,14 @@ namespace Inspection_Report.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Windows_Error {
+            get {
+                return ResourceManager.GetStream("Windows_Error", resourceCulture);
+            }
+        }
     }
 }

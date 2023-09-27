@@ -109,5 +109,31 @@ namespace Inspection_Report
         {
             this.Close();
         }
+
+        private void registerForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MainPage? mainPage = Application.OpenForms.OfType<MainPage>().FirstOrDefault();
+            if (mainPage != null)
+            {
+                mainPage.Enabled = true;
+            }
+        }
+        private bool isHighlighted = false;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (isHighlighted)
+            {
+                this.Opacity = 1.0;
+            }
+            else
+            {
+                this.Opacity = 0.7;
+            }
+
+            isHighlighted = !isHighlighted;
+
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(Inspection_Report.Properties.Resources.Windows_Error);
+            player.Play();
+        }
     }
 }

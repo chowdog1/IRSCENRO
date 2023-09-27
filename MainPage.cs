@@ -1217,6 +1217,7 @@ namespace Inspection_Report
         private void generateReportsToPDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new GeneratePDF().Show();
+            this.Enabled = false;
         }
 
         private void auditTrailToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1342,6 +1343,7 @@ namespace Inspection_Report
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ChangePassword().Show();
+            this.Enabled = false;
         }
         private void importDataFromExcelToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -1509,16 +1511,19 @@ namespace Inspection_Report
         private void createNewUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new registerForm().Show();
+            this.Enabled = false;
         }
 
         private void compliancesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Compliance().Show();
+            this.Enabled = false;
         }
 
         private void violationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Violations().Show();
+            this.Enabled = false;
         }
     }
 }

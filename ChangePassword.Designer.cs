@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -35,6 +36,7 @@
             newpwtextBox = new TextBox();
             confirmnewtextBox = new TextBox();
             confirmBtn = new Button();
+            timer1 = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // label1
@@ -98,6 +100,10 @@
             confirmBtn.UseVisualStyleBackColor = true;
             confirmBtn.Click += confirmBtn_Click;
             // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
+            // 
             // ChangePassword
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -113,6 +119,7 @@
             Name = "ChangePassword";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Change Password";
+            FormClosed += ChangePassword_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -126,5 +133,6 @@
         private TextBox newpwtextBox;
         private TextBox confirmnewtextBox;
         private Button confirmBtn;
+        private System.Windows.Forms.Timer timer1;
     }
 }
