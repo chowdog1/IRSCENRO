@@ -124,8 +124,7 @@ namespace Inspection_Report
                                 string DeviceType = (reader["DeviceType"] as string) ?? string.Empty;
                                 string MaintenanceProvider = (reader["MaintenanceProvider"] as string) ?? string.Empty;
                                 string PurposeOfInspection = (reader["PurposeOfInspection"] as string) ?? string.Empty;
-                                //DateTime ReinspectDate = (DateTime)reader["ReinspectDate"];
-                                //string formattedReinspectDate = ReinspectDate.ToString("yyyy-MM-dd");
+                                object reinspectDateObject = reader["ReinspectDate"];
                                 string LevelofInspection = (reader["LevelofInspection"] as string) ?? string.Empty;
                                 string LandUse = (reader["LandUse"] as string) ?? string.Empty;
                                 string OwnershipTerms = (reader["OwnershipTerms"] as string) ?? string.Empty;
@@ -375,6 +374,7 @@ namespace Inspection_Report
                                 PdfPage page2 = document.AddPage();
                                 XGraphics gfx2 = XGraphics.FromPdfPage(page2);
                                 XFont regularFont2 = new XFont("Courier New", 8);
+                                XFont italicFont2 = new XFont("Courier New", 8, XFontStyle.Italic);
                                 XFont labelFont2 = new XFont("Courier New", 8, XFontStyle.Bold);
                                 XFont titleFont2 = new XFont("Courier New", 14, XFontStyle.Bold);
                                 XTextFormatter tf2 = new XTextFormatter(gfx2);
@@ -392,6 +392,19 @@ namespace Inspection_Report
                                 gfx2.DrawString(PurposeOfInspection, regularFont2, XBrushes.Black, new XRect(140, 40, 1000, 1000), XStringFormats.TopLeft);
                                 gfx2.DrawString("Level of Inspection:", labelFont2, XBrushes.Black, new XRect(30, 50, 1000, 1000), XStringFormats.TopLeft);
                                 gfx2.DrawString(LevelofInspection, regularFont2, XBrushes.Black, new XRect(140, 50, 1000, 1000), XStringFormats.TopLeft);
+                                if (reinspectDateObject != DBNull.Value)
+                                {
+                                    DateTime ReinspectDate = (DateTime)reader["ReinspectDate"];
+                                    string formattedReinspectDate = ReinspectDate.ToString("yyyy-MM-dd");
+                                    gfx2.DrawString("Date of Reinspection:", labelFont2, XBrushes.Black, new XRect(30, 60, 1000, 10000), XStringFormats.TopLeft);
+                                    gfx2.DrawString(formattedReinspectDate, regularFont, XBrushes.Black, new XRect(140, 60, 1000, 1000), XStringFormats.TopLeft);
+                                }
+                                else
+                                {
+                                    gfx2.DrawString("Date of Reinspection:", labelFont2, XBrushes.Black, new XRect(30, 60, 1000, 10000), XStringFormats.TopLeft);
+                                    gfx2.DrawString("N/A", regularFont, XBrushes.Black, new XRect(140, 60, 1000, 1000), XStringFormats.TopLeft);
+                                }
+
 
                                 gfx2.DrawString("II. General Description of the Physical Environment", labelFont2, XBrushes.Black, new XRect(10, 90, 1000, 1000), XStringFormats.TopLeft);
 
@@ -413,7 +426,6 @@ namespace Inspection_Report
                                 gfx2.DrawString(EstablishmentStatus, regularFont2, XBrushes.Black, new XRect(280, 235, 1000, 1000), XStringFormats.TopLeft);
 
                                 gfx2.DrawString("Inspectors Observation Statement:", labelFont2, XBrushes.Black, new XRect(30, 255, 1000, 1000), XStringFormats.TopLeft);
-                                //gfx2.DrawString(InspectorObservation, regularFont2, XBrushes.Black, new XRect(30, 240, 1000, 1000), XStringFormats.TopLeft);
                                 string[] observationLines = InspectorObservation.Split('\n');
                                 float yCoordinateObs = 270;
 
@@ -491,22 +503,32 @@ namespace Inspection_Report
                                 string[] inspectors = Inspector.Split(", ");
 
                                 double xCoordinateinsp = 70;
-                                double yCoordinateinsp = 700;
+                                double yCoordinateinsp = 680;
 
                                 for (int i = 0; i < inspectors.Length; i++)
                                 {
                                     string inspectorName = inspectors[i].Trim();
 
                                     gfx2.DrawString(inspectorName, regularFont2, XBrushes.Black, new XRect(xCoordinateinsp, yCoordinateinsp, 1000, 1000), XStringFormats.TopLeft);
-                                    gfx2.DrawString("___________________________", regularFont2, XBrushes.Black, new XRect(40, 700, 1000, 1000), XStringFormats.TopLeft);
-                                    gfx2.DrawString("Environmental Inspector", labelFont2, XBrushes.Black, new XRect(50, 710, 1000, 1000), XStringFormats.TopLeft);
-                                    gfx2.DrawString("___________________________", regularFont2, XBrushes.Black, new XRect(225, 700, 1000, 1000), XStringFormats.TopLeft);
-                                    gfx2.DrawString("Environmental Inspector", labelFont2, XBrushes.Black, new XRect(235, 710, 1000, 1000), XStringFormats.TopLeft);
-                                    gfx2.DrawString("___________________________", regularFont2, XBrushes.Black, new XRect(410, 700, 1000, 1000), XStringFormats.TopLeft);
-                                    gfx2.DrawString("Environmental Inspector", labelFont2, XBrushes.Black, new XRect(420, 710, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx2.DrawString("Attested:", italicFont2, XBrushes.Black, new XRect(10, 650, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx2.DrawString("___________________________", regularFont2, XBrushes.Black, new XRect(40, 680, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx2.DrawString("Environmental Inspector", labelFont2, XBrushes.Black, new XRect(50, 690, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx2.DrawString("___________________________", regularFont2, XBrushes.Black, new XRect(225, 680, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx2.DrawString("Environmental Inspector", labelFont2, XBrushes.Black, new XRect(235, 690, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx2.DrawString("___________________________", regularFont2, XBrushes.Black, new XRect(410, 680, 1000, 1000), XStringFormats.TopLeft);
+                                    gfx2.DrawString("Environmental Inspector", labelFont2, XBrushes.Black, new XRect(420, 690, 1000, 1000), XStringFormats.TopLeft);
 
                                     xCoordinateinsp += 190;
                                 }
+
+                                gfx2.DrawString("Assessed by:", italicFont2, XBrushes.Black, new XRect(110, 720, 1000, 1000), XStringFormats.TopLeft);
+                                gfx2.DrawString("_______________________________________", regularFont2, XBrushes.Black, new XRect(197, 740, 1000,1000), XStringFormats.TopLeft);
+                                gfx2.DrawString("EMS II/Pollution Control Unit Head", labelFont2, XBrushes.Black, new XRect(210, 750, 1000, 1000), XStringFormats.TopLeft);
+
+                                gfx2.DrawString("Approved by:", italicFont2, XBrushes.Black, new XRect(110, 780, 1000, 1000), XStringFormats.TopLeft);
+                                gfx2.DrawString("Gabriel Gerard S. Katigbak", regularFont2, XBrushes.Black, new XRect(228, 798, 1000, 1000), XStringFormats.TopLeft);
+                                gfx2.DrawString("_______________________________________", regularFont2, XBrushes.Black, new XRect(197, 800, 1000, 1000), XStringFormats.TopLeft);
+                                gfx2.DrawString("Department Head, CENRO", labelFont2, XBrushes.Black, new XRect(240, 810, 1000, 1000), XStringFormats.TopLeft);
 
                                 using (MemoryStream stream = new MemoryStream())
                                 {
