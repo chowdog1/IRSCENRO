@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "sbBl38i5SvImLCT7L88FYEAHxpzqthE3voAEvT3rRL6eHWaLt3rCBiQMOPkKhwPHbbURDAiAsi4a3EOtirgmGg==",
+  "dgSpecHash": "hic9NyupVM42H/4O9Pnn7BnNlhOQv6GwKwhm+GCsry1TWQcAX9Pd017gHdB05McJ5CwZPD1nCMKy6J8aNZ9mXg==",
   "success": true,
   "projectFilePath": "E:\\CENRO\\Inspection Report\\Inspection Report.csproj",
   "expectedPackageFiles": [
@@ -21,6 +21,7 @@
     "C:\\Users\\Edzel\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Edzel\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Edzel\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\Edzel\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Edzel\\.nuget\\packages\\pdfsharp-migradoc\\1.50.5147\\pdfsharp-migradoc.1.50.5147.nupkg.sha512",
     "C:\\Users\\Edzel\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\Edzel\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

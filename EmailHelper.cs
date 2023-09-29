@@ -1,34 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
+using System.Security.Authentication;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
+using Newtonsoft.Json;
+
 
 namespace Inspection_Report
 {
     public static class EmailHelper
     {
-        public static void SendRequestEmail(string name, string department, string email, string reason)
+        public static async Task SendRequestEmail(string name, string department, string email, string reason)
         {
-            using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
-            {
-                smtpClient.Port = 587;
-                smtpClient.Credentials = new NetworkCredential("cenroinspection@gmail.com", "rxzp xmej glxu siqi");
-                smtpClient.EnableSsl = true;
+            // Brevo SMTP server settings
+            string smtpHost = "smtp-relay.brevo.com"; // Replace with the actual SMTP server hostname
+            int smtpPort = 587; // Replace with the appropriate SMTP port
+            string smtpUsername = "sjcenrodocs2021@gmail.com"; // Replace with your SMTP username
+            string smtpPassword = "kI1Rb6cQ0GAJZzfv"; // Replace with your SMTP password
 
-                MailMessage mailMessage = new MailMessage
+            // Create an SMTP client
+            using (var client = new SmtpClient(smtpHost))
+            {
+                client.Port = smtpPort;
+                client.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
+                client.EnableSsl = true; // Enable SSL/TLS encryption (recommended)
+
+                // Handle SSL certificate validation (optional)
+                ServicePointManager.ServerCertificateValidationCallback =
+                    (s, certificate, chain, sslPolicyErrors) => true;
+
+                // Create and configure the email message
+                var message = new MailMessage
                 {
-                    From = new MailAddress("cenroinspection@gmail.com"),
-                    Subject = "[NOTICE] New Login Request",
-                    Body = $"Name: {name}\nDepartment: {department}\nEmail: {email}\nReason: {reason}",
+                    From = new MailAddress("sjcenrodocs2021@gmail.com", "CENROInspection"),
+                    Subject = "[Request] Login Credentials",
+                    Body = $"Name: {name}\nDepartment: {department}\nEmail: {email}\nReason: {reason}"
                 };
 
-                mailMessage.To.Add("gatdulanerikalloren@gmail.com");
-                smtpClient.Send(mailMessage);
+                message.To.Add(new MailAddress("gatdulanerikalloren@gmail.com", "Nerika Lloren Gatdula Dela Cruz"));
 
+                try
+                {
+                    // Send the email
+                    await client.SendMailAsync(message);
+                    Console.WriteLine("Email sent successfully");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error sending email: {ex.Message}");
+                }
             }
         }
     }

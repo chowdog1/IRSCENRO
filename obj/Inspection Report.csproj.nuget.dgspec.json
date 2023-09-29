@@ -57,6 +57,10 @@
               "target": "Package",
               "version": "[6.2.9, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
             "PDFsharp-MigraDoc": {
               "target": "Package",
               "version": "[1.50.5147, )"
