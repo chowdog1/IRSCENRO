@@ -85,15 +85,22 @@ namespace Inspection_Report
                             promoteuserDatabase(searchUsername, true);
                             dataGridViewUsers.Refresh();
                             MessageBox.Show($"{searchUsername} has been promoted to Admin.");
+                            PopulateDataGridView();
+                            usernametxtBox.Clear();
+                            usernametxtBox.Focus();
                         }
                         else
                         {
                             MessageBox.Show($"{searchUsername} is already an Admin.");
+                            usernametxtBox.Clear();
+                            usernametxtBox.Focus();
                         }
                     }
                     else
                     {
                         MessageBox.Show($"User '{searchUsername}' not found.");
+                        usernametxtBox.Clear();
+                        usernametxtBox.Focus();
                     }
                 }
             }
@@ -104,28 +111,52 @@ namespace Inspection_Report
         }
         private void dltuserBtn_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
-            using (SqlConnection con = new SqlConnection(connectionString))
+            if (string.IsNullOrWhiteSpace(usernametxtBox.Text))
             {
-                con.Open();
+                MessageBox.Show("Please insert a username before attempting to delete.");
+                return; // Exit the method
+            }
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                string DeleteQuery = "DELETE Users where Username=@Username";
-
-                using (SqlCommand cmd = new SqlCommand(DeleteQuery, con))
+            if (result == DialogResult.Yes)
+            {
+                string connectionString = "Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True";
+                using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    cmd.Parameters.AddWithValue("@Username", usernametxtBox.Text);
+                    con.Open();
 
-                    try
+                    string DeleteQuery = "DELETE FROM Users WHERE Username=@Username";
+
+                    using (SqlCommand cmd = new SqlCommand(DeleteQuery, con))
                     {
-                        cmd.ExecuteNonQuery();
-                        string message = usernametxtBox.Text + " has successfully deleted!";
-                        MessageBox.Show(message);
-                    }
-                    catch (SqlException ex)
-                    {
-                        Console.WriteLine("Sql Error: " + ex.Message);
+                        cmd.Parameters.AddWithValue("@Username", usernametxtBox.Text);
+
+                        try
+                        {
+                            int rowsAffected = cmd.ExecuteNonQuery();
+                            if (rowsAffected > 0)
+                            {
+                                string message = usernametxtBox.Text + " has been successfully deleted!";
+                                MessageBox.Show(message);
+                                PopulateDataGridView();
+                                usernametxtBox.Clear();
+                                usernametxtBox.Focus();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No records found for the given username.");
+                            }
+                        }
+                        catch (SqlException ex)
+                        {
+                            Console.WriteLine("Sql Error: " + ex.Message);
+                        }
                     }
                 }
+            }
+            else
+            {
+                return;
             }
         }
         private void demoteuserDatabase(string username, bool isAdmin)
@@ -176,21 +207,26 @@ namespace Inspection_Report
                             dataGridViewUsers.Refresh();
 
                             MessageBox.Show($"{searchUsername} admin rights removed.");
+                            usernametxtBox.Clear();
+                            usernametxtBox.Focus();
                         }
                         else
                         {
                             MessageBox.Show($"{searchUsername} is already a regular user.");
+                            usernametxtBox.Focus();
                         }
                     }
                     else
                     {
                         MessageBox.Show($"User '{searchUsername}' not found.");
+                        usernametxtBox.Focus();
                     }
                 }
             }
             else
             {
                 MessageBox.Show("Enter a username to search.");
+                usernametxtBox.Focus();
             }
         }
     }

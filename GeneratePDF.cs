@@ -204,7 +204,7 @@ namespace Inspection_Report
                                     yCoordinates += regularFont.Height;
                                 }
                                 gfx.DrawString("***INSPECTION CHECKLIST***", titleFont, XBrushes.Black, new XRect(190, 430, 1000, 1000), XStringFormats.TopLeft);
-                                gfx.DrawString("Permits & Certifications", labelFont, XBrushes.Black, new XRect(10, 455, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("I. Permits & Certifications", labelFont, XBrushes.Black, new XRect(10, 455, 1000, 1000), XStringFormats.TopLeft);
                                 gfx.DrawString("Mayor's Permit:", labelFont, XBrushes.Black, new XRect(10, 470, 1000, 1000), XStringFormats.TopLeft);
                                 gfx.DrawString(MayorsPermit, regularFont, XBrushes.Black, new XRect(90, 470, 1000, 1000), XStringFormats.TopLeft);
                                 gfx.DrawString("EPP Fee:", labelFont, XBrushes.Black, new XRect(10, 480, 1000, 1000), XStringFormats.TopLeft);
@@ -279,7 +279,7 @@ namespace Inspection_Report
                                     gfx.DrawString(" ", regularFont, XBrushes.Black, new XRect(95, 620, 1000, 1000), XStringFormats.TopLeft);
                                 }
 
-                                gfx.DrawString("Pollution Control Officer", labelFont, XBrushes.Black, new XRect(10, 650, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("II. Pollution Control Officer", labelFont, XBrushes.Black, new XRect(10, 650, 1000, 1000), XStringFormats.TopLeft);
                                 gfx.DrawString("Name:", labelFont, XBrushes.Black, new XRect(10, 665, 1000, 1000), XStringFormats.TopLeft);
                                 gfx.DrawString(PollutionOfficer, regularFont, XBrushes.Black, new XRect(30, 665, 1000, 1000), XStringFormats.TopLeft);
                                 gfx.DrawString("Accreditation No:", labelFont, XBrushes.Black, new XRect(10, 675, 1000, 1000), XStringFormats.TopLeft);
@@ -301,7 +301,7 @@ namespace Inspection_Report
                                 gfx.DrawString("Email Address:", labelFont, XBrushes.Black, new XRect(10, 705, 1000, 1000), XStringFormats.TopLeft);
                                 gfx.DrawString(Email, regularFont, XBrushes.Black, new XRect(80, 705, 1000, 1000), XStringFormats.TopLeft);
 
-                                gfx.DrawString("Waste Management", labelFont, XBrushes.Black, new XRect(250, 455, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("III. Waste Management", labelFont, XBrushes.Black, new XRect(250, 455, 1000, 1000), XStringFormats.TopLeft);
 
                                 gfx.DrawString("Waste bins were provided:", labelFont, XBrushes.Black, new XRect(250, 470, 1000, 1000), XStringFormats.TopLeft);
                                 gfx.DrawString(HasWasteBin, regularFont, XBrushes.Black, new XRect(380, 470, 1000, 1000), XStringFormats.TopLeft);
@@ -362,7 +362,7 @@ namespace Inspection_Report
                                 gfx.DrawString("Hauler:", labelFont, XBrushes.Black, new XRect(250, 700, 1000, 1000), XStringFormats.TopLeft);
                                 gfx.DrawString(HaulerOil, regularFont, XBrushes.Black, new XRect(300, 700, 1000, 1000), XStringFormats.TopLeft);
 
-                                gfx.DrawString("Air Pollution Management", labelFont, XBrushes.Black, new XRect(250, 735, 1000, 1000), XStringFormats.TopLeft);
+                                gfx.DrawString("IV. Air Pollution Management", labelFont, XBrushes.Black, new XRect(250, 735, 1000, 1000), XStringFormats.TopLeft);
 
                                 gfx.DrawString("Pollution Control Devices:", labelFont, XBrushes.Black, new XRect(250, 750, 1000, 1000), XStringFormats.TopLeft);
                                 gfx.DrawString(HasAirPollutionManager, regularFont, XBrushes.Black, new XRect(390, 750, 1000, 1000), XStringFormats.TopLeft);
