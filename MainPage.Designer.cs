@@ -398,7 +398,7 @@
             // complywithincmbBox
             // 
             complywithincmbBox.FormattingEnabled = true;
-            complywithincmbBox.Items.AddRange(new object[] { "3 days", "5 days", "7 days", "31 days" });
+            complywithincmbBox.Items.AddRange(new object[] { "3 days", "5 days", "7 days", "14 days", "1 month", "2 months", "3 months" });
             complywithincmbBox.Location = new Point(225, 495);
             complywithincmbBox.Name = "complywithincmbBox";
             complywithincmbBox.Size = new Size(121, 23);
