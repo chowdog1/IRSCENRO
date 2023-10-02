@@ -522,7 +522,7 @@ namespace Inspection_Report
                                 }
 
                                 gfx2.DrawString("Assessed by:", italicFont2, XBrushes.Black, new XRect(110, 720, 1000, 1000), XStringFormats.TopLeft);
-                                gfx2.DrawString("_______________________________________", regularFont2, XBrushes.Black, new XRect(197, 740, 1000,1000), XStringFormats.TopLeft);
+                                gfx2.DrawString("_______________________________________", regularFont2, XBrushes.Black, new XRect(197, 740, 1000, 1000), XStringFormats.TopLeft);
                                 gfx2.DrawString("EMS II/Pollution Control Unit Head", labelFont2, XBrushes.Black, new XRect(210, 750, 1000, 1000), XStringFormats.TopLeft);
 
                                 gfx2.DrawString("Approved by:", italicFont2, XBrushes.Black, new XRect(110, 780, 1000, 1000), XStringFormats.TopLeft);

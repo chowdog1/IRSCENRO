@@ -42,6 +42,7 @@
             label4 = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
             timer2 = new System.Windows.Forms.Timer(components);
+            label7 = new Label();
             SuspendLayout();
             // 
             // label6
@@ -146,13 +147,13 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Nirmala UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Nirmala UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.FromArgb(116, 86, 174);
-            label1.Location = new Point(26, 46);
+            label1.Location = new Point(24, 40);
             label1.Name = "label1";
-            label1.Size = new Size(95, 37);
+            label1.Size = new Size(171, 25);
             label1.TabIndex = 12;
-            label1.Text = "Hello!";
+            label1.Text = "Inspection Report";
             // 
             // label4
             // 
@@ -171,12 +172,24 @@
             // 
             timer1.Tick += timer1_Tick;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Nirmala UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.ForeColor = Color.FromArgb(116, 86, 174);
+            label7.Location = new Point(24, 67);
+            label7.Name = "label7";
+            label7.Size = new Size(198, 25);
+            label7.TabIndex = 25;
+            label7.Text = "Management System";
+            // 
             // loginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(335, 576);
+            Controls.Add(label7);
             Controls.Add(label4);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -215,5 +228,6 @@
         private Label label4;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private Label label7;
     }
 }

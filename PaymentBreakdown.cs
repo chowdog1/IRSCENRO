@@ -146,7 +146,7 @@ namespace Inspection_Report
                 XGraphics gfx = XGraphics.FromPdfPage(page);
                 XFont regularFont = new XFont("Courier New", 8);
                 XFont labelFont = new XFont("Courier New", 8, XFontStyle.Bold);
-                XFont LabelTotalFont = new XFont("Courier New",12, XFontStyle.Bold);
+                XFont LabelTotalFont = new XFont("Courier New", 12, XFontStyle.Bold);
                 XFont RegularTotalFont = new XFont("Courier New", 12);
                 XTextFormatter tf = new XTextFormatter(gfx);
 
@@ -174,7 +174,7 @@ namespace Inspection_Report
                     yCoordinate += regularFont.Height;
                 }
                 tf.DrawString("OVR:", labelFont, XBrushes.Black, new XRect(30, 120, 1000, 20), XStringFormats.TopLeft);
-                tf.DrawString(ovr.Replace("OVR:",""),regularFont, XBrushes.Black, new XRect(50,120,1000,20), XStringFormats.TopLeft);
+                tf.DrawString(ovr.Replace("OVR:", ""), regularFont, XBrushes.Black, new XRect(50, 120, 1000, 20), XStringFormats.TopLeft);
                 tf.DrawString("Violations:", labelFont, XBrushes.Black, new XRect(30, 160, 1000, 1000), XStringFormats.TopLeft);
                 string[] violationLines = violations.Replace("Violations:", "").Split('\n');
                 float yCoordinates = 170;
@@ -185,8 +185,8 @@ namespace Inspection_Report
                     yCoordinates += regularFont.Height;
                 }
                 tf.DrawString("Total Fees:", LabelTotalFont, XBrushes.Black, new XRect(260, 310, 1000, 1000), XStringFormats.TopLeft);
-                tf.DrawString(totalfee.Replace("Total Fees:",""), RegularTotalFont, XBrushes.Black, new XRect(340, 310, 1000, 1000), XStringFormats.TopLeft);
-                tf.DrawString("ISSUED BY:_____________________________", labelFont, XBrushes.Black, new XRect(30,390,1000,1000), XStringFormats.TopLeft);
+                tf.DrawString(totalfee.Replace("Total Fees:", ""), RegularTotalFont, XBrushes.Black, new XRect(340, 310, 1000, 1000), XStringFormats.TopLeft);
+                tf.DrawString("ISSUED BY:_____________________________", labelFont, XBrushes.Black, new XRect(30, 390, 1000, 1000), XStringFormats.TopLeft);
 
                 using (MemoryStream stream = new MemoryStream())
                 {

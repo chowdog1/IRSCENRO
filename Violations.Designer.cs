@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Violations));
             dataGridView1 = new DataGridView();
             label1 = new Label();
             acctnotextBox = new TextBox();
@@ -273,6 +274,7 @@
             Controls.Add(acctnotextBox);
             Controls.Add(label1);
             Controls.Add(dataGridView1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Violations";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Violations";

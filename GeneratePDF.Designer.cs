@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneratePDF));
             label1 = new Label();
             accttxtBox = new TextBox();
             printBtn = new Button();
@@ -76,6 +77,7 @@
             Controls.Add(printBtn);
             Controls.Add(accttxtBox);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "GeneratePDF";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "GeneratePDF";

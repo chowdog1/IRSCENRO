@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
             dataGridView1 = new DataGridView();
             label1 = new Label();
             label2 = new Label();
@@ -2487,10 +2488,11 @@
             Controls.Add(addBtn);
             Controls.Add(dataGridView1);
             Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "MainPage";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Inspection Report";
+            Text = "Inspection Report Management System (IRMS)";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);

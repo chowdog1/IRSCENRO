@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaymentBreakdown));
             lblAccountNo = new Label();
             lblBusinessName = new Label();
             lblApprehension = new Label();
@@ -133,6 +134,7 @@
             Controls.Add(lblApprehension);
             Controls.Add(lblBusinessName);
             Controls.Add(lblAccountNo);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "PaymentBreakdown";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Breakdown";

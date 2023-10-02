@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserManagement));
             dataGridViewUsers = new DataGridView();
             dltuserBtn = new Button();
             promoteuserBtn = new Button();
@@ -103,6 +104,7 @@
             Controls.Add(promoteuserBtn);
             Controls.Add(dltuserBtn);
             Controls.Add(dataGridViewUsers);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "UserManagement";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Manage Users";

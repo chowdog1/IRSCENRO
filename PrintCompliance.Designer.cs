@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrintCompliance));
             label1 = new Label();
             accttxtBox = new TextBox();
             button1 = new Button();
@@ -83,6 +84,7 @@
             Controls.Add(button1);
             Controls.Add(accttxtBox);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "PrintCompliance";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Print";

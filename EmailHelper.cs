@@ -26,7 +26,7 @@ namespace Inspection_Report
 
             // Create an SMTP client
             using (var client = new SmtpClient(smtpHost))
-            {
+            { 
                 client.Port = smtpPort;
                 client.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
                 client.EnableSsl = true; // Enable SSL/TLS encryption (recommended)

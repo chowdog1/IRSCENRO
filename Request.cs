@@ -35,7 +35,6 @@ namespace Inspection_Report
                 MessageBox.Show("Please fill in all fields.");
                 return;
             }
-
             EmailHelper.SendRequestEmail(name, dept, email, reason);
 
             MessageBox.Show("Request successfully sent. Always check your email.");

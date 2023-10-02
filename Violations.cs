@@ -321,7 +321,7 @@ namespace Inspection_Report
         private void Violations_FormClosed(object sender, FormClosedEventArgs e)
         {
             MainPage? mainPage = Application.OpenForms.OfType<MainPage>().FirstOrDefault();
-            if (mainPage != null) 
+            if (mainPage != null)
             {
                 mainPage.Enabled = true;
             }

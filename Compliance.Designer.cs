@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Compliance));
             dataGridView1 = new DataGridView();
             label1 = new Label();
             acctnotextBox = new TextBox();
@@ -206,6 +207,7 @@
             Controls.Add(label1);
             Controls.Add(dataGridView1);
             Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "Compliance";
             StartPosition = FormStartPosition.CenterScreen;
