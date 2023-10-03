@@ -23,7 +23,7 @@ namespace Inspection_Report
             label1.Visible = !label1.Visible;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             string name = nametextBox.Text;
             string dept = depttextBox.Text;
@@ -35,7 +35,7 @@ namespace Inspection_Report
                 MessageBox.Show("Please fill in all fields.");
                 return;
             }
-            EmailHelper.SendRequestEmail(name, dept, email, reason);
+            await EmailHelper.SendRequestEmail(name, dept, email, reason);
 
             MessageBox.Show("Request successfully sent. Always check your email.");
 

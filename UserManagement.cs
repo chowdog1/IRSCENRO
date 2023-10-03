@@ -232,23 +232,34 @@ namespace Inspection_Report
 
         private void unlockBtn_Click(object sender, EventArgs e)
         {
-            string usernametoUnlock = usernametxtBox.Text;
+            string usernameToUnlock = usernametxtBox.Text;
 
-            if(UnlockAccount(usernametoUnlock))
+            UnlockResult result = UnlockAccount(usernameToUnlock);
+
+            if (result == UnlockResult.Success)
             {
-                MessageBox.Show("Account unlocked successfully","Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Account unlocked successfully", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 PopulateDataGridView();
                 usernametxtBox.Clear();
             }
-            else
+            else if (result == UnlockResult.AccountNotLocked)
             {
                 MessageBox.Show("Failed to unlock account. Username not found or account is not locked.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+            {
+                MessageBox.Show("An error occurred while unlocking the account. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private enum UnlockResult
+        {
+            Success,
+            AccountNotLocked,
+            Error
         }
 
-        private bool UnlockAccount(string username)
+        private UnlockResult UnlockAccount(string username)
         {
-            // Implement the logic to unlock the account in the database.
             // This typically involves setting the IsLocked flag to 0 for the specified username.
             // Return true if the account is successfully unlocked; otherwise, return false.
 
@@ -256,13 +267,33 @@ namespace Inspection_Report
             {
                 con.Open();
 
+                string checkLockQuery = "SELECT IsLocked FROM Users WHERE Username = @Username";
+                using (SqlCommand cmd = new SqlCommand(checkLockQuery, con))
+                {
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    bool isLocked = Convert.ToBoolean(cmd.ExecuteScalar());
+
+                    if (!isLocked)
+                    {
+                        // Account is not locked
+                        return UnlockResult.AccountNotLocked;
+                    }
+                }
+
                 string unlockQuery = "UPDATE Users SET IsLocked = 0, FailedLoginAttempts = 0 WHERE Username = @Username";
                 using (SqlCommand cmd = new SqlCommand(unlockQuery, con))
                 {
                     cmd.Parameters.AddWithValue("@Username", username);
                     int rowsAffected = cmd.ExecuteNonQuery();
 
-                    return rowsAffected > 0; // Account was successfully unlocked if rowsAffected > 0
+                    if (rowsAffected > 0)
+                    {
+                        return UnlockResult.Success;
+                    }
+                    else
+                    {
+                        return UnlockResult.Error;
+                    } // Account was successfully unlocked if rowsAffected > 0
                 }
             }
         }
