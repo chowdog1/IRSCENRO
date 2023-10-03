@@ -35,6 +35,7 @@
             label1 = new Label();
             usernametxtBox = new TextBox();
             removeadminBtn = new Button();
+            unlockBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsers).BeginInit();
             SuspendLayout();
             // 
@@ -93,11 +94,22 @@
             removeadminBtn.UseVisualStyleBackColor = true;
             removeadminBtn.Click += removeadminBtn_Click;
             // 
+            // unlockBtn
+            // 
+            unlockBtn.Location = new Point(28, 445);
+            unlockBtn.Name = "unlockBtn";
+            unlockBtn.Size = new Size(447, 44);
+            unlockBtn.TabIndex = 7;
+            unlockBtn.Text = "Unlock Account";
+            unlockBtn.UseVisualStyleBackColor = true;
+            unlockBtn.Click += unlockBtn_Click;
+            // 
             // UserManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(503, 451);
+            ClientSize = new Size(503, 522);
+            Controls.Add(unlockBtn);
             Controls.Add(removeadminBtn);
             Controls.Add(usernametxtBox);
             Controls.Add(label1);
@@ -121,5 +133,6 @@
         private Label label1;
         private TextBox usernametxtBox;
         private Button removeadminBtn;
+        private Button unlockBtn;
     }
 }

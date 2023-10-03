@@ -229,5 +229,42 @@ namespace Inspection_Report
                 usernametxtBox.Focus();
             }
         }
+
+        private void unlockBtn_Click(object sender, EventArgs e)
+        {
+            string usernametoUnlock = usernametxtBox.Text;
+
+            if(UnlockAccount(usernametoUnlock))
+            {
+                MessageBox.Show("Account unlocked successfully","Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                PopulateDataGridView();
+                usernametxtBox.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Failed to unlock account. Username not found or account is not locked.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private bool UnlockAccount(string username)
+        {
+            // Implement the logic to unlock the account in the database.
+            // This typically involves setting the IsLocked flag to 0 for the specified username.
+            // Return true if the account is successfully unlocked; otherwise, return false.
+
+            using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True"))
+            {
+                con.Open();
+
+                string unlockQuery = "UPDATE Users SET IsLocked = 0, FailedLoginAttempts = 0 WHERE Username = @Username";
+                using (SqlCommand cmd = new SqlCommand(unlockQuery, con))
+                {
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    return rowsAffected > 0; // Account was successfully unlocked if rowsAffected > 0
+                }
+            }
+        }
     }
 }

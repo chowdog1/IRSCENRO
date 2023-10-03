@@ -49,6 +49,7 @@ namespace Inspection_Report
                     {
                         string storedHashedPassword = dr["Password"]?.ToString() ?? string.Empty;
                         bool IsAdmin = (bool)dr["IsAdmin"];
+                        int failedLoginAttempts = dr["FailedLoginAttempts"] != DBNull.Value ? Convert.ToInt32(dr["FailedLoginAttempts"]) : 0;
 
                         if (BCrypt.Net.BCrypt.Verify(password, storedHashedPassword))
                         {
@@ -66,6 +67,8 @@ namespace Inspection_Report
                             }
                             mainPage.Show();
                             this.Hide();
+
+                            UpdateFailedLoginAttempts(username, 0);
                         }
                         else
                         {
@@ -73,6 +76,17 @@ namespace Inspection_Report
                             usernametxtBox.Clear();
                             passwordtxtBox.Clear();
                             usernametxtBox.Focus();
+
+                            failedLoginAttempts++;
+                            if(failedLoginAttempts >=5)
+                            {
+                                LockAccount(username);
+                                MessageBox.Show("Account locked due to multiple failed login attempts. Contact an administrator","Account Locked", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                UpdateFailedLoginAttempts(username, failedLoginAttempts);
+                            }    
                         }
                     }
                     else
@@ -86,6 +100,37 @@ namespace Inspection_Report
                 }
             }
             timer2.Start();
+        }
+        private void UpdateFailedLoginAttempts(string username, int attempts)
+        {
+            // Update the FailedLoginAttempts column in the database
+            using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True"))
+            {
+                con.Open();
+
+                string updateQuery = "UPDATE Users SET FailedLoginAttempts = @Attempts WHERE Username = @Username";
+                using (SqlCommand cmd = new SqlCommand(updateQuery, con))
+                {
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    cmd.Parameters.AddWithValue("@Attempts", attempts);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        private void LockAccount(string username)
+        {
+            // Implement account locking logic here (e.g., set a flag in the database)
+            using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTKIB76\\SQLEXPRESS01;Initial Catalog=InspectionReport;Integrated Security=True"))
+            {
+                con.Open();
+
+                string lockQuery = "UPDATE Users SET IsLocked = 1 WHERE Username = @Username";
+                using (SqlCommand cmd = new SqlCommand(lockQuery, con))
+                {
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         private void clrBtn_Click(object sender, EventArgs e)
