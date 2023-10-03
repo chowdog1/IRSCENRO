@@ -279,7 +279,7 @@ namespace Inspection_Report
                         return UnlockResult.AccountNotLocked;
                     }
                 }
-
+                
                 string unlockQuery = "UPDATE Users SET IsLocked = 0, FailedLoginAttempts = 0 WHERE Username = @Username";
                 using (SqlCommand cmd = new SqlCommand(unlockQuery, con))
                 {
