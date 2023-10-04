@@ -17,11 +17,14 @@ using PdfSharp;
 using System.Globalization;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Drawing;
+using System.Windows.Forms.VisualStyles;
+using System.Diagnostics;
 
 namespace Inspection_Report
 {
     public partial class MainPage : Form
     {
+        private int addressColumnIndex = 2;
         private DateTime? doidate;
         private DateTime? ecccncdate;
         private DateTime? ptodate;
@@ -1524,6 +1527,42 @@ namespace Inspection_Report
         {
             new Violations().Show();
             this.Enabled = false;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 2 && e.RowIndex >= 0)
+            {
+                string address = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value as string ?? "";
+
+                if (!string.IsNullOrEmpty(address))
+                {
+                    address += ", San Juan City, Philippines";
+
+                    address = Uri.EscapeDataString(address);
+
+                    string googlemapsUrl = $"https://www.google.com/maps/place/{address}";
+
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = googlemapsUrl,
+                        UseShellExecute = true
+                    });
+                }
+            }
+        }
+
+        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == addressColumnIndex && e.RowIndex >= 0)
+            {
+                dataGridView1.Cursor = Cursors.Hand;
+            }
+        }
+
+        private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.Cursor = Cursors.Default;
         }
     }
 }
