@@ -23,21 +23,31 @@ namespace Inspection_Report
             {
                 connection.Open();
 
-                string insertQuery = "INSERT INTO Compliance (AccountNo, BusinessName, Address, Barangay, BusinessStatus, Compliances) " +
-                                     "SELECT i.AccountNo, i.BusinessName, i.Address, i.Barangay, i.BusinessStatus, i.SecuretheFF " +
-                                     "FROM InspectionReport i " +
-                                     "WHERE i.EstablishmentHas IN ('Violated City Ordinances', 'Notice/Warning') " +
-                                     "AND NOT EXISTS (SELECT 1 FROM Compliance c WHERE c.AccountNo = i.AccountNo)";
-
-                string deleteQuery = "DELETE FROM Compliance " +
-                                     "WHERE AccountNo NOT IN (SELECT AccountNo FROM InspectionReport WHERE EstablishmentHas IN ('Violated City Ordinances', 'Notice/Warning'))";
-
-                using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
-                using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
+                string insertOrUpdateQuery = @"
+                        MERGE INTO Compliance AS target
+                        USING (
+                            SELECT i.AccountNo, i.BusinessName, i.Address, i.Barangay, i.BusinessStatus, i.SecuretheFF AS Compliances
+                            FROM InspectionReport i
+                            WHERE i.EstablishmentHas IN ('Violated City Ordinances', 'Notice/Warning')
+                        ) AS source
+                        ON target.AccountNo = source.AccountNo
+                        WHEN MATCHED THEN
+                            UPDATE SET
+                                target.BusinessName = source.BusinessName,
+                                target.Address = source.Address,
+                                target.Barangay = source.Barangay,
+                                target.BusinessStatus = source.BusinessStatus,
+                                target.Compliances = source.Compliances
+                        WHEN NOT MATCHED BY TARGET THEN
+                            INSERT (AccountNo, BusinessName, Address, Barangay, BusinessStatus, Compliances)
+                            VALUES (source.AccountNo, source.BusinessName, source.Address, source.Barangay, source.BusinessStatus, source.Compliances)
+                        WHEN NOT MATCHED BY SOURCE THEN
+                            DELETE;
+                    ";
+                using (SqlCommand insertOrUpdateCommand = new SqlCommand(insertOrUpdateQuery, connection))
                 {
-                    int insertRowsAffected = insertCommand.ExecuteNonQuery();
-
-                    int deleteRowsAffected = deleteCommand.ExecuteNonQuery();
+                    int rowsAffected = insertOrUpdateCommand.ExecuteNonQuery();
+                    // rowsAffected will contain the total number of rows affected by INSERT, UPDATE, and DELETE operations
                     PopulateDataGridView();
                 }
             }

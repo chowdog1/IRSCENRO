@@ -70,7 +70,11 @@ namespace Inspection_Report
                                     "-Transport, Storage and Disposal Certificate",
                                     "-Installation of Septic Tank/Desludging Certificate Issued by a DENR-EMB Accredited Hauler",
                                     "-Installation of Grease Trap",
-                                    "-Proper Waste Segregation in Accordance With The Markings",
+                                    "-Provide waste segregation bin (Biodegradable)",
+                                    "-Provide waste segregation bin (Recyclable)",
+                                    "-Provide waste segregation bin (Residual)",
+                                    "-Provide waste segregation bin (Special Wastes)",
+                                    "-Proper waste segregation in accordance with the markings",
                                     "_________________________________________________",
                                     " ",
                                     " ",
@@ -87,7 +91,11 @@ namespace Inspection_Report
                                 bool hasTSD = Regex.IsMatch(compliances, @"\bTransport, Storage and Disposal Certificate\b");
                                 bool hasSeptic = Regex.IsMatch(compliances, @"\bInstallation of Septic Tank/Desludging Certificate Issued by a DENR-EMB Accredited Hauler\b");
                                 bool hasGrease = Regex.IsMatch(compliances, @"\bInstallation of Grease Trap\b");
-                                bool hasSeg = Regex.IsMatch(compliances, @"\bProper Waste Segregation in Accordance With The Markings\b");
+                                bool hasBio = compliances.Contains("Provide waste segregation bin (Biodegradable)");
+                                bool hasRecyc = compliances.Contains("Provide waste segregation bin (Recyclable)");
+                                bool hasResidual = compliances.Contains("Provide waste segregation bin (Residual)");
+                                bool hasSpecial = compliances.Contains("Provide waste segregation bin (Special Wastes)");
+                                bool hasSeg = Regex.IsMatch(compliances, @"\bProper waste segregation in accordance with the markings\b");
 
                                 // Define the center of the page
                                 double centerX = page.Width / 2;
@@ -144,7 +152,27 @@ namespace Inspection_Report
                                         displayLine = "***" + line;
                                         shouldBold = true;
                                     }
-                                    else if (line.Contains("Proper Waste Segregation in Accordance With The Markings") && hasSeg)
+                                    else if (line.Contains("Provide waste segregation bin (Biodegradable)") && hasBio)
+                                    {
+                                        displayLine = "***" + line;
+                                        shouldBold = true;
+                                    }
+                                    else if (line.Contains("Provide waste segregation bin (Recyclable)") && hasRecyc)
+                                    {
+                                        displayLine = "***" + line;
+                                        shouldBold = true;
+                                    }
+                                    else if (line.Contains("Provide waste segregation bin (Residual)") && hasResidual)
+                                    {
+                                        displayLine = "***" + line;
+                                        shouldBold = true;
+                                    }
+                                    else if (line.Contains("Provide waste segregation bin (Special Wastes)") && hasSpecial)
+                                    {
+                                        displayLine = "***" + line;
+                                        shouldBold= true;
+                                    }
+                                    else if (line.Contains("Proper waste segregation in accordance with the markings") && hasSeg)
                                     {
                                         displayLine = "***" + line;
                                         shouldBold = true;
