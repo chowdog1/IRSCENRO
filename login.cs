@@ -45,15 +45,15 @@ namespace Inspection_Report
 
                     SqlDataReader dr = cmd.ExecuteReader();
 
-                    if(dr.Read())
+                    if (dr.Read())
                     {
                         bool isLocked = DBNull.Value.Equals(dr["IsLocked"]) ? false : (bool)dr["IsLocked"];
                         if (isLocked)
                         {
                             MessageBox.Show("Account locked due to multiple failed login attempts. Contact an administrator.", "Account Locked", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
-                        }    
-                    
+                        }
+
                         string storedHashedPassword = dr["Password"]?.ToString() ?? string.Empty;
                         bool IsAdmin = (bool)dr["IsAdmin"];
                         int failedLoginAttempts = dr["FailedLoginAttempts"] != DBNull.Value ? Convert.ToInt32(dr["FailedLoginAttempts"]) : 0;
@@ -87,15 +87,15 @@ namespace Inspection_Report
                             usernametxtBox.Focus();
 
                             failedLoginAttempts++;
-                            if(failedLoginAttempts >=5)
+                            if (failedLoginAttempts >= 5)
                             {
                                 LockAccount(username);
-                                MessageBox.Show("Account locked due to multiple failed login attempts. Contact an administrator.","Account Locked", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Account locked due to multiple failed login attempts. Contact an administrator.", "Account Locked", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             else
                             {
                                 UpdateFailedLoginAttempts(username, failedLoginAttempts);
-                            }    
+                            }
                         }
                     }
                     else
