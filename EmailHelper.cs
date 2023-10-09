@@ -43,7 +43,7 @@ namespace Inspection_Report
                     Body = $"Name: {name}\nDepartment: {department}\nEmail: {email}\nReason: {reason}"
                 };
 
-                message.To.Add(new MailAddress("gatdulanerikalloren@gmail.com", "Nerika Lloren Gatdula Dela Cruz"));
+                message.To.Add(new MailAddress("idosedzelvan@gmail.com", "Edzel Van Idos"));
 
                 try
                 {
