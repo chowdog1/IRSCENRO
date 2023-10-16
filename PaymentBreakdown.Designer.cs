@@ -103,10 +103,10 @@
             // lblViolations
             // 
             lblViolations.AutoSize = true;
-            lblViolations.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblViolations.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblViolations.Location = new Point(26, 143);
             lblViolations.Name = "lblViolations";
-            lblViolations.Size = new Size(62, 13);
+            lblViolations.Size = new Size(95, 16);
             lblViolations.TabIndex = 6;
             lblViolations.Text = "Violations:";
             lblViolations.TextAlign = ContentAlignment.MiddleLeft;
